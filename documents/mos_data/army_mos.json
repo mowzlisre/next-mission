@@ -1,0 +1,1377 @@
+[
+  {
+    "code": "00Z",
+    "title": "Nominative Command Sergeant Major/Sergeant Major",
+    "description": "00Z identifies positions and personnel in grade E9 (CSM & SGM) where the incumbents are Sergeants Major of organizations commanded by General Officers. Additionally, Sergeants Major that serve as the principal Staff Sergeant Major at the HQDA may also be considered Nominative. Certain other Sergeants Major positions may be considered as Nominative at the direction of the Sergeant Major of the Army. A Nominative Command Sergeant Major or Sergeant Major is a senior leader who serves as the Senior Enlisted Leader for their command or agency. Nominative positions generally have direct oversight on a large number of Soldiers and civilians, typically at the strategic level. The Sergeant Major is expected to be above reproach, the standard bearer in all things, including fitness and appearance. They embrace the Army Professional Ethic. They are the senior enlisted trainer and spokesperson that enforces established policies and standards for enlisted soldiers pertaining to performance, care, conduct, appearance, effective personnel utilization and management and training; and ensures that subordinate leaders do the same."
+  },
+  {
+    "code": "11B",
+    "title": "Infantryman",
+    "description": "The infantryman supervises, leads, or serves as a member of an infantry activity that employs individual small arms weapons or heavy anti-armor crew served weapons, either vehicle or dismounted in support of offensive and defensive combat operations. For more information on 11B - Infantryman MOS, see this Army website ."
+  },
+  {
+    "code": "11C",
+    "title": "Indirect Fire Infantryman",
+    "description": "The indirect fire infantryman serves as a supervisor or as a member of a mortar squad, section, or platoon. Employs crew and individual weapons in offensive, defensive and retrograde ground combat tactical operations. For more information on 11C - Indirect Fire Infantryman MOS, see this Army website ."
+  },
+  {
+    "code": "11Z",
+    "title": "Infantry Senior Sergeant",
+    "description": "The Infantry senior sergeant serves as principal NCO in an Infantry Light, Mechanized or Anti-tank company, operations or intelligence sections of an Infantry Battalion, combined arms or Infantry brigades and higher level organizations. Provides tactical and technical guidance and professional support to subordinates and makes recommendations to superiors in the accomplishment of their duties. Serves as principal noncommissioned officer in an Infantry battalion or higher to supervise the processing of operations and intelligence information in an Infantry brigade or higher level unit. Provides tactical and technical guidance to subordinates and professional support to both subordinates and superiors in accomplishment of their duties. Plans, coordinates, and supervises activities pertaining to organization, training, and combat operations. Edits and prepares tactical plans and training material. Coordinates implementation of operations, training programs, and communications activities."
+  },
+  {
+    "code": "12A",
+    "title": "Engineer Senior Sergeant",
+    "description": "The engineer senior sergeant inspects and advises on bridging, rafting, and river crossing operations. Supervises general engineering activities related to all construction and utility operations. Formulates and maintains construction schedules. Assist in supervision of troops in assault operations. Perform ground and aerial reconnaissance. Advises engineer staff section personnel in matters involving combat engineer operations. Assist engineering officer in construction planning, scheduling, and material estimating. Assist in the preparation of operation orders, standing operating procedures, and contingency plans. Coordinates with staff agencies for engineer operational and tactical support. Coordinates employment of engineer elements operating with infantry and armored units. Inspects construction sites and enforces job specification and safety standards. Collects, interprets, analyzes, evaluates, and disseminates intelligence data. Provides staff supervision and principal noncommissioned officer direction to units engaged in performing engineering missions. Inspects construction and training activities. Supervises performance of combat engineering missions."
+  },
+  {
+    "code": "12B",
+    "title": "Combat Engineer",
+    "description": "Combat engineers supervise, or serve, as a member of a team, squad, section, or platoon. They are engaged in providing mobility, counter-mobility and survivability support to combat forces. For more information on 12B - Combat Engineer MOS, see this Army website ."
+  },
+  {
+    "code": "12C",
+    "title": "Bridge Crewmember",
+    "description": "Bridge crewmembers supervise or serve as a member of a squad, section or platoon. They provide conventional and powered bridge and rafting support for wet and dry gap crossing operations. For more information on 12C - Bridge Crewmember MOS, see this Army website ."
+  },
+  {
+    "code": "12D",
+    "title": "Diver",
+    "description": "The diver performs or supervises SCUBA or Surface-Supplied diving operations for underwater reconnaissance, demolition, port construction and rehabilitation, harbor clearance, ship\u2019s husbandry, river crossing, hydrographic survey, and salvage operations to a depth of 190FSW. Conducts Soldiers common tasks outlined in STP 21-1 SMCT and STP 21-24 SMCT. For more information on 12D - Diver MOS, see this Army website ."
+  },
+  {
+    "code": "12G",
+    "title": "Quarrying Specialist (RC)",
+    "description": "The quarrying specialist supervises or operates electric, pneumatic, and internal combustion powered machines used in drilling, crushing, grading, and cleaning gravel and rock, or detonates explosives to blast rock in quarries and at construction sites. For more information on 12G - Quarrying Specialist (RC) MOS, see this Army website ."
+  },
+  {
+    "code": "12H",
+    "title": "Construction Engineering Supervisor",
+    "description": "The construction engineering supervisor supervises construction, repair, and utility services of buildings, warehouses, fixed bridges, port facilities, and petroleum pipelines, tanks, and related equipment."
+  },
+  {
+    "code": "12K",
+    "title": "Plumber",
+    "description": "The plumber installs and repairs pipe systems and fixtures, and petroleum pipeline systems. For more information on 12K - Plumber MOS, see this Army website ."
+  },
+  {
+    "code": "12M",
+    "title": "Firefighter",
+    "description": "The firefighter supervises or performs firefighting, rescue, salvage and fire protection operations. For more information on 12M - Firefighter MOS, see this Army website ."
+  },
+  {
+    "code": "12N",
+    "title": "Horizontal Construction Engineer",
+    "description": "The horizontal construction engineer supervises or serves as a member of a squad, team, section, or platoon. Duties start with operating heavy equipment at an intern level and progress to senior equipment operator level with supervisory responsibilities for personnel, construction projects obstacle emplacement, and counter-obstacle operations involving construction equipment. For more information on 12N - Horizontal Construction Engineer MOS, see this Army website ."
+  },
+  {
+    "code": "12P",
+    "title": "Prime Power Production Specialist",
+    "description": "The prime power production specialist performs electrical assessments, facilities maintenance, QA/QC operations: supervises, operates, installs and performs DS/GS level maintenance on electric power plants, consisting of prime power generator sets of 500 KW and higher; and associated auxiliary systems and equipment. Other duties include LNO and technical advisor to FEMA and other federal organizations. For more information on 12P - Prime Power Production Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "12Q",
+    "title": "Powerline Distribution Specialist (RC)",
+    "description": "The powerline distribution specialist supervises or installs and maintains electrical distribution systems; performs duties as a member of a transmission and distribution team. For more information on 12Q - Powerline Distribution Specialist (RC) MOS, see this Army website ."
+  },
+  {
+    "code": "12R",
+    "title": "Interior Electrician",
+    "description": "The interior electrician supervises or performs installation and maintenance of interior electrical systems and equipment. For more information on 12R - Interior Electrician MOS, see this Army website ."
+  },
+  {
+    "code": "12T",
+    "title": "Technical Engineer",
+    "description": "The technical engineer supervises or participates in construction site development to include technical investigation, surveying, drafting, development of construction plans, specifications, and performing quality control inspections. For more information on 12T - Technical Engineer MOS, see this Army website ."
+  },
+  {
+    "code": "12V",
+    "title": "Concrete and Asphalt Equipment Operator",
+    "description": "The concrete and asphalt equipment operator supervises or operates all equipment used in concrete and asphalt production and paving."
+  },
+  {
+    "code": "12W",
+    "title": "Carpentry and Masonry Specialist",
+    "description": "The carpentry and masonry specialist performs general heavy carpentry, structural steel, and masonry duties, to include fabrication, erection, maintenance, and repair of rigging devices, trusses, and other structural assemblies. For more information on 12W - Carpentry and Masonry Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "12X",
+    "title": "General Engineering Supervisor",
+    "description": "The general engineering supervisor supervises general engineering activities related to all construction and utility operations. Assist engineering officer in construction planning, scheduling, and material estimating. Assist in the preparation of operation orders, standing operating procedures, and contingency plans. Provides staff supervision and principal noncommissioned officer direction to units engaged in performing general engineering missions. Inspect construction and training activities. Supervise performance of combat engineering missions."
+  },
+  {
+    "code": "12Y",
+    "title": "Geospatial Engineer",
+    "description": "Geospatial engineers manage the enterprise geospatial database; compiled from all sources including National Geospatial Agency, Topographical Engineering Center and other services, coalition allies, as well as exploiting new collection and production from deployed Soldiers and sensors. Geospatial engineers manage the geospatial foundation of the Common Operating Picture (COP), synchronizing hard and soft copy products and are a necessary component of All Source Intelligence and Battle Command. Finish compilation of geospatial data into a printable map/product and prints (maps, overlays and special products) hardcopy geospatial information. For more information on 12Y - Geospatial Engineer MOS, see this Army website ."
+  },
+  {
+    "code": "12Z",
+    "title": "Combat Engineering Senior Sergeant",
+    "description": "The combat engineering senior sergeant inspects and advises on bridging, rafting, and river crossing operations. Formulates and maintains construction schedules. Assist in supervision of troops in assault operations. Perform ground and aerial reconnaissance. Advises engineer staff section personnel in matters involving combat engineer operations. Coordinate with staff agencies for engineer operational and tactical support. Coordinate employment of engineer elements operating with infantry and armored units. Inspects construction sites and enforces job specification and safety standards. Collects, interprets, analyzes, evaluates, and disseminates intelligence data."
+  },
+  {
+    "code": "13B",
+    "title": "Cannon Crewmember",
+    "description": "The cannon crewmember supervises or serves as a member of field artillery cannon section or ammunition section. For more information on 13B - Cannon Crewmember MOS, see this Army website ."
+  },
+  {
+    "code": "13F",
+    "title": "Joint Fire Support Specialist",
+    "description": "The fire support specialist plans, briefs, and conducts fire missions. Conducts intelligence activities including target processing in Fires Brigades, FA cannon battalions, artillery and maneuver brigades and higher headquarters in all Fire Support Elements, and Fire Effects Coordination Cell (FSE/FECC). For more information on 13F - Joint Fire Support Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "13J",
+    "title": "Fire Control Specialist",
+    "description": "The Fire Control Specialist employs automated computer-based systems used in all U.S. Army echelons across multiple weapon systems and formations in order to facilitate the delivery and integration of joint fires in support of combat operations. The Fire Control Specialist integrates and processes tactical battlefield information from multiple users and\u00a0sensors through a network of Army and JOINT automated battle command systems. The Fire Control Specialist employs automated systems in order to process technical firing solutions, apply\u00a0gunnery fundamentals critical to the 5 Requirements for Accurate Fires, process precision tactical fire missions, control tactical fires, conduct Joint sensor management, integrate fire support coordination measures, integrate maneuver control measures, manage and process\u00a0meteorological data and troubleshoot technical firing solutions. The Fire Control Specialist\u00a0performs operator and unit level maintenance on all automated tools and section equipment. For more information on 13J - Fire Control Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "13M",
+    "title": "Multiple Launch Rocket System (MLRS)/High Mobility Artillery Rocket System (HiMARS) Crewmember",
+    "description": "The MLRS/HIMARS crewmember supervises or serves as a member of a launcher crew or section. For more information on 13M - Multiple Launch Rocket System (MLRS)/High Mobility Artillery Rocket System (HiMARS) Crewmember MOS, see this Army website ."
+  },
+  {
+    "code": "13R",
+    "title": "Field Artillery (FA) Weapons Locating Radar (WLR) Specialist",
+    "description": "The Field Artillery (FA) Weapons Locating Radar (WLR) Specialist supports unified land operations (offensive, defensive, stability, and defense support of civil authorities) thru the tactical employment of Field Artillery heavy and light WLR within the Target Acquisition Platoon (TAP) in support of Field Artillery Brigades, DIVARTY, and Brigade Combat Teams (BCT).\u00a0 The WLR specialist's primary mission is to track surface to surface munitions, report the point of origin (POO), and determine a prediction of the point of impact (POI) in support of counterfire operations and the identification of land based hostile indirect fire weapons.\u00a0 The WLR specialist's secondary mission is to provide calibration and registration support to friendly indirect fire systems.\u00a0 The WLR specialist is critical in protecting friendly forces from surface to surface indirect fire attacks by providing early warning and distrbuting timely and accurate target information thru intelligence operations as a member of the Counterfire Cell and Target Processing Sections. For more information on 13R - Field Artillery (FA) Weapons Locating Radar (WLR) Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "13Z",
+    "title": "Field Artillery Senior Sergeant",
+    "description": "FA senior sergeant leads in the fire support, operations/intelligence, and target acquisition activities in a field artillery battalion, brigade, division artillery, or corps artillery. Other major duties are leading soldiers performing duties in field artillery MOS performs principal duties for SQI \"M\". Leads soldiers performing duties in field artillery MOS. Leads and supervises the operation of the unit command post in accordance with directives. Leads, supervises, and participates in coordination and implementation of cannon, missile, rocket, or target acquisition operations, training programs, administrative matters, and communication activities, providing tactical and technical guidance to subordinates, and professional support to lower and higher grade soldiers in the accomplishment of their duties. Monitors, inspects, and evaluates FA training programs."
+  },
+  {
+    "code": "14E",
+    "title": "PATRIOT Fire Control Enhanced Operator/Maintainer",
+    "description": "The PATRIOT fire control enhanced operator/maintainer supervises or serves in an air defense unit or as a member of an air defense activity engaged in operations or intelligence functions of liaison units. Responsible for system emplacement, initialization, and operator/organizational level system maintenance and services, (limited to the ability to detect improper equipment operation or malfunction by use of the senses, embedded diagnostic aids; e.g., BIT/BITE and/or on-board test equipment, Test Measurement and Diagnostic Equipment (TMDE) (e.g., multimeter to perform low voltage and continuity checks), technical references, technical inspections, adjustments, removal and replacement of battery replaceable units/line-replaceable units (BRUs/LRUs), and other tasks authorized in the maintenance allocation chart (MAC), and preventive maintenance checks and services (PMCS) required to sustain or return the PATRIOT Fire Control Section (FCS), Fire Direction Section (FDS), and associated equipment to its operational readiness condition. Performs Battle Damage Assessment Repair (BDAR), near-real time status reporting, report generation, and system deployment. Evaluates target data and identifies and engages targets. For more information on 14E - PATRIOT Fire Control Enhanced Operator/Maintainer MOS, see this Army website ."
+  },
+  {
+    "code": "14G",
+    "title": "Air Defense (AD) Battle Management System Operator",
+    "description": "The Battle Management System Operator supervises or serves in an Army Air and Missile Defense Command (AAMDC), Air Defense Brigade, Maneuver Battalion, Air Defense Airspace Management (ADAM) cell in conjunction with a Brigade Aviation Element (BAE) as an Air/Ground integrator/manager responsible for planning, coordinating, and establishing connectivity with Joint, Interagency, Intergovernmental, and Multinational (JIIM) sensors and command, control, communications, computers, and intelligence (C4I)/controller networks and airspace users; provides Situational Awareness (SA) of airspace and early warning; conducts current and future operations planning and execution of airspace management requirements for the supported echelon; and conducts Air and Missile Defense (AMD) and Aviation planning and coordination to determine AMD and Aviation requirements across the full spectrum of operations. Responsible for ADAM Cell equipment march order, emplacement, initialization and operator/organizational level system maintenance (limited to the ability to detect improper equipment operation or malfunction by use of the senses, embedded diagnostic aids; e.g. BIT/BITE and/or on-board test equipment, Test Measurement and Diagnostic Equipment (TMDE) (example, multimeter to perform low voltage and continuity checks), technical references, technical inspections, adjustments, removal and replacement of battery replaceable units/line replaceable units (BRUs/LRUs), and other tasks authorized in the maintenance allocation chart (MAC) and preventive maintenance checks and services (PMCS) required to sustain or return the ADAM Cell to its operational readiness condition. For more information on 14G - Air Defense (AD) Battle Management System Operator MOS, see this Army website ."
+  },
+  {
+    "code": "14H",
+    "title": "Air Defense (AD) Enhanced Early Warning System Operator",
+    "description": "The Enhanced Early Warning Operator supervises or serves in a Patriot air defense unit or as a member of an air defense activity engaged in operations or intelligence functions of liaison units. Responsible for air defense C4I system march order, emplacement, initialization and operator/organizational level system maintenance (limited to the ability to detect improper equipment operation or malfunction by use of the senses, embedded diagnostic aids; e.g. BIT/BITE and/or on-board test equipment, Test Measurement and Diagnostic Equipment (TMDE) (example, multimeter to perform low voltage and continuity checks), technical references, technical inspections, adjustments, removal and replacement of battery replaceable units/lines replaceable units (BRUs/LRUs), and other tasks authorized in the maintenance allocation chart (MAC) and preventive maintenance checks and services (PMCS) required to sustain or return the AD C4I system to its operational readiness condition. For more information on 14H - Air Defense (AD) Enhanced Early Warning System Operator MOS, see this Army website ."
+  },
+  {
+    "code": "14P",
+    "title": "Air and Missile Defense (AMD) Crewmember",
+    "description": "The air and missile defense crewmember supervises, operates or serves as a member of a lightweight, highly mobile, air defense weapons systems. For more information on 14P - Air and Missile Defense (AMD) Crewmember MOS, see this Army website ."
+  },
+  {
+    "code": "14S",
+    "title": "AVENGER Crewmember (USAR/NG only)",
+    "description": "The AVENGER Crewmember supervises, operates or serves as a member of a lightweight, highly mobile, air defense weapons systems. For more information on 14S - AVENGER Crewmember (USAR/NG only) MOS, see this Army website ."
+  },
+  {
+    "code": "14T",
+    "title": "PATRIOT Launching Station Enhanced Operator/Maintainer",
+    "description": "The PATRIOT launching station enhanced operator/maintainer supervises or serves in an air defense unit or as a member of an air defense activity engaged in operations or intelligence functions of liaison units. Responsible for system emplacement, initialization, operator/organizational level system maintenance (limited to the ability to detect improper equipment operation or malfunction by use of the senses, embedded diagnostic aids; e.g., BIT/BITE and/or board test equipment, Test Measurement and Diagnostic Equipment (TMDE) (example, multimeter to perform low voltage and continuity checks), technical references, technical inspections, adjustments, removal and replacement of battery replaceable units/line replaceable units (BRUs/LRUs), and other tasks authorized in the maintenance allocation chart (MAC) and preventive maintenance checks and services (PMCS) required to sustain or return the PATRIOT Launching Station (LS), Enhanced Launcher Electronic System (ELES), PATRIOT guided missile round, and associated equipment to its operational readiness condition. Performs Battle Damage Assessment Repair (BDAR) and system deployment, and missile resupply/reload functions. For more information on 14T - PATRIOT Launching Station Enhanced Operator/Maintainer MOS, see this Army website ."
+  },
+  {
+    "code": "14Z",
+    "title": "Air Defense Artillery Senior Sergeant",
+    "description": "The ADA senior sergeant supervises, plans, coordinates, and directs the emplacement, operation, unit level maintenance and management of air defense artillery weapon systems in support of ADA units at all levels. Supervises and provides technical guidance to subordinate soldiers in the accomplishment of their duties. Supervises training, evaluations and certification of AD crews in AD table training crew-drills. Monitors unit equipment readiness and prepares monthly readiness reports. Performs inspections on maintenance records and demand supported/diagnostics repair parts stockage procedures. Designs and implements the unit maintenance program. Coordinates with maintenance and logistical support activities. Performs organizational planning, operations and training."
+  },
+  {
+    "code": "15B",
+    "title": "Aircraft Powerplant Repairer",
+    "description": "The aircraft powerplant repairer supervises, inspects and performs aviation unit (AVUM), intermediate (AVIM) and depot maintenance on aircraft turbine engines and components. For more information on 15B - Aircraft Powerplant Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15C",
+    "title": "MQ-1 Operator",
+    "description": "A Soldier in MOS 15C engages in operating and remotely piloting of the UAS. Perform pre-flight, in-flight, post-flight checks and procedures. Conducts site selection, emplacement and deployment of the air vehicles and ground equipment of the UAS. Participates in launch/recovery ground crew operations. Performs mission commander duties to include planning, analyzing and execution of reconnaissance surveillance, targeting and acquisition (RSTA) missions. Applies and assists in the military intelligence collection process and acts as a liaison to supported units. Operates, troubleshoots and performs limited unit-level maintenance on communication equipment, power sources, light and heavy wheeled vehicles. For more information on 15C - MQ-1 Operator MOS, see this Army website ."
+  },
+  {
+    "code": "15D",
+    "title": "Aircraft Powertrain Repairer",
+    "description": "The aircraft powertrain repairer supervises, inspects and performs aviation unit (AVUM), intermediate (AVIM) and depot maintenance on aircraft powertrain systems. For more information on 15D - Aircraft Powertrain Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15E",
+    "title": "RQ-7 Repairer",
+    "description": "The Unmanned Aircraft Systems Repairer supervises, inspects and performs maintenance functions, in UAS aviation field maintenance units (AVUM) and (AVIM). Repairs the aircraft electrical, avionics, radio frequency, propulsion, fuel, removes and replaces optical payload, and weapons systems to include the electrical, electronic, and mechanical systems associated with those systems; the Ground Control Station electrical and electronic systems; the Ground Data Terminal electrical, electronic, and radio frequency systems; takeoff and landing systems; and associated ground support equipment. For more information on 15E - RQ-7 Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15F",
+    "title": "Aircraft Electrician",
+    "description": "The aircraft electrician supervises, inspects and performs aviation unit (AVUM), intermediate (AVIM) and depot electrical maintenance on aircraft electrical systems. For more information on 15F - Aircraft Electrician MOS, see this Army website ."
+  },
+  {
+    "code": "15G",
+    "title": "Aircraft Structural Repairer",
+    "description": "The aircraft structural repairer supervises and performs aviation unit (AVUM), intermediate (AVIM) and depot maintenance on aircraft structures. For more information on 15G - Aircraft Structural Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15H",
+    "title": "Aircraft Pneudraulics Repairer",
+    "description": "The aircraft pneudraulics repairer supervises, inspects and performs aviation unit (AVUM), intermediate (AVIM) and depot maintenance on aircraft pneudraulics systems. For more information on 15H - Aircraft Pneudraulics Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15K",
+    "title": "Aircraft Components Repair Supervisor",
+    "description": "The aircraft components repair supervisor supervises aviation unit (AVUM), intermediate (AVIM) and depot maintenance on aircraft components, aviation communications and other electronic/electrical systems associated with Army aircraft. The individual must be knowledgeable of the duties performed by personnel in MOS 15B, 15D, 15G, and 15H. Other major duties for MOS 15K are: Supervises aircraft component and avionics repair and technical inspection activities. Determines manhours, personnel, parts and facility requirements to repair aircraft components, avionics and associated equipment. Plans aircraft maintenance areas, component and avionics repair shops, and facilities. Instructs subordinates in aircraft component and avionics repair and technical inspection techniques and procedures according to directives, technical manuals, work standards, and operational policies. Maintains supply economy and discipline. Supervises the component and avionics repair technical training program. Prepares evaluations, special reports and records pertaining to aircraft component repair and related activities. Recommends and administers plans and policies."
+  },
+  {
+    "code": "15L",
+    "title": "Armament/Electrical/Avionics Repair Supervisor",
+    "description": "The aircraft component repair supervisor must be knowledgeable of the duties performed by personnel in MOSs 15F, 15N, and 15Y. Performs administrative duties such as planning aircraft maintenance, and avionics repair shops/facilities as well as determining man-hours, personnel management, parts and facility requirements while maintaining supply economy and discipline. Prepares evaluations, special reports, records and recommends and/or administers plans and policies pertaining to aircraft component repair. Instructs and supervises maintenance, repairs and inspections of aircraft armament, aviation communications and other electronic/electrical systems according to drawings, blueprints, directives, technical manuals, and safety procedures. Typically assigned to Aviation Field or Sustainment maintenance units."
+  },
+  {
+    "code": "15M",
+    "title": "MQ-1 Repairer",
+    "description": "The Unmanned Aircraft Systems Repairer supervises, inspects and performs UAS field and sustainment maintenance. Repairs the aircraft electrical, avionics, radio frequency, propulsion, fuel, removes and replaces optical payload, and weapons systems to include the electrical, electronic, and mechanical systems associated with those systems; the Ground Control Station electrical and electronic systems; the Ground Data Terminal electrical, electronic, and radio frequency systems; takeoff and landing systems; and associated ground support equipment. Prepares UAS related maintenance forms and records. For more information on 15M - MQ-1 Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15N",
+    "title": "Avionic Mechanic",
+    "description": "The avionic mechanic performs unit and intermediate maintenance on tactical communications security (COMSEC), communication, navigation, identification friend or foe (IFF) and flight control equipment. For more information on 15N - Avionic Mechanic MOS, see this Army website ."
+  },
+  {
+    "code": "15P",
+    "title": "Aviation Operations Specialist",
+    "description": "The aviation operations specialist schedules and dispatches tactical aircraft missions and performs associated operational administrative duties. For more information on 15P - Aviation Operations Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "15Q",
+    "title": "Air Traffic Control (ATC) Operator",
+    "description": "The air traffic control operator supervises and provides ATC services, to include flight following using visual flight rules (VFR), instrument flight rules (IFR) and special visual flight rules (SVFR), at ATC facilities. For more information on 15Q - Air Traffic Control (ATC) Operator MOS, see this Army website ."
+  },
+  {
+    "code": "15R",
+    "title": "AH-64 Attack Helicopter Repairer",
+    "description": "The AH-64 attack helicopter repairer supervises and performs maintenance on AH-64 attack helicopters, excluding repair of systems components. For more information on 15R - AH-64 Attack Helicopter Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15T",
+    "title": "UH-60 Helicopter Repairer",
+    "description": "A Soldier in MOS 15T performs and/or supervises inspections, repairs and maintenance according to drawings, blueprints, directives, technical manuals, and safety procedures (excluding repair of armament, avionics, electrical and cryptographic equipment/system components). Duties also include the lubrication of required components and the removal and installation of aircraft subsystems, using special tools and equipment as required. Prepares aircraft related maintenance forms and records. Soldiers may be required (if able) to perform non-rated crewmember duties involving frequent and regular participation in aerial flight as a Crew Chief on the aircraft that are essential to its operation and or specific flight mission. Typically assigned to Aviation Field or Sustainment maintenance units For more information on 15T - UH-60 Helicopter Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15U",
+    "title": "CH-47 Helicopter Repairer",
+    "description": "A Soldier in MOS 15U performs and/or supervises inspections, repairs and maintenance according to drawings, blueprints, directives, technical manuals, and safety procedures (excluding repair of armament, avionic, electrical and cryptographic equipment/system components). Duties also include the lubrication of required components and the removal and installation of aircraft subsystems, using special tools and equipment as required. Prepares aircraft related maintenance forms and records.\u00a0 \u00a0Soldiers may be required (if able) to perform non-rated crewmember duties involving frequent and regular participation in aerial flight as a Crew Chief on the aircraft that are essential to its operation and or specific flight mission.\u00a0 Typically assigned to Aviation Field or Sustainment maintenance units. For more information on 15U - CH-47 Helicopter Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15W",
+    "title": "RQ-7 Operator",
+    "description": "A Soldier in MOS 15W\u00a0engages in operating and remotely piloting of the UAS. Perform pre-flight, in-flight, post-flight checks and procedures. Conducts site selection, emplacement and deployment of the air vehicles and ground equipment of the UAS. Participates in launch/recovery ground crew operations. Performs mission commander duties to include planning, analyzing and execution of reconnaissance surveillance, targeting and acquisition (RSTA) missions. Applies and assists in the military intelligence collection process and acts as a liaison to supported units. Operates, troubleshoots and performs limited unit-level maintenance on communication equipment, power sources, light and heavy wheeled vehicles. For more information on 15W - RQ-7 Operator MOS, see this Army website ."
+  },
+  {
+    "code": "15Y",
+    "title": "AH-64 Armament/Electrical/Avionics Systems Repairer",
+    "description": "A Soldier in MOS 15Y performs and/or supervises inspections, maintenance and modifications according to drawings, blueprints, directives, technical manuals, and safety procedures on the AH-64D armament, electrical and avionics systems and cryptographic equipment to include the electrical, electronic, mechanical, and pneudraulics systems associated with AH-64D Armament/Missile Fire Control Systems. Tests, troubleshoots and repairs test sets and diagnostic equipment.\u00a0 Maintains records on weapons and subsystems. Uses and performs operator maintenance on common and special tools.\u00a0 Prepares aircraft related maintenance forms and records.\u00a0 Typically assigned to Aviation Field or Sustainment maintenance units. For more information on 15Y - AH-64 Armament/Electrical/Avionics Systems Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "15Z",
+    "title": "Aviation Senior Sergeant",
+    "description": "The\u00a0Aviation Senior Sergeant supervises personnel performing duties of CMF 15 Aviation."
+  },
+  {
+    "code": "17C",
+    "title": "Cyber Operations Specialist",
+    "description": "Cyber Operations Specialists execute offensive and defensive cyberspace operations in support of the full range of military operations by enabling actions and generating effects across all domains. Cyber Operations Specialists ensure the freedom of maneuver within the cyberspace domain and denies the same to adversaries. Cyber Operations Specialists enable Offensive Cyberspace Operations (OCO) intended to project power by the application of force in and through cyberspace by targeting enemy and hostile adversary activities and capabilities. Cyber Operations Specialists enable Defensive Cyberspace Operations (DCO) in order to protect data, networks, net-centric capabilities, and other designated systems by detecting, identifying, and responding to attacks against friendly networks. Cyber Operations Specialists conduct integrated and synchronized OCO and DCO with other lethal and nonlethal actions to enable commanders to mass effects and gain advantages in cyberspace and across other domains which directly or indirectly support objectives on land by employing devices, computer programs, or techniques, including combinations of software, firmware, or hardware designed to create an effect in or through cyberspace. As an integral part of the national cyberspace workforce, Cyber Operations Specialists are generally aligned under standardized cyberspace work roles defined by the DoD Cyberspace Workforce Framework. A description of the primary functions relevant to the Cyber Operations Specialist are as follows: Planner, Analyst, Operator, and Engineer. For more information on 17C - Cyber Operations Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "17E",
+    "title": "Electronic Warfare Specialist",
+    "description": "Electronic Warfare Specialists are subject matter experts on the manipulation, control, and dominance of the electromagnetic spectrum. They advise and assist the commander or command Electronic Warfare Officer (EWO), as applicable, to defeat the enemy through planning, coordination, integration, and execution of Electronic Attack (EA), protect and harden friendly systems, processes, and personnel by developing, training, and executing Electronic Protection (EP), and support current and future operations by planning and performing Electronic Warfare Support (ES). Electronic Warfare Specialists plan for and coordinate the integration of electronic warfare into military operations through every step of the military descision making process (MDMP). For more information on 17E - Electronic Warfare Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "17Z",
+    "title": "Cyberspace and Electromagnetic Activities (CEMA) Senior Sergeant (CEMA Sr SGT)",
+    "description": "The CEMA senior sergeant provides senior level technical and tactical advice to command and staff on all aspects of offensive and defensive cyberspace and electronic warfare operations matters.\u00a0 Mentors command leadership and subordinate personnel on CEMA functions and capabilities.\u00a0 Facilitates and synchronizes joint CEMA functions and capabilities in support of Large Scale Combat Operations (LSCO) at the corps, theater, ASCC, and inter-service level focusing on: decisional aspects; prioritization, allocation, and coordination of all CEMA assets and operations; development of strategic concepts and operations; direct involvement with HQDA, Army Commands, Army Service Component Commands, and National Agencies.\u00a0 Negotiates, establishes, and maintains liaison within the Army, other services, national, allied, and coalition nations on all CEMA functions and capabilities.\u00a0 Serves on national strategic panels, committees, work groups, and advises international, national, military and civil organizations.\u00a0 Responsible for development, preparation and/or analysis of strategic CEMA guidance for use by subordinate commands."
+  },
+  {
+    "code": "18B",
+    "title": "Special Forces Weapons Sergeant",
+    "description": "Employs conventional and unconventional warfare tactics and techniques in individual and small unit infantry operations during unilateral, combined, coalition, joint, interagency and multinational operations. For more information on 18B - Special Forces Weapons Sergeant MOS, see this Army website ."
+  },
+  {
+    "code": "18C",
+    "title": "Special Forces Engineer Sergeant",
+    "description": "Employs conventional and unconventional warfare tactics and techniques unilateral, combined, coalition, joint, interagency and multinational operations. Performs combat in combat engineer role and maintains detachment engineer equipment and supplies. For more information on 18C - Special Forces Engineer Sergeant MOS, see this Army website ."
+  },
+  {
+    "code": "18D",
+    "title": "Special Forces Medical Sergeant",
+    "description": "Employs conventional and unconventional warfare tactics and techniques in providing medical care and treatment during unilateral, combined, coalition, joint, interagency, and multinational operations. For more information on 18D - Special Forces Medical Sergeant MOS, see this Army website ."
+  },
+  {
+    "code": "18E",
+    "title": "Special Forces Communications Sergeant",
+    "description": "Employs conventional and unconventional warfare tactics and techniques in providing communications training and support during unilateral, combined, coalition, joint, interagency and multinational operations. Recruits and organizes indigenous forces. Trains, advises and supervises the installation and operation of radios, communications procedures, facsimile, wire communications and computer networks in Army Special Forces units up to battalion level. Plans, manages, and advises the commander on C4I architecture up to Advanced Operating Base (AOB) level. For more information on 18E - Special Forces Communications Sergeant MOS, see this Army website ."
+  },
+  {
+    "code": "18F",
+    "title": "Special Forces Intelligence Sergeant",
+    "description": "Special Forces Intelligence Sergeant prepares intelligence estimate (analysis) during mission planning and preparation (isolation); employs conventional and unconventional techniques of intelligence collection and processing during unilateral, combined, coalition, joint, interagency, and multi-national operations; plans, organizes, trains, advises, assists, and supervises indigenous and allied personnel on collection and processing of intelligence information; establishes intelligence networks, capable of establishing personnel identification through fingerprinting and other means; processes prisoners of war and detainees; establishes security plan and performs security duties; maintains all classified documents in the operational area and establishes destruction and evacuation plans; conducts threat vulnerability assessments; provides area specialist assistance to U.S. forces and outside agencies. For more information on 18F - Special Forces Intelligence Sergeant MOS, see this Army website ."
+  },
+  {
+    "code": "18Z",
+    "title": "Special Forces Operations Sergeant",
+    "description": "Supervises, instructs and serves as the senior enlisted member for SF activities. Trains and maintains proficiency in all major duties associated with Special Forces. Performs administrative, operational and training duties during tasks organization of the ODA in mission preparation (isolation) and during operations. Performs joint, interagency, multi-national, combined, and coalition planning; and supervises operations for higher headquarters, major commands and joint commands. Performs senior leadership, staff, and training functions within special forces. Performs duties associated with SQI 8, D, M and P."
+  },
+  {
+    "code": "19D",
+    "title": "Cavalry Scout",
+    "description": "The cavalry scout leads, serves, or assists as a member of scout crew, squad, section, or platoon in reconnaissance, security, cordon/search, and other combat operations. For more information on 19D - Cavalry Scout MOS, see this Army website ."
+  },
+  {
+    "code": "19K",
+    "title": "M1 Armor Crewman",
+    "description": "The M1 armor crewman leads, supervises, or serves as a member of M1 armor unit in offensive and defensive combat operations. In addition, serves or assists on staffs at battalion or higher level. For more information on 19K - M1 Armor Crewman MOS, see this Army website ."
+  },
+  {
+    "code": "19Z",
+    "title": "Armor Senior Sergeant",
+    "description": "The armor senior sergeant serves as principal NCO in armor company, cavalry troop, or operations and intelligence staff sections in armor battalion, cavalry squadron, or higher level organizations. Plans, coordinates, and supervises activities pertaining to organization, training, combat operations, and combat intelligence. Supervises operations center at battalion and higher level units. Collects, interprets, analyzes, evaluates, and disseminates intelligence information and data. Edits and prepares tactical operations plans and orders. Coordinates implementation of operations, training programs, and communications activities."
+  },
+  {
+    "code": "25B",
+    "title": "Information Technology Specialist",
+    "description": "The Information Technology Specialist installs, operates, maintains and performs limited field level maintenance on computer systems, Information Technology (IT) networks, and cable and wire communication systems. Performs system administration (SA) and maintains computers and servers within the computing environment (CE) and the network environment (NE). Performs network administration (NA); installs, configures and maintains network computing equipment within the network (i.e. routers, switches, desktop, and laptop computers). Performs duties associated with Communication Security (COMSEC) Account Management IAW AR 380-40. Provides SA to IT platforms in varying operational environments. Provides SA and direct support for digital management systems. Performs cyber security functions, provides the security services and attributes of availability, authentication, confidentiality, integrity and non-repudiation; verifies and implements network security policy vulnerabilities from cyber network defense teams; Network and IT management, which includes incident and problem processing, change request processing, availability management and user interaction. Assists in the planning, configuration, management, and monitoring of the local area network (LAN). For more information on 25B - Information Technology Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "25D",
+    "title": "Cyber Network Defender",
+    "description": "Performs the duties associated with the five Computer Network Defense (CND) specialties (i.e., Infrastructure Support (IS), Analyst (AN), Incident Responder (IR), Auditor (AU) and Manager (MGR)), Information Assurance Technical (IAT) Levels I-III functions, Information Assurance Management (IAM) Levels II-III functions, as required by skill level IAW AR 25-2 and DOD 8570.01-M. CND protects against, monitors for, performs analysis of, responds to and detects unauthorized activity in the cyberspace domain, which includes deployment and administration of the CND infrastructure; performs deliberate actions to modify information systems or network configurations in response to CND alert or threat information; collects data gathered from a variety of CND tools to analyze events and warn of attacks that occur within the environment; plans response activities to contain and eradicate cyber incidents within the network environment or enclave; responds by validating incidents, performs incident correlation and trending, conducts network damage assessments, and develops response actions; performs assessments of threats and vulnerabilities within the network environment or enclave and identifies deviations from acceptable configurations, enclave policy, or local policy. For more information on 25D - Cyber Network Defender MOS, see this Army website ."
+  },
+  {
+    "code": "25E",
+    "title": "Electromagnetic Spectrum Manager",
+    "description": "The Electromagnetic Spectrum Manager is responsible for the planning, coordinating, and managing use of the Electromagnetic Spectrum (EMS) through operational, engineering, and administrative procedures; maintains a database of frequency requests and assignments; performs periodic reviews and updates; resolves frequency interference reports and maintains a database of interference incidents; prepares and forwards properly formatted frequency requests to the appropriate federal, military, and civilian spectrum management agencies for coordination and approval, and maintains contact with them; performs frequency planning, selection, and deconfliction using automated tools spectrum analysis software; performs system field level maintenance on authorized signal equipment and associated electronic devices; operates and performs preventive maintenance checks and services on assigned vehicles and power generators."
+  },
+  {
+    "code": "25H",
+    "title": "Network Communication Systems Specialist",
+    "description": "The Network Communication Systems Specialist supervises, installs, operates and performs limited field level maintenance on commercial and tactical fiber, cabling and wiring, IP based high speed electronic nodal systems, integrated network control centers, network management facilities, associated multiplexing and subscriber interface equipment, multichannel line of site systems and associated relays, tropospheric scatter communications systems, tactical terrestrial satellite communication systems, anti-jam reliable tactical terminals, communications security (COMSEC) devices, and associated equipment.\u00a0 Performs network management functions in support of maintaining, troubleshooting, and reengineering of associated network assets in support of operational requirements. Installs, operates, perform strapping/re-strapping, Preventive Maintenance Checks and Services (PMCS), and field level maintenance on COMSEC devices.\u00a0 Operates and performs PMCS on assigned vehicles, power generators and equipment. For more information on 25H - Network Communication Systems Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "25S",
+    "title": "Satellite Communications Systems Operator-Maintainer",
+    "description": "The satellite communication systems operator-maintainer supervises, installs, operates and maintains tactical through strategic multichannel satellite communications ground terminals, systems, networks and associated equipment. Supervises, installs, operates and maintains strategic earth terminal complexes to include associated antennas, ground terminals, technical control facilities, multiplexing and COMSEC equipment. Performs engineering quality control and continuity testing of circuits, trunks, links, systems, and facilities. Operates and performs preventive maintenance checks and services (PMCS) on assigned communications equipment, vehicles and power generators. For more information on 25S - Satellite Communications Systems Operator-Maintainer MOS, see this Army website ."
+  },
+  {
+    "code": "25U",
+    "title": "Signal Operations Support Specialist",
+    "description": "The signal support operations specialist supervises, installs, operates, deploys, maintains, troubleshoots, trains, and assists the General Purpose User (GPU) with Programs of Record (POR) and Commercial off the Shelf (COTS) communications equipment, as appropriate, within the Tactical Operations Center (TOC), Command Post (CP), vehicle platforms, and dismounted. This includes information systems support for Mission Command Systems (MCS), Frequency Modulation (FM) Radio Systems, Tactical Satellite (TACSAT), High Frequency (HF) radio, Internet protocol (IP) based radio systems, vehicular and dismounted configurations; Performs Network Control Station and Network Management Operations for, Internet Protocol (IP) based radio systems, and other tactical radio communications systems. Configures and troubleshoots Local Area Networks and Routers. Recognizes Electronic Counter Measures (ECM) and implements Electronic Counter-Counter Measures (ECCM). Installs, operates, and maintains (IOM) POR and COTS field expedient antenna solutions. Performs field level unit maintenance on authorized C&E systems and COMSEC devices and prepares maintenance and supply requests for field level signal support. Disseminates and enforces signal policies and integrates signal systems and networks with adjacent units. IOM Radio Retransmission (RETRANS) operations and performs Preventive Maintenance Checks and Services (PMCS) on assigned vehicles and power generators. For more information on 25U - Signal Operations Support Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "25X",
+    "title": "Chief Signal NCO",
+    "description": "The Chief Signal NCO, plans, develops, coordinates, directs, and supervises the installation, operation and management of integrated C2 telecommunications and information management networks. Write Command and Control Communications policy. Provide technical advice and assistance to commanders, staff, and subordinate units. Coordinate Signal activities with higher, lower and adjacent headquarters. Perform Signal staff and senior operations NCO functions, to include writing C4I policy, procedures, operations plans, orders, and reports. Uses computers to control and monitor network status in an operational environment. Develops battlefield Signal operations plans in support of organizations at battalion and higher levels, and for Joint and Combined Commands and activities."
+  },
+  {
+    "code": "27D",
+    "title": "Paralegal Specialist",
+    "description": "Paralegal specialists administer and supervise the provision of legal services to unit commanders and staff and assist judge advocates/attorneys in providing professional legal services in diverse legal disciplines, including: organizational legal services (military justice, legal assistance, claims, administrative law, international law, operational law, and contract law); defense legal services; and judicial legal services. For more information on 27D - Paralegal Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "31B",
+    "title": "Military Police",
+    "description": "Military police supervise or provide support to the battle field by conducting maneuver and mobility support (MMS), area security, internment resettlement operations, police intelligence operations, prisoner of war operations, civilian internee operations, law and order operations on the battlefield and support to the peacetime Army community through security of critical Army resources, crime prevention programs and preservation of law and order. For more information on 31B - Military Police MOS, see this Army website ."
+  },
+  {
+    "code": "31D",
+    "title": "CID Special Agent",
+    "description": "The CID Special Agent supervises or conducts investigations of incidents and offenses or allegations of criminality affecting DA or DOD personnel, property, facilities, or activities."
+  },
+  {
+    "code": "31E",
+    "title": "Corrections and Detention Specialist",
+    "description": "The corrections and detention specialist controls, supervises, counsel internees, manages detention operations, confinement operations and corrections treatment programs. Provides professional detention/correctional support to US military prisoners, host nation corrections development and detainee operations. For more information on 31E - Corrections and Detention Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "31K",
+    "title": "Working Dog Handler",
+    "description": "Military Working Dog handlers support the installation and maneuver commanders by providing the following capabilities:\u00a0 target odor detection (explosives/narcotics), force protection, controlled aggression and tracking.\u00a0 The PEDD-T and SSD will support combat and route clearance operations by providing the maneuver commander the ability to detect and locate weapons, ammunition, explosives, and Improvised Explosive Devices (IED).\u00a0 Further, the PEDD-T and SSD will be used to screen equipment, baggage, and vehicles entering a controlled area.\u00a0 As part of an Entry Control Point (ECP), the PEDD-T or SSD will search vehicles for explosive hazards.\u00a0 The PEDD-T and PNDD-T protect Mission Essential Vulnerable Areas (MEVA) and High Value Targets (HVT) by providing perimeter security in an effort to restrict unauthorized entry.\u00a0 The PEDD-T and PNDD-T provide installation and maneuver commanders a less than lethal course of action that serves as a psychological deterrent.\u00a0 The PEDD-T and PNDD-T assets provide the maneuver commander the ability to track target individuals for the purpose of reestablishing contact with enemy or friendly missing or captured personnel.\u00a0 PEDD-T and PNDD-T assets provide a psychological deterrent for interned personnel and provide perimeter security for Internment/Resettlement (I/R) operations.\u00a0 The PNDD-T provides commanders and installation Provost Marshals with an effective means of detecting illicit narcotics.\u00a0 The Mine Detection Dog (MDD) will support combat operations by detecting and giving warning of landmines, UXOs, and other casualty-producing devices (surface or buried). For more information on 31K - Working Dog Handler MOS, see this Army website ."
+  },
+  {
+    "code": "31Z",
+    "title": "Senior Military Police Sergeant",
+    "description": "Senior Military Police Sergeant is responsible for supervising the manning, training, equipping and combat readiness of a BN/BDE level of command; principle staff NCO in operations whom plans, coordinates and manages BN/BDE operations, training and tasking\u2019s to provide Police Operations; Corrections and Detention, Security and Mobility support and Criminal Investigations. Provides for the health and welfare of Soldiers and their families across the command. Serves as the senior enlisted advisor to the Commander and Provost Marshal on policing, security of critical installation resources, and all enlisted matters; develops and implements law enforcement policies and procedures."
+  },
+  {
+    "code": "35F",
+    "title": "Intelligence Analyst",
+    "description": "The intelligence analyst supervises, performs, or coordinates, collection management, analysis, processing, and dissemination of strategic and tactical intelligence. For more information on 35F - Intelligence Analyst MOS, see this Army website ."
+  },
+  {
+    "code": "35G",
+    "title": "Geospatial Intelligence Imagery Analyst",
+    "description": "The GEOINT Imagery Analyst conducts GEOINT analysis that supports unified land operations. Geospatial imagery analysis involves identifying, analyzing, and reporting targets observed on imagery from satellite and airborne systems. They are familiar with and understand the tasking, collecting, processing, exploiting, and disseminating process. The Imagery Analyst applies theory involved in analyzing radar, infrared, moving target indicator (MTI), light detection and ranging (LIDAR), spectral imagery, and geospatial information. They provide mission critical geospatial imagery derived intelligence in support of national, theater and tactical operations. The Imagery Analyst utilizes tactical, theater and national communication networks and the employment of GEOINT systems to support operations. The Imagery Analyst queries, filters, and retrieves a variety of combat information, such as spot reports, significant activities, reconnaissance reports, and patrol debriefs to support operations. Imagery analysts push GEOINT products and data down to ground forces conducting direct and indirect combat activities. The Imagery Analyst can identify and relay environmental hazards, civil considerations, and threat activity to units maneuvering through the battlefield. They constantly research their Section\u2019s AO to provide valuable input on the Operational Environment (OE) while conducting GEOINT support to IPB. The Imagery Analyst also interprets/analyzes Full Motion Video. They also provide support to lethal and nonlethal targeting operations through baseline or intermediate graphics, battle damage assessments and collateral damage estimates. Soldiers should devote their career to development and advancement in both leadership and technical expertise required to meet the Army\u2019s intelligence mission. For more information on 35G - Geospatial Intelligence Imagery Analyst MOS, see this Army website ."
+  },
+  {
+    "code": "35L",
+    "title": "Counterintelligence (CI) Agent",
+    "description": "The Counterintelligence (CI) Agent conducts investigations, operations, collection and reporting, analysis production, and technical services to detect, identify, counter, exploit or neutralize the Foreign Intelligence Entity (FIE) and international terrorist threat to the Army and Department of Defense (DOD). Detects and identifies the CI related insider threat; identifies and counters the collection efforts and activities of foreign adversaries, which presents a threat to the lives, property, or security of Army forces. Ensures that CI activities are conducted according to current law, executive order and Army/DOD policy. For more information on 35L - Counterintelligence (CI) Agent MOS, see this Army website ."
+  },
+  {
+    "code": "35M",
+    "title": "Human Intelligence Collector",
+    "description": "Army Human Intelligence (HUMINT) Collectors perform interrogations, debriefings, screenings, source operations and intelligence liaison in all conflict phases in support of multi-domain operations at every echelon. HUMINT Collectors identify adversarial elements, activities, intentions, capabilities, and locations through the questioning of people in the Operational Environment (OE). They perform HUMINT collection in English and foreign languages. They question enemy prisoners of war and other detainees, enemy deserters, internally displaced persons, liaison contacts, friendly forces, people in the OE with a unique capability to gather information, and other strategic sources. HUMINT Collectors prepare, edit, and disseminate intelligence and technical reports. They use Army HUMINT computer information systems and communications equipment to address intelligence requirements and to gain situational understanding while planning and conducting HUMINT operations. They also utilize and manage interpreters when applicable. HUMINT Collectors use analytic techniques, tools, and databases to develop, execute, and assess HUMINT operations. The HUMINT Collector uses classified databases and publicly available information for research; they employ security measures to reduce signatures. They conduct coordination in English and foreign languages with host-nation and coalition agencies. For more information on 35M - Human Intelligence Collector MOS, see this Army website ."
+  },
+  {
+    "code": "35N",
+    "title": "Signals Intelligence Analyst",
+    "description": "The signals intelligence analyst supervises and performs analysis and reporting of intercepted foreign communications and non-communications at all echelons. Assists in the collection management process. Produces combat, strategic, and tactical intelligence reports. For more information on 35N - Signals Intelligence Analyst MOS, see this Army website ."
+  },
+  {
+    "code": "35P",
+    "title": "Signals Intelligence (SIGINT) Voice Interceptor",
+    "description": "The SIGINT Voice Interceptor performs and supervises detection, acquisition, geolocation, identification, and exploitation of foreign communications at all echelons using SIGINT systems. The SIGINT Voice Interceptor copies, translates, transcribes, gists and/or produces summaries of foreign communication transmissions. The SIGINT Voice Interceptor contributes to Information Collection (IC) synchronization to support mission requirements and conducts basic Intelligence Oversight in support of SIGINT operations. For more information on 35P - Signals Intelligence (SIGINT) Voice Interceptor MOS, see this Army website ."
+  },
+  {
+    "code": "35S",
+    "title": "Signals Acquisition/Exploitation Analyst",
+    "description": "The Signals Collector/Analyst conducts and supervises tasking, survey, collection, geolocation, processing, and exploitation of foreign signals through Technical SIGINT (TechSIGINT) and Communication Intelligence (COMINT) analysis and dissemination supporting multi-domain electromagnetic spectrum operations at the tactical, operational, and strategic levels across National, Joint, Coalition, and Army echelons; assists in the collection management process; operates and employs cryptologic equipment. For more information on 35S - Signals Acquisition/Exploitation Analyst MOS, see this Army website ."
+  },
+  {
+    "code": "35T",
+    "title": "Military Intelligence (MI) Systems Maintainer/Integrator",
+    "description": "The Military Intelligence Systems Maintainer/Integrator configures, monitors, integrates, maintains, troubleshoots, repairs, and manages Intelligence Information Services (IISs), equipment, transmission media, and networks. The 35T conducts Program of Record and Non-Standard Equipment integration into Intelligence Architecture compatible with Mission Command systems and architecture. The MI Systems Maintainer/Integrator performs computer hardware and software programming, installation, and configuration for aerial and ground IISs. They provide field and sustainment level maintenance to multi-functional, multi-user, data and information gathering, intelligence processing, peripheral, and associated systems and devices in deployed and fixed sensitive compartmented information facilities. The 35T performs and supervises the planning, employment, configuration, integration, monitoring and maintenance of complex computer controlled networks and national cryptologic systems to enable the IWfF to provide support to the Intelligence Community in multiple domains and operational environments. For more information on 35T - Military Intelligence (MI) Systems Maintainer/Integrator MOS, see this Army website ."
+  },
+  {
+    "code": "35Z",
+    "title": "Intelligence Master Sergeant",
+    "description": "The Intelligence Master Sergeant leads, manages, and trains company and battalion level intelligence activities; they will be able to operate as part of an Army modular component at the service, joint, inter-agency, inter-governmental, and multi-national levels on intelligence operations. Provides oversight and experience inclusive of all aspects of the Intelligence Warfighting Functions.\u00a0 \u00a0Manages intelligence readiness, the intelligence cycle and empowers the intelligence enterprise through organizational expertise and operational guidance in the areas of All Source, CI, SIGINT, HUMINT, GEOINT, intelligence systems maintenance and intelligence support to the Cyber Domain at all echelons.\u00a0 Synchronizes intelligence efforts with operational requirements to achieve unit of effort to meet the commander\u2019s intent.\u00a0 Reviews, evaluates, prepares, and executes intelligence asset deployment, employment, and redeployment.\u00a0 Compares intelligence TOE and TDA authorizations and recommends revisions per the Commander\u2019s mission.\u00a0 Supervises oversees the implementation of the Intelligence Architecture, to include the conduct of Military Intelligence systems maintenance and test operations.\u00a0 Success in this MOS requires demonstrated expertise in a variety of progressive assignments including leadership, key billet and staff positions at the strategic, operational, and tactical levels.\u00a0 \u00a0The Intelligence Sergeant Major enables mission command by serving as the principle enlisted advisor at the service, joint, inter-agency, inter-governmental, and multi-national levels on intelligence operations in support of unified land operations. Provides oversight and experience inclusive of all aspects of the Intelligence Warfighting Function. Manages intelligence readiness, the intelligence cycle and empowers the intelligence enterprise through operational guidance and technical expertise in the areas of All Source, CI, SIGINT, HUMINT, GEOINT, intelligence systems maintenance and intelligence support to cyber at all echelons. Synchronizes intelligence efforts with operational requirements to achieve unity of effort and meet the commander\u2019s intent. Reviews, evaluates, prepares, and executes intelligence asset deployment, employment and redeployment. Compares intelligence MTOE and TDA authorizations and recommends revisions. Supervises and oversees the implementation of Intelligence Architecture, to include the conduct of Military Intelligence systems maintenance and test operations. Success in this MOS requires demonstrated expertise in a variety of progressive assignments including leadership, key billet and staff positions at the strategic, operational, and tactical levels."
+  },
+  {
+    "code": "36B",
+    "title": "Financial Management Technician",
+    "description": "The finance management technician performs duties specific to the following financial management processes: budgeting, disbursing, and accounting for government funds; payment for travel and commercial vendor services; pay support of Soldiers and foreign national employees; and internal control operations. For more information on 36B - Financial Management Technician MOS, see this Army website ."
+  },
+  {
+    "code": "37F",
+    "title": "Psychological Operations Specialist",
+    "description": "The Psychological Operations (PSYOP) specialist conducts analysis of target audiences and environments; advises commanders and staffs; plans influence activities; develops series; delivers influence, and assesses progress towards approved objectives in support of the five branch functions (Military Information Support Operations [MISO], Psychological Warfare [PSYWAR], Build Partner Influence Capacity, Military Deception (MILDEC), and Civil Authority Information Support [CAIS]) to create and reinforce desired behaviors in selected foreign individuals and groups to achieve military and U.S. national objectives across the range of military operations. For more information on 37F - Psychological Operations Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "38B",
+    "title": "Civil Affairs Specialist",
+    "description": "Civil Affairs (CA) specialist supervises, coordinates, conducts, and participates in analysis, planning, and production of CA related documents and actions encompassing both strategic and tactical Civil Affairs Operations (CAO) and Civil-Military Operations (CMO) for Army, joint, and combined military commands. For more information on 38B - Civil Affairs Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "38R",
+    "title": "Civil Reconnaissance Sergeant (CR SGT)",
+    "description": "The Civil Reconnaissance Sergeant serves as a member of a Civil Affairs unit that executes Civil Affairs missions in support of national security objectives.\u00a0 The Civil Reconnaissance Sergeant conducts civil network engagement, civil information evaluation, support to civil administration, and transitional military authority to enable situational understanding, targeting, information operations, freedom of maneuver, and stability in order to shape the operational environment, create effects in the civil component, consolidate gains, maintain operating tempo, and preserve combat power."
+  },
+  {
+    "code": "38W",
+    "title": "Civil Affairs Medical Sergeant (CA Medical SGT)",
+    "description": "The Civil Affairs Medical Sergeant conducts medical mission planning and administrative medical duties, renders point of injury care, medical treatment in an austere environment, and performs prolonged field care as required. The Civil Affairs Medical Sergeant provides field sanitation assessments, evaluates medical systems and infrastructure, conducts civil network engagement, medical reconnaissance, and provides situational understanding to transitional governments.\u00a0 These functions provide situational understanding, targeting data, information operations, freedom of maneuver, and stability.\u00a0 They shape the operational environment, affect the civil component, preserve combat power, maintain operating tempo, and consolidate gains by supporting Transitional Governance."
+  },
+  {
+    "code": "38Z",
+    "title": "Civil Affairs Senior Sergeant",
+    "description": "The Civil Affairs Senior Sergeant supervises, leads, or serves as a member of a Civil Affairs unit that executes Civil Affairs missions in support of national security objectives or as a Civil Affairs subject matter expert in an Army or Joint Service organization."
+  },
+  {
+    "code": "42A",
+    "title": "Human Resources Specialist",
+    "description": "The human resources specialist supervises or performs personnel and administrative functions in support of company, battery, troop; detachments at division, corps, and echelons above corps; in brigade and battalion S1's or in other similar organizations, activities and units; and advises the commander, the staff, and unit soldiers on human resource matters. The human resources specialist also participates in occupational classification and management of human resources or supervises personnel management of human resources or supervises personnel management activities to include maintaining officer and enlisted personnel records and processing personnel actions concerning soldiers and their families. For more information on 42A - Human Resources Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "42R",
+    "title": "Musician",
+    "description": "This MOS requires an ASI indicating the musical instrument on which the Soldier is qualified to perform. For more information on 42R - Musician MOS, see this Army website ."
+  },
+  {
+    "code": "42S",
+    "title": "Special Band Musician",
+    "description": "The special band member performs as a musician or in direct support of the mission of The U.S. Army Band, U.S. Army Field Band, U.S. Military Academy Band, or the 3rd Infantry (The Old Guard) Fife and Drum Corps. Use of MOS 42S is restricted to the special bands only. For more information on 42S - Special Band Musician MOS, see this Army website ."
+  },
+  {
+    "code": "46S",
+    "title": "Public Affairs Mass Communication Specialist",
+    "description": "The public affairs mass communication specialist participates in and assists with the execution, supervision, and administration of successful Army Public Affairs programs and activities in support of Theater Army, joint, interagency, intergovernmental, multinational and unified operations. Public affairs mass communication specialists provide direct public affairs support through the planning, coordination, execution, and supervision of public affairs operations to inform internal and external audiences, media and key publics. The public affairs mass communication specialist is a professional communicator, employing modern technology, equipment and information systems to collect, process and rapidly deliver print and broadcast multimedia products in support of expeditionary and campaign public affairs operations. The public affairs mass communication specialist is trained and equipped to fulfill the public affairs functions of public information, command information, and community engagement. The public affairs mass communication specialist supports public affairs operations through the public affairs core tasks to conduct public communication, media facilitation, public affairs training and planning. The public affairs mass communication specialist releases official information about Army personnel, materiel, activities and operations through news releases, media engagements, press conferences, and social media and Internet-based platforms. The public specialist performs unit level maintenance on assigned equipment and performs operator maintenance on assigned vehicles and generators. The public affairs mass communication specialist may be assigned to brigade combat teams, multifunctional brigades, divisions, corps, Theater Army staff sections, separate public affairs units, and broadcast communications under the Defense Media Activity. The public affairs mass communication specialist may volunteer for assignment with Special Forces and Airborne units. The CMF is primarily non-accession in the active component and primarily initial accession in the reserve components (ARNG/USAR). For more information on 46S - Public Affairs Mass Communication Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "46T",
+    "title": "Visual Information Equipment Operator-Maintainer",
+    "description": "Installs, operates, maintains and performs unit and higher levels of maintenance on visual information equipment and systems, to include Video Teleconferencing VI equipment, in support of Army, Joint, and Combined operations; maintains forms, records, PLL, special tools and test equipment; performs PMCS on assigned vehicles and generators. For more information on 46T - Visual Information Equipment Operator-Maintainer MOS, see this Army website ."
+  },
+  {
+    "code": "46V",
+    "title": "Visual Information Specialist",
+    "description": "Operates audio visual equipment to combine text, sound, photo, animation, video, and graphics into a multimedia product in support of combat documentation, battlefield operations, Psychological Operations, Military Intelligence, Medical, Public Affairs and training functions; operates broadcast, collection, television production, video teleconferencing and distribution equipment; creates illustrations, layouts, map overlays, posters, graphs, charts, and internet web pages; performs unit level maintenance on assigned equipment and PMCS on assigned vehicles and generators. For more information on 46V - Visual Information Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "46Y",
+    "title": "Visual Information Operations Chief",
+    "description": "Plans, programs, and supervises personnel performing visual information support for Army, Joint, and Combined operations; manages documentation/production, multimedia illustration, television production and distribution, and VI equipment repair operations and facilities supporting combat documentation, psychological operations, military intelligence, public affairs, training, battlefield video teleconferencing and special functions; supervises PMCS on assigned vehicles and power generators."
+  },
+  {
+    "code": "46Z",
+    "title": "Chief Public Affairs NCO",
+    "description": "Supervise personnel performing the duties of MOS 46Q and 46R at skill \"3\" and below. The public affairs chief advises the commander and public affairs officer on all matters pertaining to public affairs, including command information, public information and community relations. Supervises Army public affairs programs, radio and television broadcasting. Advises on accuracy, propriety, timing and relative importance of information for release to the public and recommends methods of communicating information. Develops, coordinates, supervises and participates in plans and policies pertaining to organizations, training and operations. Can serve as the principal noncommissioned officer in public affairs and broadcast organizations."
+  },
+  {
+    "code": "51C",
+    "title": "Contracting Noncommissioned Officer (NCO)",
+    "description": "Perform theater contracting support situational training; manage theater contracting support; coordinate theater contracting support; prepare contracting team (CT) for deployment; assist with the administration of contracting support integration plans (annex W); prepare for contingency contracting deployment; review requirements packages; conduct contract solicitation process; perform contract administration and management; conduct contingency contract administration services (CCAS); complete contract close outs; establish a regional contracting office/center (RCO/RCC); serves as a Division and/or Corps-level liaison staff NCO for a contracting battalion (CBN) and/or contracting support brigade (CSB), instrumental in performing all three functions of effective operational contract support (OCS) per ATP 4-10 (i.e., Contract Support Integration, Contracting Support, and Contractor Management); performs all aforementioned duties throughout all phases of unified land operations and joint operations."
+  },
+  {
+    "code": "56M",
+    "title": "Religious Affairs Specialist",
+    "description": "Religious Affairs Specialists shape the environment to accomplish the Commander\u2019s Religious Support (RS) mission by providing technical expertise in religious support operations and the impact of religion on the unit and mission. Religious Affairs Specialists fulfill the Chaplain Corps Mission in MTOE and TDA organizations by performing two primary capabilities (Religious Support Provider and Religious Support Staff Advisor) which are executed through three core competencies (Integrate Religious Support into Operations, Strengthen Spiritual Readiness, and Manage Religious Support Resources). Religious Affairs Specialists integrate RS into the full range of military operations (ROMO) at the tactical, operational, and strategic levels. For more information on 56M - Religious Affairs Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68A",
+    "title": "Biomedical Equipment Specialist",
+    "description": "The medical equipment repairer performs maintenance services and repairs on all medical equipment, medical systems, medically related equipment, and medically related systems. For more information on 68A - Biomedical Equipment Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68B",
+    "title": "Orthopedic Specialist",
+    "description": "The Orthopedic Specialist assists with the management of an orthopedic clinic, or assists in treatment of patients with orthopedic conditions and injuries, under the supervision of an orthopedic physician, orthopedic physician assistant, or podiatrist. For more information on 68B - Orthopedic Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68C",
+    "title": "Practical Nursing Specialist",
+    "description": "The Practical Nursing Specialist supervises or performs preventive, therapeutic, and emergency nursing care procedures under supervision of a physician, nurse or NCO. For more information on 68C - Practical Nursing Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68D",
+    "title": "Operating Room Specialist",
+    "description": "The operating room specialist assists the nursing staff in preparing the patient and the operating room (OR) environment for surgery and for providing assistance to the medical staff during surgical procedures. They also operate the centralized material service (CMS) and are responsible for preparing and maintaining sterile medical supplies and special equipment for medical treatment facilities. The operating room specialist also assists in the management of operating room suites. For more information on 68D - Operating Room Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68E",
+    "title": "Dental Specialist",
+    "description": "The dental specialist assists the dental officer in prevention, examination, and treatment of diseases of teeth and oral region, or assists with the management of dental treatment facilities. For more information on 68E - Dental Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68F",
+    "title": "Physical Therapy Specialist",
+    "description": "The Physical Therapy Specialist, under the direction of a physical therapist and following medical referral, supervises or administers physical therapy to decrease physical disabilities and promotes physical fitness of patients. For more information on 68F - Physical Therapy Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68G",
+    "title": "Patient Administration Specialist",
+    "description": "The patient administration specialist supervises or performs administrative duties in patient administration division of hospital or other medical activity. For more information on 68G - Patient Administration Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68H",
+    "title": "Optical Laboratory Specialist",
+    "description": "The optical laboratory specialist assembles spectacles utilizing presurfaced single vision lens; surfaces multi-vision lens and assembles multi-vision spectacles; repairs and fabricates spectacles and supervises optical laboratory personnel. For more information on 68H - Optical Laboratory Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68J",
+    "title": "Medical Logistics Specialist",
+    "description": "The medical logistics specialist performs or supervises requisitioning, receipt, inventory management, storage, preservation, issue, salvage, destruction stock control, quality control, property management, repair parts management, inspection, packing and shipping, care, segregation and accounting of medical supplies and equipment. For more information on 68J - Medical Logistics Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68K",
+    "title": "Medical Laboratory Specialist",
+    "description": "The medical laboratory specialist performs bloodbanking procedures and elementary and advanced examinations of biological and environmental specimens to aid in the diagnosis, treatment, and prevention of disease and other medical disorders. MOS 68K personnel require manual dexterity and no aversion to the sight of blood or needles. For more information on 68K - Medical Laboratory Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68L",
+    "title": "Occupational Therapy Specialist",
+    "description": "The Occupational Therapy Specialist, under the direction of a registered military occupational therapist, supervises or interviews, tests, plans treatment programs, and teaches and assists patients to facilitate maximum recovery by decreasing physical and mental disabilities resulting from illness or trauma, prevent injury, and promote life-style modification to improve fitness. For more information on 68L - Occupational Therapy Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68M",
+    "title": "Nutrition Care Specialist",
+    "description": "The nutrition care specialist serves as an extender to the 65C (dietitian) by providing medical nutrition care therapy to patients and staff as well as in support of humanitarian missions in field and fixed hospitals. For more information on 68M - Nutrition Care Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68P",
+    "title": "Radiology Specialist",
+    "description": "The radiology specialist operates fixed and portable radiology equipment or supervises radiology activities. MOS 68P personnel require good eye hand coordination and manual dexterity, no aversion to the sight of blood and be able to stand for long periods of time. For more information on 68P - Radiology Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68Q",
+    "title": "Pharmacy Specialist",
+    "description": "The pharmacy specialist prepares, controls, and issues pharmaceutical products under the supervision of a pharmacist or physician, or supervises pharmacy activities. MOS 68Q personnel require finger dexterity in both hands. For more information on 68Q - Pharmacy Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68R",
+    "title": "Veterinary Food Inspection Specialist",
+    "description": "The veterinary food inspection specialist supervises the inspection of, or inspects meat, poultry, water foods, eggs, dairy products, operational rations, fresh fruits and vegetables in depots, supply points, and on military installations to assure a safe, high quality food supply for DOD personnel in all environments with emphasis on the field wartime environment. For more information on 68R - Veterinary Food Inspection Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68S",
+    "title": "Preventive Medicine Specialist",
+    "description": "The preventive medicine specialist conducts or assists with preventive medicine inspections, surveys, control operations, and preventive medicine laboratory procedures, supervises preventive medicine facilities, or serves on preventive medicine staff. For more information on 68S - Preventive Medicine Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68T",
+    "title": "Animal Care Specialist",
+    "description": "The animal care specialist supervises or provides the care, management, treatment, and sanitary conditions for animals, with a primary responsibility of prevention and control of diseases transmitted from animal to man and comprehensive care for government owned animals. For more information on 68T - Animal Care Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68V",
+    "title": "Respiratory Specialist",
+    "description": "The respiratory specialist assists with the management of a respiratory unit or administers respiratory therapy and performs pulmonary function tests under the supervision of a physician or nurse anesthetist. For more information on 68V - Respiratory Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68W",
+    "title": "Combat Medic Specialist",
+    "description": "The Combat Medic Specialist provides emergency medical treatment, limited primary care, force health protection, evacuation in a variety of operational and clinical settings from point of injury or illness through the continuum of military health care and, as a field combat medic, provides emergency medical care/treatment at point of wounding on the battlefield or to battle and non-battle casualties during wartime. For more information on 68W - Combat Medic Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68X",
+    "title": "Behavioral Health Specialist",
+    "description": "The behavioral health specialist, under the supervision of a psychiatrist, social worker, psychiatric nurse, psychologist, assists with the management and treatment in/out patient mental health activities, during peace time or mobilization; collects and records psychosocial and physical data; counsels and treats clients/patients with personal, behavioral or mental health problems. For more information on 68X - Behavioral Health Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68Y",
+    "title": "Eye Specialist",
+    "description": "The Eye Specialist supervises or conducts routine diagnostic tests and assists in the care and treatment of ophthalmology or optometry patients. For more information on 68Y - Eye Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "68Z",
+    "title": "Chief Medical NCO",
+    "description": "(1) The Chief Medical NCO is the principal non-commissioned officer who supervises, and performs related duties as the senior advisor to Commanders, Directors, and Chiefs of Departments and staff agencies on all matters pertaining to enlisted personnel. They perform these duties in multifunctional medical and dental treatment facilities, medical staff activities, or in medical units formed under the Table of Organization and Equipment (TOE), or Table of Distribution and Allowances (TDA) concept. (2) The Chief Medical NCO must be qualified in one of the following seven MOS (68E, 68G, 68J, 68M, 68P, 68Q, and 68W) at the grade MSG. Must be knowledgeable in technical mission, responsibilities and operations of all medical functional activities. To include division and higher levels of medical special, general and joint staff sections, large and medium size hospitals, health centers and clinics, battery, company and troop size units, and all levels of echelons for medical organizations to include all major commands. Must be able to plan, coordinate and supervise activities pertaining to unit organization, training, tactical and technical operations."
+  },
+  {
+    "code": "74D",
+    "title": "Chemical, Biological, Radiological, and Nuclear (CBRN) Specialist",
+    "description": "The CBRN specialists conduct CBRN reconnaissance and surveillance; perform decontamination operations; conduct obscuration operations; conduct CBRN sensitive site exploitation; and operate and perform operator maintenance on assigned CBRN defense and individual CBRN protective equipment. Additionally, in non-chemical units, the CBRN NCO plan, conduct and evaluate individual and collective CBRN training, and provide technical advice on all CBRN operations and hazards for company and higher-level organizations. For more information on 74D - Chemical, Biological, Radiological, and Nuclear (CBRN) Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "79R",
+    "title": "Recruiter",
+    "description": "Recruits qualified personnel for entry into the Army in accordance with applicable regulations, supervises recruiting and recruiting support activities."
+  },
+  {
+    "code": "79S",
+    "title": "Career Counselor",
+    "description": "Counsels and/or reenlist or extends qualified soldiers in the Army and supervises retention and manages attrition activities."
+  },
+  {
+    "code": "79T",
+    "title": "Recruiting and Retention NCO (Army National Guard of the United States)",
+    "description": "Recruits and retains qualified soldiers for entry into the Army National Guard in accordance with applicable regulations. Supervises recruiting and retention activities."
+  },
+  {
+    "code": "79V",
+    "title": "Army Reserve Career Counselor (Army Reserve)",
+    "description": "The Army Reserve Career Counselor transfers, counsels, informs, and retains qualified Soldiers in the Individual Ready Reserve (IRR), Troop Program Unit (TPU), Active Guard and Reserve (AGR), and Individual Mobilization Augmentee (IMA) programs to continue service and professional growth in the U.S. Army Reserve (USAR). Supports USAR end strength objectives by retaining qualified Soldiers and filling critical vacancies. Prospects units for qualified applicants for officer commissioning programs and AGR CMF 79 accessions. Supports USAR units in executing the U.S Army Reserve Retention Program and Chief, Army Reserve (CAR) policies."
+  },
+  {
+    "code": "88H",
+    "title": "Cargo Specialist",
+    "description": "The cargo specialist transfers or supervises the transfer of passengers and cargo to and from air, land, and water transport by manual and mechanical methods. For more information on 88H - Cargo Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "88K",
+    "title": "Watercraft Operator",
+    "description": "The watercraft operator performs mariner duties and supervises other personnel on Army watercraft and amphibians. For more information on 88K - Watercraft Operator MOS, see this Army website ."
+  },
+  {
+    "code": "88L",
+    "title": "Watercraft Engineer",
+    "description": "The watercraft engineer supervises or performs unit, direct support (DS) and general support (GS) maintenance. Services Army watercraft, amphibians and auxiliary equipment on marine vessels. For more information on 88L - Watercraft Engineer MOS, see this Army website ."
+  },
+  {
+    "code": "88M",
+    "title": "Motor Transport Operator",
+    "description": "The Motor Transport Operator supervises or operates wheel vehicles to transport personnel and cargo. For more information on 88M - Motor Transport Operator MOS, see this Army website ."
+  },
+  {
+    "code": "88N",
+    "title": "Transportation Management Coordinator",
+    "description": "The Transportation Management Coordinator coordinates, monitors, controls and supervises the movement of personnel, equipment, and cargo by air, rail, highway and water. Determines the most efficient mode of transport that accomplishes mission requirements. For more information on 88N - Transportation Management Coordinator MOS, see this Army website ."
+  },
+  {
+    "code": "88U",
+    "title": "Railway Specialist",
+    "description": "The Railway Specialist provides rail network capability and infrastructure assessments. Performs and assists with rail planning. Coordinates the use of Host nation or contracted rail assets. Performs Contracting Officer\u2019s Representative (COR) duties to oversee contracts. For more information on 88U - Railway Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "88Z",
+    "title": "Transportation Senior Sergeant",
+    "description": "The transportation senior sergeant supervises the operation and control of movement for personnel and cargo by air, rail, motor transport and water, maintenance-of-way, maintenance of equipment and technical expert on all matters relating to railway operations. Manages and coordinates the operation and maintenance of Army watercraft and maintains records of strength, location and employment of railway personnel equipment. Serves as the principal NCO associated with SQI M in transportation companies. Assist in the coordination and implementation of operations, administration, training programs and communications activities. Account for location, employment and deployment of organic operating equipment and maintenance activities. Plans and lays out a maintenance shop and facilities. Coordinate transportation actions with subordinate and serviced activities. Consolidates, prepares, reviews and processes regular and special reports of command transportation and watercraft activities. Plans, manages, and monitors unit motor transport operations as the senior truck master. Establishes and organizes the unit motor park. Prepares and implements the truck company security and defense plan. Prepares map overlays. Receives and prepares highway reconnaissance data for motor convoy transport. Supervises and directs unit dispatching of vehicles. Coordinates engineer requirements to support a truck battalion."
+  },
+  {
+    "code": "89A",
+    "title": "Ammunition Stock Control and Accounting Specialist",
+    "description": "The ammunition stock control and accounting specialist operates the Standard Ammunition and Accounting System (SAAS) computer hardware and software/utilities manual records to perform stock control and accounting procedures. For more information on 89A - Ammunition Stock Control and Accounting Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "89B",
+    "title": "Ammunition Specialist",
+    "description": "The ammunition specialist receives, stores and issues conventional ammunition, guided missiles, large rockets and other ammunition related items; performs maintenance (unit, direct support and general support) modification, destruction and demilitarization on ammunition and explosive components; and operates computer hardware and software/utilities manual records to perform stock control and accounting procedures. For more information on 89B - Ammunition Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "89D",
+    "title": "Explosive Ordnance Disposal Specialist",
+    "description": "Locates, identifies, renders safe, and disposes of foreign and domestic conventional, chemical, or nuclear ordnance and improved explosive devices (IED); supports VIP missions for the U.S. Secret Service, State Department, and other Federal agencies. For more information on 89D - Explosive Ordnance Disposal Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "91A",
+    "title": "M1 Abrams Tank System Maintainer",
+    "description": "The M1 Abrams tank system maintainer supervises and performs field maintenance. For more information on 91A - M1 Abrams Tank System Maintainer MOS, see this Army website ."
+  },
+  {
+    "code": "91B",
+    "title": "Wheeled Vehicle Mechanic",
+    "description": "The wheeled vehicle mechanic supervises and performs field level maintenance and recovery operations on light and heavy wheeled vehicles, their associated trailers and material handling equipment (MHE). For more information on 91B - Wheeled Vehicle Mechanic MOS, see this Army website ."
+  },
+  {
+    "code": "91C",
+    "title": "Utilities Equipment Repairer",
+    "description": "The utilities equipment repairer supervises and performs field and sustainment level maintenance to include utilities equipment and special purpose support systems. For more information on 91C - Utilities Equipment Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "91D",
+    "title": "Tactical Power Generation Specialist",
+    "description": "The Tactical Power Generation Specialist supervises operation and performs field level maintenance functions, including overhaul, but not rebuild of power generation equipment, internal combustion engines and associated equipment up through 200KW (except for turbine engine driven generators). For more information on 91D - Tactical Power Generation Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "91E",
+    "title": "Allied Trades Specialist",
+    "description": "The allied trades specialist supervises and performs the fabrication, repair and modifications of metallic and nonmetallic parts and supervises metalworking shop activities. For more information on 91E - Allied Trades Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "91F",
+    "title": "Small Arms/Towed Artillery Repairer",
+    "description": "The Small Arms/Towed Artillery Repairer performs field level maintenance and repairs on small arms and other infantry weapons and towed artillery. For more information on 91F - Small Arms/Towed Artillery Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "91H",
+    "title": "Tracked Vehicle Repairer",
+    "description": "The tracked vehicle repairer supervises and performs field or sustainment level maintenance on tracked vehicles (other than the M1, M2, and M109 family of vehicles). For more information on 91H - Tracked Vehicle Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "91J",
+    "title": "Quartermaster and Chemical Equipment Repairer",
+    "description": "The quartermaster and chemical equipment repairer supervises or performs unit and direct support and general support (DS/GS) maintenance on chemical equipment, quartermaster machinery, forced air heaters, and special purpose equipment. For more information on 91J - Quartermaster and Chemical Equipment Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "91L",
+    "title": "Construction Equipment Repairer",
+    "description": "The construction equipment repairer supervises and performs field level maintenance on construction equipment which includes that used for earthmoving, grading, and compaction; lifting and loading; quarrying and rock crushing; asphalt and concrete mixing, and surfacing; water pumping; air compression and pneumatic tools; and powered bridging. For more information on 91L - Construction Equipment Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "91M",
+    "title": "BRADLEY Fighting Vehicle System Maintainer",
+    "description": "The Bradley fighting vehicle system maintainer supervises and performs unit maintenance and select on-board direct support task i.e., major assembly and LRU replacement on the M2/M3 A1/A2 series Bradley fighting vehicle (BFV), M6 Linebacker, and M7 Bradley Fighting Infantry Support Team (BFIST) (hull and turret). For more information on 91M - BRADLEY Fighting Vehicle System Maintainer MOS, see this Army website ."
+  },
+  {
+    "code": "91P",
+    "title": "Self Propelled Artillery Systems Mechanic",
+    "description": "The self-propelled artillery systems mechanic supervises and performs field level maintenance and recovery of all self-propelled field artillery cannon weapon systems, including automotive, turret, carriage-mounted armament, associated fire control systems, and chemical protection subsystems thereof. For more information on 91P - Self Propelled Artillery Systems Mechanic MOS, see this Army website ."
+  },
+  {
+    "code": "91S",
+    "title": "STRYKER Systems Maintainer",
+    "description": "The Stryker Systems Maintainer supervises and performs field level maintenance on the Stryker family of vehicles including the M1126 Infantry Carrier Vehicle, M1127 Recon Vehicle, M1128 Mobile Gun System (MGS), M1129 Mortar Carrier, M1130 Commander\u2019s Vehicle (CV), M1131 Fire Support Vehicle (FSV), M1132 Engineer Support Vehicle (ESV), M1133 Medical Evacuation Vehicle (MEV), M1134 Anti-Tank Guided Missile (ATGM), and M1135 NBC Recon Vehicle (NBCRV). For more information on 91S - STRYKER Systems Maintainer MOS, see this Army website ."
+  },
+  {
+    "code": "91X",
+    "title": "Maintenance Supervisor",
+    "description": "The maintenance supervisor supervises and performs field and sustainment maintenance on tracked and wheeled vehicles, construction equipment; (which includes that used for earthmoving, grading and compaction; lifting and loading; quarrying and rock crushing; asphalt and concrete mixing and surfacing; water pumping; air compression and pneumatic tools; powered bridging and their associated trailers and material handling equipment (MHE)) special purpose equipment maintenance activities to include: (1) Power Generation Equipment; (2) Air Conditioning/Refrigeration Systems; and (3) Quartermaster and Chemical Equipment; sustainment support maintenance on combat vehicle, infantry and artillery fire control systems and equipment, and related test equipment; field level maintenance and repairs on small arms and other infantry weapons and towed artillery. Perform as support maintenance machine ship supervisor or metalworking supervisor. Supervise recovery operations on track vehicles, wheel vehicles and related activities including electrical wiring harness system repair/maintenance."
+  },
+  {
+    "code": "91Z",
+    "title": "Senior Maintenance Supervisor",
+    "description": "The senior maintenance supervisor supervises, plans, coordinates, and directs the field and sustainment maintenance of all wheeled, tracked, armament, power generation, and utility equipment. (1) Serving as principal maintenance or operations NCO in maintenance battalion or higher level organization. (2) Supervising personnel performing the duties of-- (a) Armament/Fire Control Maintenance Supervisor (MOSC 91K4O). (b) M1 Abrams Tank System Maintainer (MOSC 91A4O) (c) Artillery Mechanic (MOSC 91P4O) (d) Bradley Fighting Vehicle System Maintainer (MOSC 91M4O) (e) Maintenance Supervisor (MOSC 91X4O)."
+  },
+  {
+    "code": "92A",
+    "title": "Automated Logistical Specialist",
+    "description": "The automated logistical specialist supervises and performs management or stock record/warehouse functions pertaining to receipt, storage, distribution, and issue and maintains equipment records and parts. For more information on 92A - Automated Logistical Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "92F",
+    "title": "Petroleum Supply Specialist",
+    "description": "The petroleum supply specialist supervises or receives, stores, accounts for and cares for, dispenses, issues, and ships bulk or packaged petroleum, oils, and lubricants (POL) products. For more information on 92F - Petroleum Supply Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "92G",
+    "title": "Culinary Specialist",
+    "description": "The Culinary Specialist\u00a0supervises, prepares, and serves food in field or garrison operations. For more information on 92G - Culinary Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "92L",
+    "title": "Petroleum Laboratory Specialist",
+    "description": "The laboratory petroleum specialist supervises or conducts laboratory tests on petroleum, oils, and lubricants (POL) products. For more information on 92L - Petroleum Laboratory Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "92M",
+    "title": "Mortuary Affairs Specialist",
+    "description": "Performs or supervises recovery, collection, establish tentative identification, escort and temporary burial. Mortuary Affairs Specialist also inventory, safeguard and evacuate personal effects of deceased personnel. For more information on 92M - Mortuary Affairs Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "92R",
+    "title": "Parachute Rigger",
+    "description": "The parachute rigger supervises or packs and repairs cargo and personnel parachutes, and rigs equipment and supply containers for airdrop. For more information on 92R - Parachute Rigger MOS, see this Army website ."
+  },
+  {
+    "code": "92S",
+    "title": "Shower and Laundry Specialist",
+    "description": "The Shower and Laundry specialist supervises or performs personnel laundry and shower operations. For more information on 92S - Shower and Laundry Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "92W",
+    "title": "Water Treatment Specialist",
+    "description": "The water treatment specialist supervises or performs installation, operation of water purification equipment, water storage and distribution operations and activities. For more information on 92W - Water Treatment Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "92Y",
+    "title": "Unit Supply Specialist",
+    "description": "The unit supply specialist supervises or performs duties involving request, receipt, storage, issue, accountability and preservation of individual, organizational, installation and expendable supplies and equipment. For more information on 92Y - Unit Supply Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "92Z",
+    "title": "Senior Noncommissioned Logistician",
+    "description": "The Senior Noncommissioned Logistician supervises soldiers engaged in supply, services, materiel management and logistics operations. The critical duties for MOS 92Z are: Perform duties of MOS 92A, 92F, 92G, 92M, 92R, 92S, and 92Y at the \"6\" skill level. Serves as principal multifunctional NCO of supply and services operations. Supervises operation of organizations performing supply and related service operations such as transportation, property disposal, and commissary operations. Supervises management of materiel support functions in stock control and accounting, procurement, inventory control, and item financial management.\u00a0 Assists command and staff officers in appraisals of petroleum and water operations.\u00a0 Develop, coordinate, implement, advise and evaluate command food service programs.\u00a0 Monitor requests for food items and equipment.\u00a0 Develop and analyze menus and coordinates menu substitutions.\u00a0 Evaluate operation of garrison and field kitchens, food service training facilities and maintenance of equipment.\u00a0 Survey individual preferences, good preparation and food conservation.\u00a0 Prepare reports, studies and briefings on food service operations.\u00a0 Provide assistance to food service officers and NCOs.\u00a0 Supervises mortuary affairs activities, provides technical and administrative support on grave registration matters, acquisition of land for temporary cemeteries, equipment requirements for mortuaries, and recovery/evacuation procedures.\u00a0 Supervises airdrop operations of organizations performing airborne/resupply, advises airborne operational matters and performs liaison between staff and supported personnel.\u00a0 Supervises as a quality assurance representative for all shower/laundry and clothing repair functions.\u00a0 \u00a0Supervises development and preparation of operations information, plans, maps sketches, overlays and related data to employ supply and service organizations. Contributes to staff development and operations of supply support data systems, equipment review, salvage and repair parts supply procedures, and maintenance support systems. Supervises preparation of orders, operating instructions, reports, and related technical materials. Performs liaison between staff and supported soldiers to improve effectiveness of support activities."
+  },
+  {
+    "code": "94A",
+    "title": "Land Combat Electronic Missile System Repairer",
+    "description": "The land combat electronic missile system repairer supervises or performs direct support and general support (DS/GS) level maintenance on the TOW and DRAGON missile systems, the Bradley Fighting Vehicle System (BFVS) and JAVELIN system. For more information on 94A - Land Combat Electronic Missile System Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94D",
+    "title": "Air Traffic Control Equipment Repairer",
+    "description": "The ATC Equipment Repairer performs unit through intermediate direct support maintenance and installation of ATC communications, navigation aids (NAVAIDS), and landing systems. For more information on 94D - Air Traffic Control Equipment Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94E",
+    "title": "Radio Equipment Repairer",
+    "description": "The Radio Equipment Repairer performs or supervises field level maintenance on radio receivers, transmitters, and associated equipment. For more information on 94E - Radio Equipment Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94F",
+    "title": "Computer/Detection Systems Repairer",
+    "description": "The computer/detection systems repairer performs or supervises field and sustainment level maintenance and repair on microcomputers and electromechanical telecommunications equipment, Field Artillery (FA) digital devices, Global Positioning System (GPS) receivers, switchboards, telephones, associated wire instruments/equipment, night vision devices/equipment, laser and fiber optic systems, mine detection and dispensing systems, battlefield illumination devices, electronic azimuth determining devices, and nuclear, biological, and chemical (NBC) warning and measuring devices. For more information on 94F - Computer/Detection Systems Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94H",
+    "title": "Test, Measurement, and Diagnostic Equipment (TMDE) Maintenance Support Specialist",
+    "description": "The TMDE maintenance support specialist performs and supervises duties involving the calibration and repair of general purpose TMDE, selected special purpose TMDE, Radiation Detecting, Indicating, and Computing (RADIAC) equipment, calibration standards and accessories. Operates TMDE and calibration standards. Operates and performs preventive maintenance and checks and services (PMCS) on assigned vehicles and equipment. Installs, operates and performs PMCS on power generators. For more information on 94H - Test, Measurement, and Diagnostic Equipment (TMDE) Maintenance Support Specialist MOS, see this Army website ."
+  },
+  {
+    "code": "94M",
+    "title": "Radar Repairer",
+    "description": "The Radar repairer performs or supervises unit, direct and general support (DS/GS) level maintenance on SENTINEL (Ground Based Sensor) and FIREFINDER radar electronic assemblies and associated equipment. Performs or supervises DS/GS level maintenance on ground surveillance radars, associated equipment and meteorological equipment. For more information on 94M - Radar Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94P",
+    "title": "Multiple Launch Rocket System (MLRS) Repairer",
+    "description": "The MLRS repairer supervises or performs direct and general support (DS/GS) level maintenance on multiple launch rocket system (MLRS) M270, M270A1 and High Mobility Artillery Rocket System (HIMARS), self propelled launcher loader (SPLL) (less carrier), launcher pod/container (LP/C) trainer, and test support group. For more information on 94P - Multiple Launch Rocket System (MLRS) Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94R",
+    "title": "Avionic and Survivability Equipment Repairer",
+    "description": "The avionics and survivability equipment repairer performs field and sustainment level maintenance on avionic navigation flight control systems, stabilization systems, equipment which operates using radar principles, and aircraft survivability equipment. For more information on 94R - Avionic and Survivability Equipment Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94S",
+    "title": "PATRIOT System Repairer",
+    "description": "The Patriot system repairer performs or supervises direct and general support (DS/GS) level maintenance on the Patriot missile system, associated equipment and trainers. For more information on 94S - PATRIOT System Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94T",
+    "title": "Short Range Air Defense System Repairer",
+    "description": "The Short Range Air Defense System Repairer supervises, performs and inspects field maintenance on Avenger system and associated components (less carrier and communications). For more information on 94T - Short Range Air Defense System Repairer MOS, see this Army website ."
+  },
+  {
+    "code": "94W",
+    "title": "Electronic Maintenance Supervisor",
+    "description": "The Electronic Maintenance Supervisor supervises, monitors, and directs the electronic maintenance mission of the US Army. The electronic maintenance supervisor performs and supervises field level maintenance on all Army standard electronic equipment, systems, and associated devices."
+  },
+  {
+    "code": "94Y",
+    "title": "Automatic Test Systems Operator/Maintainer",
+    "description": "The Automatic Test Systems Operator/Maintainer operates, performs, and supervises field maintenance on the Next Generation Automatic Test System (NGATS), Direct Support Electrical Test System (DSETS), and Base Shop Test Facility (BSTF), AN/TSM-191. Performs field level electronic maintenance, adjustments, tests, fault isolation, and repairs of supported system line replaceable units (LRU), shop replaceable units (SRU), test program sets (TPS) and performs maintenance on combat vehicles, Infantry and Artillery fire control systems and equipment, and related test equipment. Operates and performs preventive maintenance checks and services (PMCS) on assigned vehicles and power generators. For more information on 94Y - Automatic Test Systems Operator/Maintainer MOS, see this Army website ."
+  },
+  {
+    "code": "94Z",
+    "title": "Senior Electronic Maintenance Supervisor",
+    "description": "The Senior Electronic Maintenance Supervisor plans and directs electronic maintenance operations at all levels of command and echelons of the Army. Performs electronic maintenance staff functions. Provides technical advice to commanders and staff concerning Army electronic maintenance and electronic logistic support matters. Writes directives, policies and procedures which establishes Army electronic maintenance requirements."
+  },
+  {
+    "code": "1B",
+    "title": "Sexual Harassment/Assault Response & Prevention (SHARP) Level I",
+    "description": "Personnel with ASI 1B are eligible to serve as collateral duty Sexual Assault Response Coordinator (SARC), SHARP Victim Advocate (VA) or Company SHARP Advisor."
+  },
+  {
+    "code": "1C",
+    "title": "Satellite Systems/Network Coordinator",
+    "description": "Identifies positions requiring soldiers qualified to operate and maintain the Defense Satellite Communications Systems (DSCS) Defense Operations Control System (DOCS) and the Ground Control System."
+  },
+  {
+    "code": "1D",
+    "title": "Digital Media Collector (DMC)",
+    "description": "Identifies personnel only requiring qualification as a Digital Media Collector. Personnel, who are the first to respond, secure, preserve, and/or collect digital evidence at crime scenes or during a site exploitation. Personnel with the Digital Media Collector ASI will be certified and trained to legally seize digital media in a manner which would allow further prosecution in a court of law."
+  },
+  {
+    "code": "1E",
+    "title": "Knowledge Management Professional",
+    "description": "Plans integrate and coordinate knowledge management operations across the spectrum of military operations. Provides for the integration and management of Army Battle Command Systems to optimize situational understanding and effective collaboration."
+  },
+  {
+    "code": "1H",
+    "title": "Sexual Harassment/Assault Response & Prevention (SHARP) Level II",
+    "description": "Identifies positions in TDA and/or Augmentation TDA in any MOS requiring assignment of non-commissioned officers certified as a Sexual Assault Response Coordinator (SARC) or SHARP Victim Advocate (VA) for the Sexual Harassment/Assault Response & Prevention (SHARP) Program. (1) Sexual Assault Response Coordinator (SARC): Must be a Non Commissioned Officer (SFC or higher) or receive approved request for exception to policy. (2) SHARP Victim Advocate (VA): Must be a Non Commissioned Officer (SSG or higher) or receive approved request for exception to policy."
+  },
+  {
+    "code": "1S",
+    "title": "Suicide Intervention Trainer",
+    "description": "The Applied Suicide Intervention Skills Training (ASIST) Training for Trainers (T4T) course trains Soldiers with existing teaching, presentation, or leadership experience to conduct the two-day ASIST workshop. ASIST\u00a0prepares caregivers to become willing, ready, and able to provide emergency first aid to persons at risk of suicidal behavior; understand the ways that personal and societal attitudes affect views on suicide and interventions; provide guidance and suicide first aid to a person at risk in ways that meet their individual safety needs; identify the key elements of an effective suicide safety plan and the actions required to implement it; appreciate the value of improving and integrating suicide prevention resources in the community at large; and, recognize other important aspects of suicide prevention including life-promotion and self-care."
+  },
+  {
+    "code": "1X",
+    "title": "Green Belt In Lean Six Sigma (LSS)",
+    "description": "Green Belt in Lean Six Sigma (LSS) enables the development of trusted agents who promote Lean Six Sigma efforts. Green Belts in Lean Six Sigma identify potential Lean Six Sigma projects, actively engage in the formation and execution of a variety of Lean Six Sigma initiatives, and provide the knowledge, skills, and tools necessary to lead small projects."
+  },
+  {
+    "code": "1Y",
+    "title": "Black Belt In Lean Six Sigma (LSS)",
+    "description": "Black Belt in Lean Six Sigma (LSS) demonstrates professional excellence and good judgment, the exhibition of outstanding abilities in team leadership, and understanding of team dynamics and assignment of team member roles and responsibilities. Black Belts in Lean Six Sigma have a thorough understanding of and can use all aspects of the traditional Lean Six Sigma methodology of Define, Measure Analyze, Implement and Control (DMAIC) and the Design for Lean Six Sigma (DFLSS), and use tools in accordance with Lean Six Sigma principles. They are responsible for leading the project team, including assigned LSS Green Belts, to deliver value and benefits defined in business transformation impacts. They possess basic knowledge of lean enterprise concepts, identify non-value-added elements and activities, and use specific tools. In addition, they perform Green Belt coaching and or training, as required."
+  },
+  {
+    "code": "1Z",
+    "title": "Master Black Belt In Lean Six Sigma (LSS)",
+    "description": "Master Black Belt in Lean Six Sigma (LSS) provides long-term technical coaching and training to Black Belts and Green Belts, and leads Lean Six Sigma (LSS) with the ability to Define, Measure, Analyze, Improve and Control (DMAIC) and Design for Lean Six Sigma (DFLSS) projects, as necessary. Master Black Belts in LSS typically report to the Deployment Director, and mentor and/or train one to five Black Belts and Green Belts. They demonstrate professional excellence and good judgment and exhibit outstanding ability to lead and complete LSS projects.\u00a0In addition, they provide guidance for LSS deployment, assist project identification, and identify and propagate best practices. Master Black Belts must be able to analyze and solve quality problems and be involved, as a leader, in quality improvement projects."
+  },
+  {
+    "code": "2D",
+    "title": "Police Intelligence Analyst (PIA)",
+    "description": "ASI 2D is for personnel in grades E4 thru E7 who complete the Crime & Criminal Intelligence Analyst course."
+  },
+  {
+    "code": "2S",
+    "title": "Battle Staff NCO",
+    "description": "Identifies positions requiring Soldiers trained to serve as a Battle Staff NCO and manage the day-to-day operations of corps, division, regiment, group, brigade, battalion, and squadron command posts."
+  },
+  {
+    "code": "2U",
+    "title": "AI Cloud Technician-User",
+    "description": "The Cloud Technician\u2019s role is to create, provision, scale, monitor and manage, \u201cvirtualize,\u201d and secure cloud services to provide the durable infrastructure upon which AI solutions are built. Cloud Technicians will be trained in Microsoft Azure specific and general cloud administrator fundamentals that will prepare them to create, maintain and secure cloud services in various environments."
+  },
+  {
+    "code": "2V",
+    "title": "AI Cloud Technician",
+    "description": "The Cloud Technician\u2019s role is to create, provision, scale, monitor and manage, \u201cvirtualize,\u201d and secure cloud services to provide the durable infrastructure upon which AI solutions are built. Cloud Technicians will be trained in Microsoft Azure specific and general cloud administrator fundamentals that will prepare them to create, maintain and secure cloud services in various environments."
+  },
+  {
+    "code": "2X",
+    "title": "Tactical SIGINT Operator",
+    "description": "Identifies positions and personnel requiring Soldiers who are qualified to operate Signals Intelligence equipment in a tactical environment, Corps and Below Formations."
+  },
+  {
+    "code": "3C",
+    "title": "Operational Contract Support (OCS)",
+    "description": "Identifies positions requiring Soldiers qualified in operational contract support planning and management."
+  },
+  {
+    "code": "3P",
+    "title": "Nationally Registered Paramedic",
+    "description": "Identifies Combat Medic Specialists who are Nationally Registered Paramedic (NRP) Certified. The Nationally Registered Paramedic has the primary requisite skill sets to provide critical pre-hospital trauma care, trauma management, advanced cardiac life support care and management to patients, as well as ability to administer blood products above and beyond the traditional skill sets of a NREMT Certified 68W, Combat Medic Specialist."
+  },
+  {
+    "code": "4N",
+    "title": "Health Care Recruiter",
+    "description": "Identifies positions requiring Soldiers who are Health Care Recruiter qualified. The Health Care Recruiter is the subject matter expert at the Battalion/Brigade/USAREC Headquarters. They have the primary skill sets to provide critical assessment, management, planning, and implementation of all health care recruiting activities at every echelon in the command."
+  },
+  {
+    "code": "4R",
+    "title": "Transition NCO",
+    "description": "Identifies Reserve Component (Army National Guard of the United States (ARNGUS) and U.S. Army Reserve (USAR)) positions in Tables of Distribution and Allowances (TDA) and Augmentation TDA requiring soldiers qualified to participate in transition programs."
+  },
+  {
+    "code": "5W",
+    "title": "Jumpmaster",
+    "description": "Identifies positions requiring the incumbent to possess advanced airborne knowledge, skills and behaviors."
+  },
+  {
+    "code": "6N",
+    "title": "THAAD Launching Control Station (LCS) Operator",
+    "description": "Designates Enlisted E3 and above in specific critical Air Defense Artillery Branch positions where the incumbent is responsible for operational duties and requires comprehensive knowledge and expertise in the Terminal High Altitude Area Defense (THAAD) and its subcomponents."
+  },
+  {
+    "code": "6Q",
+    "title": "Additional Duty Safety NCO",
+    "description": "ASI 6Q is awarded to Soldiers who have successfully completed the Additional Duty Safety NCO Course conducted and certified under the auspices of the USA Combat Readiness Center (USACRC)."
+  },
+  {
+    "code": "6T",
+    "title": "Military Auditor",
+    "description": "Army 6T Military Auditors are part of the Assistant Secretary of the Army for Financial Management and Comptroller (ASA (FM&C)) Proponent. ASI 6T is awarded to Reserve Component warrant officers who fulfill educational and/or training requirements determined by the Army. The ASI is open to any MOS."
+  },
+  {
+    "code": "7A",
+    "title": "THAAD Fire Control Communications (TFCC)/Radar Operator/Maintainer",
+    "description": "Designates Enlisted E3 and above in specific critical Air Defense Artillery Branch positions where the incumbent is responsible for operational duties and requires comprehensive knowledge and expertise in the Terminal High Altitude Area Defense (THAAD) and its subcomponents."
+  },
+  {
+    "code": "7D",
+    "title": "Assignment Oriented Training (AOT)",
+    "description": "Identifies positions in grades PFC-SFC requiring MOS 15W (35K) Soldiers qualified to operate the Shadow Unmanned Aerial Vehicle (UAV) and associated systems."
+  },
+  {
+    "code": "7F",
+    "title": "Chaplain Resources Manager",
+    "description": "Designates SSG and above in specific Chaplain Corps positions where the incumbent is responsible for religious support operations and requires comprehensive knowledge in budget formulation, justification, and presentation; accounting concepts, policies, and principles; financial stewardship; financial management and reporting; audit planning and management; and applicable laws; regulations, and policies for non-appropriated funds."
+  },
+  {
+    "code": "7G",
+    "title": "Red Team Leader",
+    "description": "Identifies positions in Colonel (06)/civilian equivalent and higher level commands/directorates/agencies requiring Soldiers qualified as leader of a Red Team that provides organizations an independent capability to fully explore alternatives in plans, operations, concepts, organizations and capabilities in the context of the operational environment and from the perspectives of our partners, adversaries, and others."
+  },
+  {
+    "code": "7T",
+    "title": "Funds Technician",
+    "description": "The Funds Technician designates PVT-SGT in specific Chaplain Corps positions where the incumbent is responsible for religious support operations and requires comprehensive knowledge in budget formulation, justification, and presentation accounting concepts, policies, and principles; financial stewardship; financial management and reporting; audit planning and management; and applicable laws; regulations, and policies for appropriated and non-appropriated funds. Selected individuals will serve in the Funds Technician positions for a minimum of 24 months."
+  },
+  {
+    "code": "8J",
+    "title": "Master Resilience Trainer-Facilitator",
+    "description": "Students who attend the ten-day MRT Course are assessed objectively (depth of knowledge through written checks on learning and Q&A, use of MRT lexicon, performance oriented practical exercises), and subjectively (through class participation, presentation style and motivation) by the MRT training team. Students who excel in the MRT course are invited to attend the five-day MRT Facilitator Course. This next level course trains selected MRTs to assist the Comprehensive Soldier and Family Fitness Program in the delivery of training at the MRT Course. The Facilitator\u2019s role is to assist the MRT Trainer in managing the breakout classroom environment (timing, capturing learning points from students, etc). The MRT-F generates discussions for students with a ratio of 1:6 to teach, learn and the application of the 12 skills. The MRT-F Course is designed to build the MRT's depth of knowledge and develop a facilitation style that maximizes the MRT learning environment. The MRT-F graduates are not qualified to do anything different at the unit level, however, as a result of having a greater exposure to the MRT curriculum, MRT facilitators could be used to guide resilience programs at higher echelons. Facilitators are not authorized to conduct MRT courses that train certified MRTs or award the 8R ASI. The MRTs can only be certified by HQDA DCS G-3/5/7 DAMO CSFF."
+  },
+  {
+    "code": "8K",
+    "title": "Master Resilience Trainer-Assistant Primary Instructor",
+    "description": "The MRT API Course is offered to MRT-F\u2019s who excel in their role as facilitators by demonstrating a significant depth of knowledge for the MRT materials, are exceptionally confident, have a personable presentation style and also possess a high degree of motivation. The five-day MRT-API course prepares the graduate to assist Comprehensive Soldier and Family Fitness in the delivery of the MRT course. The MRT-API leads breakout group instructions during the ten-day MRT Course. An MRT-API primary role is to lead practical exercises and reinforce the key principles taught during the large group portion of the course with a ratio of 1:30 students per breakout group. The MRT-API curriculum focuses on building the students depth of knowledge by covering the research behind the Penn Resilience Project and the field of Positive Psychology."
+  },
+  {
+    "code": "8L",
+    "title": "Master Resilience Trainer-Primary Instructor",
+    "description": "The MRT PI is the lead instructor for the MRT course. The PI is responsible for plenary session instruction and oversees breakout group instruction. The PI, presents key material, debriefs exercises that were completed in breakout groups, maintains appropriate balance among didactic presentation, experiential learning and consolidation of the material and sets the overall tone of the class. The PI is responsible for creating a positive, reflective and energetic learning environment in the plenary room and consistency of instruction in the breakout groups. The PI provides leadership for his/her team of trainers and facilitators and ensures the smooth delivery of training in order to optimize participants\u2019 absorption of the material. Selectees will have completed all previous levels of training and gained experience at each level. They must have mastery of the MRT curriculum, a strong teaching skill set, and extensive knowledge of the Comprehensive Soldier and Family Fitness Program. The ten-day Primary Instructor Course is intense and consists of didactics and practical exercises, as well as student led instruction in order to demonstrate depth of content knowledge and teaching ability with a ratio of 1:120 students per class."
+  },
+  {
+    "code": "8P",
+    "title": "Competitive Parachutist",
+    "description": "Identifies TDA positions in the U.S. Army Parachute Team that require soldiers qualified as Army competitive parachutists."
+  },
+  {
+    "code": "8R",
+    "title": "Master Resilience Trainer (MRT)",
+    "description": "Master Resilience Trainer (MRT) Level 1 is the basic, entry-level trainer responsible for resilience and performance enhancement training for small groups of 25 to 30 personnel in the Unit/Army Community Service (ACS) Center and community. MRTs are advisors to the Commander/ACS Director on mandatory Comprehensive Soldier Family Fitness (CSF2) compliance requirements and best practices."
+  },
+  {
+    "code": "8Y",
+    "title": "Certified Medical Coder",
+    "description": "Certified Medical Coder are Soldiers who are certified as a Certified Professional Coder (CPC). The Certified Medical Coder has the primary requisite skill sets of translating provider documentation of patient encounters into medical codes necessary to determine costs of services and reimbursements for billing and insurance purposes by generating separate codes that describe diagnoses, medical/surgical services, procedures and supplies; employs current coding technologies and understanding of coding rules and guidelines in both ambulatory and inpatient settings."
+  },
+  {
+    "code": "A9",
+    "title": "UH-60M Helicopter Qualification",
+    "description": "Identifies positions requiring Soldiers trained on the UH-60M aircraft."
+  },
+  {
+    "code": "B4",
+    "title": "Sniper",
+    "description": "ASI B4 identifies positions requiring Soldiers qualified as snipers."
+  },
+  {
+    "code": "B6",
+    "title": "Combat Engineer Heavy Track",
+    "description": "Identifies positions requiring Soldiers qualified to operate, perform operator maintenance, and supervise combat engineer heavy track vehicles."
+  },
+  {
+    "code": "C2",
+    "title": "Cryptologic Computer Network Analyst",
+    "description": "The Cryptologic Computer Network Analyst identifies positions and personnel requiring Soldiers who are qualified to perform Cryptologic Computer Network Operations (CNO)."
+  },
+  {
+    "code": "C3",
+    "title": "Well Drilling",
+    "description": "Identifies positions requiring soldiers qualified in the operation of well-drilling equipment."
+  },
+  {
+    "code": "C4",
+    "title": "Crane Operator",
+    "description": "Identifies positions requiring Soldiers qualified in crane operations."
+  },
+  {
+    "code": "C5",
+    "title": "Court Reporter",
+    "description": "Identifies positions in staff and command judge advocate sections, legal/mobilization services organizations, and court-martial trial teams (JAGSO) requiring Soldiers qualified to record and prepare verbatim transcripts of the testimony, arguments, and activities of courts-martial, and administrative and other boards."
+  },
+  {
+    "code": "C8",
+    "title": "Air Defense Airspace Management (ADAM) / Brigade Aviation Element (BAE)",
+    "description": "Designates CMF 14 and CMF 15 positions in Air Defense Airspace Management (ADAM) and Brigade Aviation Element (BAE) Crews. Soldiers must perform continuous planning and execution of Airspace Management and Air Ground Integration within Army, and Joint, Interagency, Intergovernmental, and Multinational (JIIM) Environments."
+  },
+  {
+    "code": "D2",
+    "title": "Military Horseman",
+    "description": "Identifies personnel with basic horsemanship skills in all aspects of horsemanship, to include riding and ceremonial tack identification and application, horse safety, proper groundwork, riding to include western and ceremonial. Personnel will be trained in basic equine medical aid, knowledge of basic horse anatomy as well as maintaining the health and welfare of military working horses."
+  },
+  {
+    "code": "D7",
+    "title": "Protective Services Specialist",
+    "description": "Protective Services Specialists provide the close-in protection for individuals designated in high-risk billets that are identified as potential targets of terrorism on official and unofficial travel. Protective Services Specialists direct security planning for secretarial visits, conduct advance security arrangements to include the preparation of site surveys, route surveys, motorcades, risk assessments, and identifying areas of high security risk. Other duties may include overseeing the administrative functions of assigned Special Agents, maintaining the Army standard of physical fitness, counseling agents on personal and professional development, enforcing standards and regulations, and conducting performance reviews."
+  },
+  {
+    "code": "E3",
+    "title": "Executive Administrative Assistant",
+    "description": "Identifies positions requiring soldiers skill level 1 through 3 qualified to perform at a high level of English grammar proficiency, transcribe dictation from mechanical equipment, prepare/type correspondence, perform protocol and social etiquette responsibilities, and perform related secretarial and administrative duties."
+  },
+  {
+    "code": "E5",
+    "title": "Instrument Maintenance (Power Station)",
+    "description": "Identifies positions requiring soldiers to perform unit and direct support and general support maintenance and calibration of electrical power plant monitoring and control instrumentation equipment."
+  },
+  {
+    "code": "E6",
+    "title": "Interactive On-Net Operator",
+    "description": "Identifies positions requiring Soldiers who are trained to operate as Interactive On-Net Operator."
+  },
+  {
+    "code": "F2",
+    "title": "Critical Care Flight Paramedic",
+    "description": "Identifies flight paramedic positions requiring Soldiers who are Nationally Registered Paramedic (NRP) Certified. The Critical Care Flight Paramedic has the primary requisite skill sets to provide critical pre-hospital trauma care, trauma management, advanced cardiac life support care and management to patients, as well as ability to administer blood products during aerial evacuation above and beyond the traditional skill sets of a NREMT Certified 68W, Health Care Specialist."
+  },
+  {
+    "code": "F4",
+    "title": "Postal Supervisor",
+    "description": "Identifies positions requiring Soldiers (SGT(P) through SGM) qualified as a postal supervisor."
+  },
+  {
+    "code": "F5",
+    "title": "Postal Operations",
+    "description": "Identifies positions in postal activities (other than battalion or unit level), requiring Soldiers qualified in the handling of international mail, U.S. mail, money orders, and sale of postage."
+  },
+  {
+    "code": "G9",
+    "title": "Technical Surveillance Countermeasures (TSCM)",
+    "description": "Identifies positions requiring Soldiers qualified in TSCM to include specialized electronic equipment and techniques used in detection and location of clandestine listening devices."
+  },
+  {
+    "code": "H3",
+    "title": "Physical Security Operations",
+    "description": "Identifies positions requiring soldiers qualified in the planning, coordinating and assessing of physical security systems designed to safeguard personnel and prevent unauthorized access to equipment, facilities, material, and documents; and to protect against espionage, sabotage, damage, and theft; conducting physical security surveys and inspections of all activities identified as mission essential, critical and vulnerable, and identifying and recommending physical security requirements and considerations in support of the commander."
+  },
+  {
+    "code": "K2",
+    "title": "Advanced Communications Signals Analysis",
+    "description": "Identifies positions requiring soldiers qualified in the use of specialized techniques and equipment to analyze selected non-morse signal data."
+  },
+  {
+    "code": "K7",
+    "title": "AVENGER Master Gunner",
+    "description": "Identifies positions requiring Soldiers qualified in conducting gunnery training and maintenance program on the Avenger weapon system."
+  },
+  {
+    "code": "K9",
+    "title": "Combat Engineer Mine Detection Dog Handler",
+    "description": "Identifies positions requiring soldiers qualified in the employment, training and handling of mine Detection Dogs capable of detecting explosives and mines of several types."
+  },
+  {
+    "code": "L5",
+    "title": "M93 Series Chemical, Biological, Radiological and Nuclear (CBRN) Reconnaissance System Fox",
+    "description": "Identifies positions in a chemical platoon requiring Soldiers qualified to operate the M93 Series CBRN Reconnaissance System Fox."
+  },
+  {
+    "code": "L6",
+    "title": "Chemical, Biological, Radiological and Nuclear (CBRN) Reconnaissance for Brigade Combat Teams",
+    "description": "Identifies positions in a NBC Reconnaissance Platoon that require special training and skills to operate the Interim Armored Vehicle (IAV) based Nuclear/Biological/Chemical Reconnaissance System (NBCRS)."
+  },
+  {
+    "code": "L7",
+    "title": "Joint Fires Observer",
+    "description": "Identifies positions for Soldiers requiring qualifications as Joint Fires Observer."
+  },
+  {
+    "code": "L8",
+    "title": "Joint Operational Fires and Effects (JOFE)",
+    "description": "Identifies personnel from all services, ABCA countries and other government agencies that have the baseline knowledge required to integrate, coordinate and synchronize the full range of joint fires and effects, including lethal and non-lethal fires."
+  },
+  {
+    "code": "M1",
+    "title": "Deployable, Computed Axial Tomography (CAT) Scan, Computed Tomography (CT) (imaging technique) Maintainer and Repairer",
+    "description": "Identifies positions in TOE/MTOE 08527AA00 (head and neck team) and selected U.S. Army Medical Command (MEDCOM), Defense Depot(s) and U.S. Army Medical Centers that require special civilian training to maintain and repair deployable CT systems (Phillips MX-8000). Title position as Med Equip Rep."
+  },
+  {
+    "code": "N4",
+    "title": "Health Physics Specialist",
+    "description": "Identifies positions requiring soldiers qualified to supervise and perform health physics technologist duties."
+  },
+  {
+    "code": "N5",
+    "title": "Dental Laboratory Specialist",
+    "description": "Identifies positions requiring soldiers qualified to perform basic and intermediate highly specialized dental laboratory procedures as a Dental Laboratory Specialist."
+  },
+  {
+    "code": "N7",
+    "title": "Strategic Debriefer",
+    "description": "Strategic Debriefer identifies positions requiring Soldiers qualified to conduct strategic debriefing and interrogation of civilian defectors, refugees, travelers, and resettlers."
+  },
+  {
+    "code": "P5",
+    "title": "Holistic Health and Fitness Integrator",
+    "description": "Holistic Health and Fitness Integrators\u00a0train selected personnel in all aspects of the Army\u2019s Physical Readiness Training (PRT) System. Trained personnel are unit advisors on physical readiness issues and monitor the unit and individual physical readiness program."
+  },
+  {
+    "code": "P7",
+    "title": "Digital Forensic Examiner (DFE)",
+    "description": "Identifies personnel requiring qualification as a DFE who are authorized to perform forensic examinations of digital media and devices. Personnel with the DFE ASI will be certified and trained to conduct forensic examinations of digital media and testify as experts in forensic digital media analysis in a manner which would allow further prosecution in a court of law."
+  },
+  {
+    "code": "P8",
+    "title": "Basic Special Victims Investigator (BSVI)",
+    "description": "Identifies personnel qualified as a Basic Special Victims Investigator. Personnel with the Basic Special Victims Investigator ASI are qualified to successfully investigate sexual assaults and be certified as a member of the Special Victim Capabilities Team, as required by Section 573 of the Fiscal Year 2013 National Defense Authorization Act."
+  },
+  {
+    "code": "Q5",
+    "title": "Special Forces Combat Diving, Medical",
+    "description": "Identifies positions requiring Soldiers qualified in medical aspects of\u00a0Special Forces combat diving operations."
+  },
+  {
+    "code": "Q7",
+    "title": "Intelligence, Surveillance, and Reconnaissance (ISR) Synchronization Manager",
+    "description": "Identifies positions requiring Soldiers trained in ISR Synchronization."
+  },
+  {
+    "code": "Q8",
+    "title": "Senior Special Victims Investigator (SSVI)",
+    "description": "Senior Special Victims Investigators are personnel qualified to successfully investigate the most complex of sexual assaults, child abuse and domestic violence incidents. These investigators are certified as a senior member of the Special Victim Capabilities Team, as required by Section 573 of the Fiscal Year 2013, National Defense Authorization Act."
+  },
+  {
+    "code": "Q9",
+    "title": "Traffic Management and Collision Investigator",
+    "description": "Identifies positions requiring Soldiers qualified in the reconstruction of traffic accidents from evidence to determine reasons for occurrence, possibility of avoidance and determination of fault."
+  },
+  {
+    "code": "R1",
+    "title": "Rough Terrain Container Handler (RTCH) Operator",
+    "description": "Identifies positions requiring Soldiers qualified to operate the RTCH vehicle."
+  },
+  {
+    "code": "R3",
+    "title": "Digital Network Exploitation Analyst (DNEA)",
+    "description": "Identifies positions requiring Soldiers who are trained to operate as Digital Network Exploitation Analysts."
+  },
+  {
+    "code": "R5",
+    "title": "Rough Terrain Container Handler (RTCH) Maintainer",
+    "description": "Identifies positions requiring Soldiers qualified to perform maintenance on the RTCH vehicle."
+  },
+  {
+    "code": "R6",
+    "title": "Special Reaction Team (SRT) Member",
+    "description": "Special Reaction Team (SRT) Member instructions consists of SRT tactics and special threat operations, to include concepts, movement in urban terrain, building clearing operations, use of force, to include less lethal options, response to terrorist incidents, advanced firearms training, surveillance/intelligence reporting and incident preplanning. SRT is a prerequisite for attendance to SRT Marksman/ Observer training."
+  },
+  {
+    "code": "S1",
+    "title": "Source Handler",
+    "description": "Enables soldiers to conduct Category 2 Military Source Operations (MSO) in order to collect positive intelligence information on hostile elements and activities that may pose a threat to friendly forces deployed to a theater of operations. For more information on S1 - Source Handler ASI, see this Army website ."
+  },
+  {
+    "code": "S2",
+    "title": "Mechanical Equipment Maintenance (Power Station)",
+    "description": "Identifies positions requiring soldiers qualified in unit and direct support and general support maintenance of mechanical equipment used in electrical power production."
+  },
+  {
+    "code": "S3",
+    "title": "Electrical Equipment Maintenance (Power Station)",
+    "description": "Identifies positions requiring soldiers qualified in unit and direct support and general support maintenance of electrical equipment used in electric power production."
+  },
+  {
+    "code": "S5",
+    "title": "Maneuver Short Range Air Defense (M-SHORAD) Master Gunner",
+    "description": "Identifies positions requiring Noncommissioned Officers in MOS 14P in the grades of E6 and E7, and MOS 14Z in the grade of E8, who are technically and tactically proficient in conducting gunnery training, maintenance, and the employment of the M-SHORAD weapon system."
+  },
+  {
+    "code": "S6",
+    "title": "Special Forces Combat Diving, Supervision",
+    "description": "Identifies positions requiring Soldiers qualified in Special Forces Combat Diving, supervision."
+  },
+  {
+    "code": "S7",
+    "title": "Foreign Counterintelligence (FCI)",
+    "description": "Identifies selected positions requiring soldiers involved in Foreign Counterintelligence."
+  },
+  {
+    "code": "T1",
+    "title": "Counter Threat Finance Analyst",
+    "description": "Counter Threat Finance Analyst\u00a0conduct financial profiles, suspicious activity report reviews, commodity flow analysis and financial document exploitation. These duties will complement analysts existing skills in cell phone forensics, link analysis, open source intelligence and report writing. Their job will be to counter financing used by illicit networks that traffic narcotics, precursor chemicals, launder illicit proceeds and related activities that support drug trafficking organizations, narcoterrorism, and transnational criminal organizations."
+  },
+  {
+    "code": "T3",
+    "title": "Ground-based Midcourse Defense (GMD) System",
+    "description": "Ground-based Midcourse Defense (GMD) System identifies positions requiring soldiers who are trained to operate the Ground-based Midcourse Defense (GMD) System."
+  },
+  {
+    "code": "T4",
+    "title": "PATRIOT Master Gunner",
+    "description": "Identifies positions requiring Soldiers who are trained as Patriot Master Gunners."
+  },
+  {
+    "code": "T5",
+    "title": "Target Digital Network Analyst (TDNA)",
+    "description": "Identifies positions requiring Soldiers who are trained to operate as Target Digital Network Analysts."
+  },
+  {
+    "code": "T8",
+    "title": "Civil Operations Specialist",
+    "description": "Army ASI T8 Civil Operations Specialist is part of the National Guard Bureau (NGB) proponent; to hold ASI T8, a Soldier must be a graduate of the NGB Civil Operations Specialist Course, conducted under the auspices of the National Guard Bureau J3 Counter-drug Mobile Training Team; for use with any MOS."
+  },
+  {
+    "code": "U4",
+    "title": "Power Line Distribution",
+    "description": "Identifies positions requiring soldiers qualified to install, operate, and maintain power distribution systems."
+  },
+  {
+    "code": "V3",
+    "title": "Aerial ISR (Intelligence Reconnaissance and Surveillance) Precision Guidance Operator",
+    "description": "The\u00a0Aerial ISR (Intelligence Reconnaissance and Surveillance) Precision Guidance Operator identifies personnel requiring qualification in Aerial Precision Geo-Location."
+  },
+  {
+    "code": "V4",
+    "title": "Advanced Source Handler",
+    "description": "The Advanced Source Handler enables soldiers to develop the skills, knowledge, techniques, and procedures required by DOD personnel with counterintelligence and HUMINT backgrounds to conduct HUMINT collection operations. These operations will be conducted in support of tactical commanders in active theaters of operations. These operations will take place in pre-war, wartime, post-war or stabilization periods while under the direction of a Military Commander."
+  },
+  {
+    "code": "V5",
+    "title": "Military Police Investigation",
+    "description": "Identifies positions requiring soldiers qualified in investigation of criminal offenses for which the maximum punishment is confinement at hard labor for less than 1 year; offenses involving larcenies of property valued at less than $1000 in which the occurrence does not involve another major crime or the stolen property is not of a sensitive nature; and offense involving use and/or possession of nonnarcotic controlled substances when the amount and other factors indicate it is for personal use only. Participates in activities for the prevention of crime outlined above."
+  },
+  {
+    "code": "V6",
+    "title": "Center Leader",
+    "description": "Identifies positions requiring Soldiers who are Center Leader qualified. The Center Leader is the subject matter expert at the Center Level. They have the primary skill sets to manage center assets, employ system resources, evaluate and train recruiters, and execute and guide recruiting operations."
+  },
+  {
+    "code": "V7",
+    "title": "Guidance Counseling",
+    "description": "Identifies positions requiring soldiers qualified to counsel enlistment applicants regarding specific options available for enlistment in the Army."
+  },
+  {
+    "code": "W1",
+    "title": "Special Operations Combat Medic (SOCOM)",
+    "description": "Identifies positions requiring soldiers qualified in advanced trauma management and emergency medical procedures."
+  },
+  {
+    "code": "W7",
+    "title": "Special Forces Underwater Operations",
+    "description": "Identifies positions requiring participation in special forces, underwater operations."
+  },
+  {
+    "code": "X2",
+    "title": "Preventive Dentistry Specialty",
+    "description": "Identifies positions requiring soldiers qualified to perform reversible restorative dental procedures and oral hygiene prophylactic procedures, to implement individual and group oral disease control programs."
+  },
+  {
+    "code": "X8",
+    "title": "THAAD Launcher Operator/Maintainer",
+    "description": "Identifies positions requiring Soldiers who are trained to operate the Launcher equipment in the THAAD battery."
+  },
+  {
+    "code": "Y8",
+    "title": "Immunology and Allergy Specialist",
+    "description": "Identifies positions requiring Soldiers qualified for the administration of vaccines, preparing allergen extracts and performing diagnostic tests to identify patient\u2019s allergies."
+  },
+  {
+    "code": "Z5",
+    "title": "Enlisted Aide",
+    "description": "Identifies positions requiring soldiers qualified to perform the duties and functions of enlisted aide on a General Officer's personal staff."
+  },
+  {
+    "code": "Z8",
+    "title": "Technical ELINT Collection and Analysis",
+    "description": "Identifies positions requiring soldiers qualified to perform technical electronic collection and analysis."
+  }
+]

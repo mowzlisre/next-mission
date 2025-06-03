@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DD214 Extracted Data",
+  "type": "object",
+  "properties": {
+    "user_id": { "type": "string" },
+    "document_type": { "type": "string", "const": "DD214" },
+    "uploaded_at": { "type": "string", "format": "date-time" },
+    "full_name": { "type": "string" },
+    "branch_of_service": { "type": "string" },
+    "pay_grade": { "type": "string" },
+    "service_start_date": { "type": "string", "format": "date" },
+    "service_end_date": { "type": "string", "format": "date" },
+    "character_of_service": { "type": "string" },
+    "mos_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "title": { "type": "string" },
+          "start_date": { "type": "string", "format": "date" },
+          "end_date": { "type": "string", "format": "date" },
+          "source": { "type": "string", "const": "DD214" }
+        },
+        "required": ["code", "title", "source"]
+      }
+    },
+    "awards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "date_awarded": { "type": "string", "format": "date" },
+          "description": { "type": "string" },
+          "source": { "type": "string", "const": "DD214" }
+        },
+        "required": ["name", "source"]
+      }
+    },
+    "training_courses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "completion_date": { "type": "string", "format": "date" },
+          "source": { "type": "string", "const": "DD214" }
+        },
+        "required": ["name", "source"]
+      }
+    },
+    "profile_summary": { "type": "string" }
+  },
+  "required": ["user_id", "document_type", "uploaded_at", "full_name", "branch_of_service", "pay_grade", "service_start_date", "service_end_date", "character_of_service", "mos_history", "profile_summary"]
+} 

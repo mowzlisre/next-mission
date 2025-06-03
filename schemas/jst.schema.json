@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JST Extracted Data",
+  "type": "object",
+  "properties": {
+    "user_id": { "type": "string" },
+    "document_type": { "type": "string", "const": "JST" },
+    "uploaded_at": { "type": "string", "format": "date-time" },
+    "full_name": { "type": "string" },
+    "branch_of_service": { "type": "string" },
+    "pay_grade": { "type": "string" },
+    "character_of_service": {
+      "type": "string",
+      "enum": [
+        "Honorable",
+        "General (Under Honorable Conditions)",
+        "Other Than Honorable (OTH)",
+        "Bad Conduct",
+        "Dishonorable",
+        "Entry Level Separation (ELS)",
+        "Other"
+      ]
+    },
+    "character_of_service_other": { "type": "string" },
+    "mos_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "title": { "type": "string" },
+          "start_date": { "type": "string", "format": "date" },
+          "end_date": { "type": "string", "format": "date" },
+          "source": { "type": "string", "const": "JST" }
+        },
+        "required": ["code", "title", "source"]
+      }
+    },
+    "training_courses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "completion_date": { "type": "string", "format": "date" },
+          "source": { "type": "string", "const": "JST" }
+        },
+        "required": ["name", "source"]
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "issuing_agency": { "type": "string" },
+          "issue_date": { "type": "string", "format": "date" },
+          "expiration_date": { "type": "string", "format": "date" },
+          "source": { "type": "string", "const": "JST" }
+        },
+        "required": ["name", "source"]
+      }
+    },
+    "education_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "institution": { "type": "string" },
+          "program": { "type": "string" },
+          "completion_date": { "type": "string", "format": "date" },
+          "credit_hours": { "type": "string" },
+          "ace_recommended": { "type": "boolean" },
+          "source": { "type": "string", "const": "JST" }
+        },
+        "required": ["institution", "program", "ace_recommended", "source"]
+      }
+    },
+    "job_experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "source": { "type": "string", "const": "JST" }
+        },
+        "required": ["title", "source"]
+      }
+    },
+    "profile_summary": { "type": "string" }
+  },
+  "required": [
+    "user_id",
+    "document_type",
+    "uploaded_at",
+    "full_name",
+    "branch_of_service",
+    "pay_grade",
+    "character_of_service",
+    "mos_history",
+    "profile_summary"
+  ]
+} 
