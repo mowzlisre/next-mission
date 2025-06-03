@@ -60,9 +60,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         chat_history = await self.get_chat_history(self.fingerprint)
         profile_data = await self.get_user_profile(self.fingerprint)
 
-        if not profile_data:
-            await self.send(json.dumps({"response": "Please upload at least one document."}))
-            return
 
         prompt = self.build_prompt(profile_data, chat_history, user_question)
         reply = await self.ask_llama(prompt)
