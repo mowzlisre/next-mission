@@ -215,3 +215,42 @@ POST /api/v1/forum/comments/<reply_id>/replies/
 ```
 
 
+```markdown
+
+
+# Document Upload API
+
+**Endpoint:** `/api/auth/onboard/doc/upload`  
+**Method:** `POST`  
+**Content-Type:** `multipart/form-data`  
+**Authentication:** Not required (unless you apply permission classes)
+
+## Description
+
+Uploads a single military document (PDF or image), performs OCR if needed, and extracts structured data using the Groq LLaMA model. The response contains two structured data objects:
+
+- `form_data`: Extracted from the document, structured by its official schema (DD214, JST, or DD2586)
+- `user_data`: Extracted user profile info inferred from the document, shaped according to your `User` model
+
+## Request Fields
+
+| Field          | Type       | Required | Description                          |
+|----------------|------------|----------|--------------------------------------|
+| `file_obj`     | `file`     | Yes      | PDF or image of the military document |
+| `user_id`      | `string`   | Yes      | ID of the user uploading the document |
+| `document_type`| `string`   | Yes      | One of: `DD214`, `JST`, `DD2586`     |
+
+## Supported File Types
+
+- `.pdf`
+- `.jpg`
+- `.jpeg`
+- `.png`
+
+## Notes
+
+- Only one file should be uploaded at a time.
+- File text is extracted using `pdfplumber` for PDFs and `pytesseract` for images.
+- Text is passed to the LLM which returns structured JSON wrapped between `[[[JSON]]]` and `[[[/JSON]]]` markers.
+- The response includes only the structured `user_data` and `form_data` extracted from the document.
+```

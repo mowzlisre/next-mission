@@ -172,11 +172,9 @@ class DocumentUploadView(views.APIView):
         # # Return combined data
         # form_data.pop('profile_summary', None)
         print({
-            'message': 'File processed and data extracted.',
             'user_data': extracted_data
         })
 
         return Response({
-            'message': 'File processed and data extracted.',
             'user_data': extracted_data
         }, status=status.HTTP_200_OK)
