@@ -8,8 +8,17 @@ from .serializers import (
     PostSerializer,
     ReactionCreateSerializer,
     CommentSerializer,
-    ReplySerializer
+    ReplySerializer,
+    PostCreateSerializer
 )
+
+class PostCreateView(generics.CreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 # --- Pagination Class for Comments ---

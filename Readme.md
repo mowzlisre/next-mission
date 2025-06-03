@@ -82,6 +82,48 @@ Make sure the access token is in Bearer of Authrization Header with refresh toke
 
 ---
 
+### 📝 Create a Post
+
+**POST** `/api/v1/forum/create/`
+
+Creates a new post with optional image upload.
+
+**Headers:**
+- `Authorization: Bearer <access_token>`
+- `Content-Type: multipart/form-data`
+
+**Body:**
+- `content` (string, required) – Post text
+- `image` (file, optional) – Image file to attach
+
+**Example Request (form-data):**
+```
+content=This is my new post!
+image=[optional file upload]
+```
+
+**Response:**
+```json
+{
+  "id": 12,
+  "content": "This is my new post!",
+  "image": "http://localhost:8000/media/post_images/photo.jpg",
+  "created_at": "2025-06-02T15:12:00Z",
+  "author_email": "john@example.com",
+  "author_first_name": "John",
+  "author_last_name": "Doe",
+  "reactions": {},
+  "reaction_count": 0,
+  "comment_count": 0,
+  "comments": []
+}
+```
+
+**Notes:**
+- You must be authenticated.
+- Image is optional.
+- Returns full post object including author and reaction/comment summaries.
+
 ## 📄 Fetch All Posts
 
 **GET** `/api/v1/forum/`

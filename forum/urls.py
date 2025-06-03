@@ -4,6 +4,7 @@ from . import api
 
 urlpatterns = [
     path('', api.PostListCreateView.as_view(), name='post-list-create'),
+    path('create/', api.PostCreateView.as_view(), name='post-create'),
     path('<int:pk>/', api.PostDetailView.as_view(), name='post-detail'),
     path('<int:pk>/react/', api.PostReactView.as_view(), name='post-react'),
     path('<int:pk>/comments/', api.CommentCreateView.as_view(), name='post-comment'),
