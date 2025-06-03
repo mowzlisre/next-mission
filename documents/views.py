@@ -14,7 +14,7 @@ import glob
 # Load environment variables
 load_dotenv()
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')
-GROQ_API_URL = os.getenv('GROQ_API_URL', 'https://api.groq.com/v1/llama-extract')  # Example endpoint
+DEBUG = True  # Set to False in production
 
 # Map document types to schema file paths
 SCHEMA_PATHS = {
@@ -143,17 +143,20 @@ class DocumentUploadView(APIView):
             llama_response = requests.post(GROQ_API_URL, json=data, headers=headers)
             llama_response.raise_for_status()
             result = llama_response.json()
-            # Try to parse the JSON from the assistant's message
-            import re
-            import ast
             content = result["choices"][0]["message"]["content"]
-            # Try to extract JSON from the response
-            match = re.search(r'\{.*\}', content, re.DOTALL)
-            if match:
-                extracted_data = json.loads(match.group(0))
-            else:
-                # fallback: try ast.literal_eval
-                extracted_data = ast.literal_eval(content)
+            if DEBUG:
+                print("Raw LLaMA output:", content)
+            # Improved JSON parsing
+            try:
+                extracted_data = json.loads(content)
+            except json.JSONDecodeError:
+                import re
+                match = re.search(r'(\{(?:[^{}]|(?1))*\})', content, re.DOTALL)
+                if match:
+                    extracted_data = json.loads(match.group(0))
+                else:
+                    import ast
+                    extracted_data = ast.literal_eval(content)
         except Exception as e:
             return Response({'error': f'LLama extraction failed: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
