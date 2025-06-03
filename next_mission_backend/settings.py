@@ -34,6 +34,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 INSTALLED_APPS = [
     'app',
     'forum',
+    'channels',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',

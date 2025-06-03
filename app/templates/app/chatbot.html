@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+</head>
+<body>
+    <h1>Simple Chatbot</h1>
+    <div id="chat-box" style="border:1px solid #ccc; padding:10px; height:200px; overflow-y:auto;"></div>
+    <input type="text" id="message" placeholder="Type your message..." autofocus>
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const userId = "{{ user_id }}";
+        const chatBox = document.getElementById("chat-box");
+        const socket = new WebSocket("ws://localhost:9006/ws/chat/{{ user_id }}/");
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            appendMessage("Bot", data.response);
+        };
+
+        function sendMessage() {
+            const input = document.getElementById("message");
+            const text = input.value;
+            if (text.trim() === "") return;
+            socket.send(JSON.stringify({ message: text }));
+            appendMessage("You", text);
+            input.value = "";
+        }
+
+        function appendMessage(sender, message) {
+            const msg = document.createElement("div");
+            msg.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatBox.appendChild(msg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
