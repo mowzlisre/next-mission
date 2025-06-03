@@ -17,12 +17,10 @@ User = get_user_model()
 
 # Load environment variables
 load_dotenv()
-MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
-GROQ_API_KEY = os.getenv('GROQ_API_KEY')
-GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+
 
 # MongoDB setup
-mongo = AsyncIOMotorClient(MONGO_URI)
+mongo = AsyncIOMotorClient(settings.MONGO_URI)
 db = mongo.veteran_docs
 
 # WebSocket Consumer
@@ -111,7 +109,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         return prompt
 
     async def ask_llama(self, prompt):
-        headers = {'Authorization': f'Bearer {GROQ_API_KEY}'}
+        headers = {'Authorization': f'Bearer {settings.GROQ_API_KEY}'}
         data = {
             "model": "meta-llama/llama-4-scout-17b-16e-instruct",
             "messages": [
@@ -120,7 +118,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             ]
         }
         try:
-            response = requests.post(GROQ_API_URL, json=data, headers=headers)
+            response = requests.post(settings.GROQ_API_URL, json=data, headers=headers)
             response.raise_for_status()
             result = response.json()
             return result["choices"][0]["message"]["content"]

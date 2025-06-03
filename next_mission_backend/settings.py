@@ -29,6 +29,17 @@ ALLOWED_HOSTS = ["*"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+SCHEMA_PATHS = {
+    'DD214': 'schemas/dd214.schema.json',
+    'JST': 'schemas/jst.schema.json',
+    'DD2586': 'schemas/dd2586.schema.json',
+}
+
+import os
+MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
+GROQ_API_KEY = os.getenv('GROQ_API_KEY')
+GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+
 # Application definition
 
 INSTALLED_APPS = [
