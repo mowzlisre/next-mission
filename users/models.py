@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
 from django.utils import timezone
+import hashlib
 
 EMPLOYMENT_CHOICES = [
     ('employed', 'Employed'),
@@ -40,9 +41,24 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name"]
+    REQUIRED_FIELDS = ["first_name", "last_name", "date_of_birth", "city", "state"]
+
+    fingerprint = models.CharField(max_length=64, editable=False, blank=True)
 
     objects = UserManager()
 
     def __str__(self):
         return self.email
+    
+    def generate_fingerprint(self) -> str:
+        """
+        Generate a unique fingerprint hash from a list of user-specific strings.
+        """
+        user_data = [self.first_name, self.last_name, self.city, self.state, self.date_of_birth.isoformat()]
+        combined = "|".join(sorted(user_data))  # Ensure consistent order
+        fingerprint = hashlib.sha256(combined.encode()).hexdigest()
+        return fingerprint
+    
+    def save(self, *args, **kwargs):
+        self.fingerprint = self.generate_fingerprint()
+        super().save(*args, **kwargs)

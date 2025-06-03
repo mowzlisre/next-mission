@@ -39,7 +39,10 @@ Authorization: Bearer ACCESS_TOKEN
   "email": "user@example.com",
   "first_name": "John",
   "last_name": "Doe",
-  "password": "your_password"
+  "password": "your_password",
+  "city" : "city",
+  "state" : "state",
+  "date_of_birth" : "YYYY-MM-DD",
 }
 ```
 
