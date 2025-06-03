@@ -1,11 +1,9 @@
-
 import os
 import glob
 import json
 from django.conf import settings
 import requests
 from pymongo import MongoClient
-
 
 client = MongoClient(settings.MONGO_URI)
 db_veteran = client['veteran_docs']
@@ -31,7 +29,7 @@ load_all_mos_data()
 
 def enrich_mos_codes(document_type, extracted_data):
     # Try to enrich MOS codes in the extracted data
-    service = document_type.lower().replace(' ', '_')  # crude mapping
+    service = document_type.replace(' ', '_')  # crude mapping
     mos_list = extracted_data.get('mos_history', [])
     if service in MOS_DATA:
         for mos in mos_list:
@@ -67,7 +65,7 @@ def generate_profile_summary(extracted_data):
         ],
         "max_tokens": 512
     }
-    
+
     try:
         response = requests.post(settings.GROQ_API_URL, json=data, headers=headers)
         response.raise_for_status()

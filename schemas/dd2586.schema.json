@@ -3,10 +3,11 @@
   "title": "DD2586 Extracted Data",
   "type": "object",
   "properties": {
-    "user_id": { "type": "string" },
     "document_type": { "type": "string", "const": "DD2586" },
     "uploaded_at": { "type": "string", "format": "date-time" },
     "full_name": { "type": "string" },
+    "first_name": {"type": "string"},
+    "last_name": {"type": "string"},
     "branch_of_service": { "type": "string" },
     "pay_grade": { "type": "string" },
     "character_of_service": {

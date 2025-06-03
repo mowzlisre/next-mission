@@ -5,6 +5,10 @@ from .serializers import RegisterSerializer, LoginSerializer, UserSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from .llama_utils import *
 from jsonschema import validate, ValidationError
+import pdfplumber
+from PIL import Image
+import pytesseract
+import io
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
@@ -35,12 +39,38 @@ class LogoutView(views.APIView):
 class DocumentUploadView(views.APIView):
     parser_classes = (MultiPartParser, FormParser)
 
+    def extract_file(self, file_obj):
+        file_name = file_obj.name
+        file_text = ""
+
+        if file_name.endswith(".pdf"):
+            with pdfplumber.open(file_obj) as pdf:
+                file_text = "\n".join([page.extract_text() or "" for page in pdf.pages])
+        elif file_name.endswith(('.jpg', '.jpeg', '.png')):
+            image = Image.open(file_obj)
+            file_text = pytesseract.image_to_string(image)
+        else:
+            raise ValueError("Unsupported file type. Only PDF and image files are supported.")
+
+        if not file_text.strip():
+            raise ValueError("Failed to extract text from file.")
+
+        return file_text
+
     def post(self, request, format=None):
         file_obj = request.FILES.get('file_obj')
+        try:
+            extracted_text = self.extract_file(file_obj)
+        except ValueError as ve:
+            return Response({'error': str(ve)}, status=400)
+        except Exception as e:
+            print(e)
+            return Response({'error': f'Text extraction failed: {str(e)}'}, status=500)
+
         user_id = request.data.get('user_id')
-        document_type = request.data.get('document_type')
+        document_type = request.data.get('document_type').upper()
         ALLOWED_DOC_TYPES = ['DD214', 'JST', 'DD2586']
-        
+
         if not file_obj or not user_id or not document_type:
             return Response({'error': 'Missing required fields.'}, status=status.HTTP_400_BAD_REQUEST)
         if document_type not in ALLOWED_DOC_TYPES:
@@ -48,34 +78,51 @@ class DocumentUploadView(views.APIView):
         if len(request.FILES) != 1:
             return Response({'error': 'You must upload exactly one file.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Read file content as base64 for Llama prompt
-        import base64
-        file_content = base64.b64encode(file_obj.read()).decode('utf-8')
         file_name = file_obj.name
 
-        # Build prompt for Llama
-        prompt = (
-            f"You are an expert at extracting structured data from U.S. military documents. "
-            f"The user has uploaded a {document_type} file named '{file_name}'. "
-            f"Extract all relevant fields as per the following JSON schema: "
-        )
+        # Load the document schema
         schema_path = settings.SCHEMA_PATHS[document_type]
         try:
             with open(schema_path, 'r') as f:
-                schema = json.load(f)
+                form_schema = json.load(f)
         except Exception as e:
             return Response({'error': f'Failed to load schema: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        prompt += json.dumps(schema, indent=2)
-        prompt += (f"\nReturn the extracted data as a JSON object. "
-                   f"If a field is missing, use null. "
-                   f"If there are MOS codes, include them as a list of objects with code, title, and description if possible.\n"
-                   f"The file content is base64-encoded below.\nFILE_BASE64:\n{file_content}")
 
-        # Prepare OpenAI-compatible payload
+        # Define user model schema
+        user_schema = {
+            "email": "string",
+            "first_name": "string",
+            "last_name": "string",
+            "phone": "string or null",
+            "date_of_birth": "ISO date string or null",
+            "city": "string or null",
+            "state": "string or null",
+            "employment_status": "string (e.g., 'Employed', 'Unemployed', 'Retired')",
+            "interests": "string or comma-separated values"
+        }
+
+        # Build LLM prompt
+        prompt = (
+            f"You are an expert in extracting structured data from U.S. military documents.\n"
+            f"The user has uploaded a {document_type} file named '{file_name}'.\n"
+            f"Using the extracted text below, extract two data objects:\n\n"
+            f"1. `form_data`: Match the structure defined by this JSON schema:\n{json.dumps(form_schema, indent=2)}\n\n"
+            f"2. `user_data`: Match the structure defined by this JSON schema:\n{json.dumps(user_schema, indent=2)}\n\n"
+            f"Respond ONLY with a valid JSON object, wrapped between special tokens:\n"
+            f"Start your output with `[[[JSON]]]` and end it with `[[[/JSON]]]`.\n"
+            f"Do not include any explanations or text outside the tokens.\n"
+            f"The expected structure is:\n"
+            f"[[[JSON]]]\n{{\n  \"form_data\": {{ ... }},\n  \"user_data\": {{ ... }}\n}}\n[[[/JSON]]]\n\n"
+            f"----- BEGIN EXTRACTED TEXT -----\n{extracted_text[:10000]}\n----- END EXTRACTED TEXT -----"
+        )
+
+
+
+        # Prepare payload for Groq API
         data = {
             "model": "meta-llama/llama-4-scout-17b-16e-instruct",
             "messages": [
-                {"role": "system", "content": "You are a helpful assistant that extracts structured data from military documents."},
+                {"role": "system", "content": "You are a helpful assistant that extracts structured data from military documents and infers user profile data."},
                 {"role": "user", "content": prompt}
             ],
             "max_tokens": 2048
@@ -84,51 +131,52 @@ class DocumentUploadView(views.APIView):
             'Authorization': f'Bearer {settings.GROQ_API_KEY}',
             'Content-Type': 'application/json'
         }
-        
+
         try:
             llama_response = requests.post(settings.GROQ_API_URL, json=data, headers=headers)
             llama_response.raise_for_status()
             result = llama_response.json()
             content = result["choices"][0]["message"]["content"]
-            if settings.DEBUG:
-                print("Raw LLaMA output:", content)
-            # Improved JSON parsing
             try:
                 extracted_data = json.loads(content)
             except json.JSONDecodeError:
                 import re
-                match = re.search(r'(\{(?:[^{}]|(?1))*\})', content, re.DOTALL)
-                if match:
-                    extracted_data = json.loads(match.group(0))
-                else:
-                    import ast
-                    extracted_data = ast.literal_eval(content)
+                match = re.search(r'\[\[\[JSON\]\]\](.*?)\[\[\[/JSON\]\]\]', content, re.DOTALL)
+                if not match:
+                    raise ValueError("Special JSON markers not found in LLaMA response.")
+
+                extracted_data = json.loads(match.group(1).strip())
+
         except Exception as e:
             return Response({'error': f'LLama extraction failed: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        # Enrich MOS codes
-        extracted_data = enrich_mos_codes(document_type, extracted_data)
+        # # Enrich and validate form_data
+        # form_data = extracted_data
+        # form_data = enrich_mos_codes(document_type, form_data)
+        # profile_summary = generate_profile_summary(form_data)
+        # form_data['profile_summary'] = profile_summary
 
-        # Generate profile summary (backend only)
-        profile_summary = generate_profile_summary(extracted_data)
-        extracted_data['profile_summary'] = profile_summary
+        # try:
+        #     validate(instance=form_data, schema=form_schema)
+        # except ValidationError as ve:
+        #     return Response({'error': f'Schema validation failed: {ve.message}'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Validate extracted data
-        try:
-            validate(instance=extracted_data, schema=schema)
-        except ValidationError as ve:
-            return Response({'error': f'Schema validation failed: {ve.message}'}, status=status.HTTP_400_BAD_REQUEST)
+        # # Insert to MongoDB
+        # try:
+        #     form_data['user_id'] = user_id
+        #     form_data['document_type'] = document_type
+        #     insert_document(document_type, form_data)
+        # except Exception as e:
+        #     return Response({'error': f'MongoDB insert failed: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        # Insert into MongoDB
-        try:
-            collection_name = document_type.lower()  # e.g., 'dd214', 'jst', 'dd2586'
-            extracted_data['user_id'] = user_id
-            extracted_data['document_type'] = document_type
-            inserted_id = insert_document(collection_name, extracted_data)
-        except Exception as e:
-            return Response({'error': f'MongoDB insert failed: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        # # Return combined data
+        # form_data.pop('profile_summary', None)
+        print({
+            'message': 'File processed and data extracted.',
+            'user_data': extracted_data
+        })
 
-        # Remove profile_summary before sending to frontend
-        extracted_data.pop('profile_summary', None)
-
-        return Response({'message': 'File processed and data extracted.', 'data': extracted_data}, status=status.HTTP_200_OK)
+        return Response({
+            'message': 'File processed and data extracted.',
+            'user_data': extracted_data
+        }, status=status.HTTP_200_OK)

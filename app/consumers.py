@@ -4,19 +4,13 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from datetime import datetime
 import os
 import requests
-from dotenv import load_dotenv
-from rest_framework_simplejwt.backends import TokenBackend
 from django.contrib.auth import get_user_model
-from rest_framework_simplejwt.tokens import UntypedToken
-from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from django.conf import settings
 from asgiref.sync import sync_to_async
 
 User = get_user_model()
 
 
-# Load environment variables
-load_dotenv()
 
 
 # MongoDB setup
