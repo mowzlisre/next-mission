@@ -20,11 +20,6 @@ def chatbot_view(request):
     return render(request, "app/chatbot.html", {"user_id": user_id})
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 2e1e0fd28a95de081d06b15899ff7881b5581518
 class BookmarkMessage(APIView):
     permission_classes = [IsAuthenticated]
 
