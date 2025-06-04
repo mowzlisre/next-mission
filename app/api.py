@@ -119,6 +119,8 @@ class BookmarkedChats(APIView):
 
 
 class VeteranJobSearchView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def extract_structured_job_info(self, visible_text, keywords):
         prompt = (
             "You are a structured data extractor that parses plain text job descriptions. "
@@ -168,6 +170,7 @@ class VeteranJobSearchView(APIView):
             }
 
     def post(self, request):
+        user = request.user
         # 1. Load dummy profile and MOS DB
         base_dir = os.path.dirname(__file__)
         with open(os.path.join(base_dir, 'utils/data/dummy.json'), 'r') as f:
@@ -245,19 +248,33 @@ class VeteranJobSearchView(APIView):
                         if len(visible_text) > 20000:
                             visible_text = visible_text[:20000]
                         structured = self.extract_structured_job_info(visible_text, keywords)
-                        jobs.append({
-                            "company_name": structured.get("company_name"),
-                            "job_title": structured.get("job_title"),
-                            "location": structured.get("location"),
-                            "job_tags": structured.get("job_tags", []),
-                            "posted_time": structured.get("posted_time"),  # e.g., "2025-06-01"
-                            "applicants": structured.get("applicants"),     # e.g., 18
-                            "salary": structured.get("salary"),             # e.g., {"from": 85000, "to": 100000}
-                            "employment_type": structured.get("employment_type"),  # e.g., "Full-time"
-                            "work_mode": structured.get("work_mode"),       # e.g., "remote", "on-site"
-                            "url": url,
-                            "description": structured.get("description"),    # Short 2–3 line summary
-                        })
+                        critical_fields = [
+                            structured.get("company_name"),
+                            structured.get("job_title"),
+                            structured.get("location"),
+                            structured.get("description"),
+                            structured.get("salary"),
+                            structured.get("employment_type"),
+                            structured.get("work_mode"),
+                        ]
+                        null_count = sum(1 for field in critical_fields if field in [None, '', [], {}])
+
+                        if null_count < 3:
+                            jobs.append({
+                                "company_name": structured.get("company_name"),
+                                "job_title": structured.get("job_title"),
+                                "location": structured.get("location"),
+                                "job_tags": structured.get("job_tags", []),
+                                "posted_time": structured.get("posted_time"),
+                                "applicants": structured.get("applicants"),
+                                "salary": structured.get("salary"),
+                                "employment_type": structured.get("employment_type"),
+                                "work_mode": structured.get("work_mode"),
+                                "url": url,
+                                "description": structured.get("description"),
+                            })
+                        else:
+                            print(f"Job skipped due to too many null fields: {url}")
                     except Exception as e:
                         print(f"Error crawling {url}: {e}")
             except Exception as e:
@@ -302,7 +319,21 @@ class VeteranJobSearchView(APIView):
 
         # 5. Sort and return
         scored_jobs.sort(key=lambda x: (x['matching_score'] is not None, x['matching_score']), reverse=True)
-        return JsonResponse(scored_jobs, safe=False)
+
+        from copy import deepcopy
+        response_jobs = deepcopy(scored_jobs)
+
+        client = MongoClient(settings.MONGO_URI)
+        db = client[settings.MONGO_DB_NAME]
+        cache_db = db["cache_db"]
+
+        for job in scored_jobs:
+            job["scraped_at"] = datetime.utcnow().isoformat()
+            job["fingerprint"] = user.fingerprint
+            if not cache_db.find_one({"url": job["url"], "fingerprint": user.fingerprint}):
+                cache_db.insert_one(job)
+
+        return JsonResponse(response_jobs, safe=False)
 
     
 class FetchChats(APIView):
@@ -320,7 +351,6 @@ class FetchChats(APIView):
             chat["created_at"] = chat["created_at"].isoformat()
             chat["updated_at"] = chat["updated_at"].isoformat()
             chat["conversation"] = decrypt_with_fingerprint(chat["conversation"][0], user.fingerprint)
-            print(chat["conversation"])
             del chat["_id"]
         
         return JsonResponse(chats, safe=False)
