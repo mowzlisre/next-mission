@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from asgiref.sync import sync_to_async
 import httpx
-
+from users.crypt import encrypt_with_fingerprint, decrypt_with_fingerprint
 User = get_user_model()
 
 
@@ -43,7 +43,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await db.chat_history.update_one(
             {'user_id': self.fingerprint},
             {
-                '$push': {'conversation': {'role': 'user', 'message': user_question}},
+                '$push': {'conversation': encrypt_with_fingerprint({'role': 'user', 'message': user_question}, self.fingerprint)},
                 '$set': {'updated_at': datetime.utcnow()},
                 '$setOnInsert': {'created_at': datetime.utcnow()}
             },
@@ -82,7 +82,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await db.chat_history.update_one(
             {'user_id': self.fingerprint},
             {
-                '$push': {'conversation': {'role': 'bot', 'message': reply}},
+                '$push': {'conversation': encrypt_with_fingerprint({'role': 'bot', 'message': reply}, self.fingerprint)},
                 '$set': {'updated_at': datetime.utcnow()}
             },
             upsert=True
@@ -90,20 +90,26 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await self.send(json.dumps({"response": reply}))
 
-
-
-    async def get_user_profile(self, user_id):
-        for col_name in ['dd214', 'jst', 'dd2586']:
-            doc = await db[col_name].find_one({'user_id': user_id})
-            if doc:
-                doc['_id'] = str(doc['_id']) 
-                return doc
+    async def get_user_profile(self, fingerprint):
+        doc = await db["user_data"].find_one({'fingerprint': fingerprint})
+        if doc:
+            try:
+                decrypted_doc = decrypt_with_fingerprint(doc, fingerprint)
+                decrypted_doc['_id'] = str(doc['_id'])  # keep the original MongoDB ID
+                return decrypted_doc
+            except Exception as e:
+                # You might want to log this
+                return {"error": f"Decryption failed: {str(e)}"}
         return None
 
     async def get_chat_history(self, user_id, limit=20):
         doc = await db.chat_history.find_one({'user_id': user_id})
         if doc and 'conversation' in doc:
-            return doc['conversation'][-limit:]
+            encrypted_conversation = doc['conversation'][-limit:]
+            decrypted_conversation = [
+                decrypt_with_fingerprint(item, self.fingerprint) for item in encrypted_conversation
+            ]
+            return decrypted_conversation
         return []
 
     def build_prompt(self, user_profile, chat_history, user_question, knowledge_base=None):
