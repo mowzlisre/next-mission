@@ -375,3 +375,146 @@ class FetchRelJobs(APIView):
 
         except Exception as e:
             return JsonResponse({'error': f'Failed to fetch jobs: {str(e)}'}, status=500)
+
+class VeteranMentorSearchView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def extract_structured_mentor_info(self, visible_text, keywords):
+        prompt = (
+            "You are a structured data extractor that parses plain text professional profiles. "
+            "Given a mentor or professional's plain text content, return a JSON object with the following normalized fields:\n\n"
+            "- `name`: string\n"
+            "- `title`: string (e.g., 'Senior Software Engineer', 'Career Coach')\n"
+            "- `company`: string (current or most recent)\n"
+            "- `expertise`: array of up to 5 keywords/skills/areas of guidance\n"
+            "- `location`: string (city, state, or country)\n"
+            "- `contact_info`: string (email, LinkedIn, or other contact method)\n"
+            "- `profile_url`: string (if available)\n"
+            "- `summary`: a short 2-3 line bio or description\n\n"
+            "Return only the JSON object. If data is missing, set values to `null` or an empty list.\n\n"
+            "Profile text:\n"
+            f"{visible_text}"
+        )
+        llama_data = {
+            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant that extracts structured mentor info from HTML."},
+                {"role": "user", "content": prompt}
+            ]
+        }
+        try:
+            resp = requests.post(
+                settings.GROQ_API_URL,
+                json=llama_data,
+                headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"},
+                timeout=60
+            )
+            resp.raise_for_status()
+            output = resp.json()["choices"][0]["message"]["content"]
+            match = re.search(r'\{.*\}', output, re.DOTALL)
+            return json.loads(match.group(0)) if match else json.loads(output)
+        except Exception as e:
+            print(f"Failed to extract structured mentor info: {e}")
+            return {
+                "name": None,
+                "title": None,
+                "company": None,
+                "expertise": [],
+                "location": None,
+                "contact_info": None,
+                "profile_url": None,
+                "summary": None
+            }
+
+    def post(self, request):
+        user = request.user
+        # 1. Load user profile
+        client = MongoClient(settings.MONGO_URI)
+        db = client[settings.MONGO_DB_NAME]
+        user_collection = db["user_data"]
+        user_doc = user_collection.find_one({'fingerprint': user.fingerprint})
+        user_doc = decrypt_with_fingerprint(user_doc, user.fingerprint)
+        if not user_doc:
+            return JsonResponse({'error': 'User profile not found.'}, status=404)
+        profile = user_doc
+        del profile["_id"]
+
+        # 2. Generate summary + keywords with LLaMA
+        prompt = (
+            "You are an expert at translating military experience to civilian terms. "
+            "Given the following profile, summarize it for a civilian audience and generate a list of relevant skills/keywords for mentorship search. "
+            "Return a JSON object with 'summary' and 'keywords' (array of strings).\n"
+            f"Profile: {json.dumps(profile, indent=2)}"
+        )
+        llama_data = {
+            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant for U.S. military veterans."},
+                {"role": "user", "content": prompt}
+            ]
+        }
+        try:
+            resp = requests.post(settings.GROQ_API_URL, json=llama_data,
+                                 headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"}, timeout=60)
+            resp.raise_for_status()
+            content = resp.json()["choices"][0]["message"]["content"]
+            match = re.search(r'\{.*\}', content, re.DOTALL)
+            summary_keywords = json.loads(match.group(0)) if match else json.loads(content)
+        except Exception:
+            summary_keywords = {"summary": "", "keywords": []}
+
+        keywords = summary_keywords.get('keywords') or [
+            mos.get('title', '') for mos in profile.get('mos_history', [])
+        ]
+
+        # 3. Search for mentors via SerpAPI (LinkedIn, etc.)
+        serpapi_key = getattr(settings, 'SERPAPI_KEY', None)
+        mentors = []
+        if serpapi_key:
+            query = ' '.join(keywords[:3]) + ' mentor veteran' if keywords else 'veteran mentor'
+            params = {
+                'engine': 'google',
+                'q': query + ' site:linkedin.com/in OR site:advisors.vetsintech.co',
+                'api_key': serpapi_key,
+                'num': 10
+            }
+            try:
+                serp_resp = requests.get('https://serpapi.com/search', params=params, timeout=20)
+                serp_resp.raise_for_status()
+                serp_data = serp_resp.json()
+                mentor_results = [
+                    item for item in serp_data.get('organic_results', [])
+                    if any(domain in item.get('link', '') for domain in ['linkedin.com/in', 'advisors.vetsintech.co'])
+                ]
+                for item in mentor_results:
+                    url = item.get('link')
+                    if not url:
+                        continue
+                    try:
+                        html = requests.get(url, timeout=10).text
+                        if 'Cloudflare' in html:
+                            raise Exception("Blocked by bot protection")
+                        soup = BeautifulSoup(html, 'html.parser')
+                        visible_text = soup.get_text(separator='\n', strip=True)
+                        if len(visible_text) > 20000:
+                            visible_text = visible_text[:20000]
+                        structured = self.extract_structured_mentor_info(visible_text, keywords)
+                        # Validate: require at least name, title, and profile_url
+                        if structured.get("name") and structured.get("title") and url:
+                            mentors.append({
+                                "name": structured.get("name"),
+                                "title": structured.get("title"),
+                                "company": structured.get("company"),
+                                "expertise": structured.get("expertise", []),
+                                "location": structured.get("location"),
+                                "contact_info": structured.get("contact_info"),
+                                "profile_url": url,
+                                "summary": structured.get("summary"),
+                            })
+                        else:
+                            print(f"Mentor skipped due to missing fields: {url}")
+                    except Exception as e:
+                        print(f"Error crawling {url}: {e}")
+            except Exception as e:
+                print(f"SerpAPI error: {e}")
+        return JsonResponse(mentors, safe=False)
