@@ -1,10 +1,9 @@
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework import status, views, generics, permissions
-from .serializers import RegisterSerializer, LoginSerializer, UserSerializer
+from .serializers import RegisterSerializer, LoginSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from .llama_utils import *
-from jsonschema import validate, ValidationError
 import pdfplumber
 from PIL import Image
 import pytesseract
@@ -41,6 +40,7 @@ class LogoutView(views.APIView):
 
 class DocumentUploadView(views.APIView):
     parser_classes = (MultiPartParser, FormParser)
+    permission_classes = [permissions.IsAuthenticated]
 
     def extract_file(self, file_obj):
         file_name = file_obj.name
@@ -61,6 +61,7 @@ class DocumentUploadView(views.APIView):
         return file_text
 
     def post(self, request, format=None):
+        user = request.user
         file_obj = request.FILES.get('file_obj')
         try:
             extracted_text = self.extract_file(file_obj)
@@ -70,11 +71,10 @@ class DocumentUploadView(views.APIView):
             print(e)
             return Response({'error': f'Text extraction failed: {str(e)}'}, status=500)
 
-        user_id = request.data.get('user_id')
         document_type = request.data.get('document_type').upper()
         ALLOWED_DOC_TYPES = ['DD214', 'JST', 'DD2586']
 
-        if not file_obj or not user_id or not document_type:
+        if not file_obj or not document_type:
             return Response({'error': 'Missing required fields.'}, status=status.HTTP_400_BAD_REQUEST)
         if document_type not in ALLOWED_DOC_TYPES:
             return Response({'error': 'Invalid document_type.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -128,7 +128,7 @@ class DocumentUploadView(views.APIView):
             content = result["choices"][0]["message"]["content"]
             try:
                 extracted_data = json.loads(content)
-                extracted_data["fingerprint"] = User.objects.get(id=user_id).fingerprint
+                extracted_data["fingerprint"] = user.fingerprint
             except json.JSONDecodeError:
                 import re
                 match = re.search(r'\[\[\[JSON\]\]\](.*?)\[\[\[/JSON\]\]\]', content, re.DOTALL)
@@ -136,7 +136,7 @@ class DocumentUploadView(views.APIView):
                     raise ValueError("Special JSON markers not found in LLaMA response.")
 
                 extracted_data = json.loads(match.group(1).strip())
-                extracted_data["fingerprint"] = User.objects.get(id=user_id).fingerprint
+                extracted_data["fingerprint"] = user.fingerprint
 
 
         except Exception as e:
@@ -167,17 +167,19 @@ class DocumentUploadView(views.APIView):
 
 
 class UpdateUserData(views.APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def post(self, request, *args, **kwargs):
+        user = request.user
         form_data = request.data.get("form_data")
-        fingerprint = request.data.get("fingerprint")
         preferences = request.data.get("preferences")
-        user = User.objects.get(fingerprint=fingerprint)
+        user = User.objects.get(fingerprint=user.fingerprint)
         user.onboarded = True
         user.save()
         if form_data:
             try:
-                form_data["fingerprint"] = fingerprint
-                encrypted_form_data = encrypt_with_fingerprint(form_data, fingerprint)
+                form_data["fingerprint"] = user.fingerprint
+                encrypted_form_data = encrypt_with_fingerprint(form_data, user.fingerprint)
                 client = MongoClient(settings.MONGO_URI)
                 db = client['veteran_docs']
                 db["user_data"].insert_one(encrypted_form_data)

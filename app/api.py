@@ -6,6 +6,7 @@ import httpx
 from users.crypt import encrypt_with_fingerprint, decrypt_with_fingerprint
 from pymongo import MongoClient
 from datetime import datetime
+from rest_framework.permissions import IsAuthenticated
 
 def chatbot_view(request):
     user_id = request.user.id if request.user.is_authenticated else "guest"
@@ -44,17 +45,19 @@ class MCPInternetSearchView(APIView):
                 return JsonResponse({'error': f'Internet search failed: {str(e)}'}, status=500)
 
 class BookmarkMessage(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
-        fingerprint = request.data.get("fingerprint")
+        user = request.user
         message = request.data.get("message")
 
-        if not fingerprint or not message:
+        if not user.fingerprint or not message:
             return JsonResponse({"error": "Missing fingerprint or message"}, status=400)
 
         try:
             # Encrypt the message
             data_to_encrypt = {"message": message}
-            encrypted_message = encrypt_with_fingerprint(data_to_encrypt, fingerprint)["message"]
+            encrypted_message = encrypt_with_fingerprint(data_to_encrypt, user.fingerprint)["message"]
 
             # Connect to MongoDB
             client = MongoClient(settings.MONGO_URI)
@@ -63,7 +66,7 @@ class BookmarkMessage(APIView):
 
             # Check for duplicate
             exists = bookmarks.find_one({
-                "fingerprint": fingerprint,
+                "fingerprint": user.fingerprint,
                 "message": encrypted_message
             })
 
@@ -72,7 +75,7 @@ class BookmarkMessage(APIView):
 
             # Insert new bookmark
             bookmarks.insert_one({
-                "fingerprint": fingerprint,
+                "fingerprint": user.fingerprint,
                 "message": encrypted_message,
                 "created_at": datetime.utcnow()
             })
@@ -84,9 +87,12 @@ class BookmarkMessage(APIView):
         
 
 class BookmarkedChats(APIView):
-    def get(self, request):
-        fingerprint = request.data.get('fingerprint')
-        if not fingerprint:
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+
+        if not user.fingerprint:
             return JsonResponse({"error": "Missing 'fingerprint' in query parameters."}, status=400, safe=False)
 
         client = MongoClient(settings.MONGO_URI)
@@ -94,12 +100,32 @@ class BookmarkedChats(APIView):
         bookmarks = db["bookmarks"]
 
         # Fetch and convert cursor to list
-        chats = list(bookmarks.find({"fingerprint": fingerprint}))
+        chats = list(bookmarks.find({"fingerprint": user.fingerprint}))
 
         # Optional: remove ObjectId for JSON serialization
         for chat in chats:
             chat["_id"] = str(chat["_id"])
             chat["message"] = decrypt_with_fingerprint({"message": chat["message"]}, fingerprint)["message"]
             del chat["fingerprint"]
+        
+        return JsonResponse(chats, safe=False)
+    
+class FetchChats(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        client = MongoClient(settings.MONGO_URI)
+        db = client[settings.MONGO_DB_NAME]
+        chats_db = db["chat_history"]
+
+        # Fetch and convert cursor to list
+        chats = list(chats_db.find({"user_id": user.fingerprint}))
+        for chat in chats:
+            chat["created_at"] = chat["created_at"].isoformat()
+            chat["updated_at"] = chat["updated_at"].isoformat()
+            chat["conversation"] = decrypt_with_fingerprint(chat["conversation"][0], user.fingerprint)
+            print(chat["conversation"])
+            del chat["_id"]
         
         return JsonResponse(chats, safe=False)
