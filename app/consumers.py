@@ -53,30 +53,17 @@ class ChatConsumer(AsyncWebsocketConsumer):
         chat_history = await self.get_chat_history(self.fingerprint)
         profile_data = await self.get_user_profile(self.fingerprint)
 
-        prompt = self.build_prompt(profile_data, chat_history, user_question)
-        reply = await self.ask_llama_async(prompt)
+        # Always perform web search first (internal, not via API)
+        mcp_results = await self.perform_web_search(user_question)
+        print(f"[DEBUG] MCP results: {mcp_results}")  # Debug: log MCP results
 
-        # Tool-calling logic: If Llama requests a tool call, call MCP, then re-ask Llama with results
-        if isinstance(reply, str) and reply.strip().startswith("TOOL_CALL:"):
-            tool_query = reply.strip().split("TOOL_CALL:", 1)[1].strip()
-            # Call MCP endpoint
-            async with httpx.AsyncClient() as client:
-                try:
-                    mcp_resp = await client.post(
-                        f"http://localhost:8000/app/mcp/search/",  # Adjust if running on a different host/port
-                        json={"query": tool_query},
-                        timeout=30
-                    )
-                    mcp_resp.raise_for_status()
-                    mcp_results = mcp_resp.json().get('results', [])
-                except Exception as e:
-                    mcp_results = []
-            # Build a new prompt for Llama with the tool results
-            tool_prompt = self.build_prompt(
-                profile_data, chat_history, user_question,
-                knowledge_base=json.dumps(mcp_results, indent=2)
-            )
-            reply = await self.ask_llama_async(tool_prompt)
+        # Build prompt with web results always included
+        prompt = self.build_prompt(
+            profile_data, chat_history, user_question,
+            knowledge_base=json.dumps(mcp_results, indent=2)
+        )
+        reply = await self.ask_llama_async(prompt)
+        print(f"[DEBUG] Llama reply: {reply}")  # Debug: log Llama's response
 
         # Store bot reply
         await db.chat_history.update_one(
@@ -188,3 +175,41 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 return result["choices"][0]["message"]["content"]
             except Exception as e:
                 return f"[Error contacting Llama 4: {str(e)}]"
+
+    async def perform_web_search(self, query):
+        import re
+        import httpx
+        from django.conf import settings
+        serpapi_key = getattr(settings, 'SERPAPI_KEY', None)
+        if not serpapi_key:
+            return []
+        params = {
+            'q': query,
+            'api_key': serpapi_key,
+            'engine': 'google',
+            'num': 3
+        }
+        results = []
+        async with httpx.AsyncClient() as client:
+            try:
+                resp = await client.get('https://serpapi.com/search', params=params, timeout=10)
+                resp.raise_for_status()
+                data = resp.json()
+                for item in data.get('organic_results', [])[:3]:
+                    results.append({
+                        'title': self.clean_text(item.get('title')),
+                        'snippet': self.clean_text(item.get('snippet')),
+                        'link': item.get('link'),
+                        'source': item.get('displayed_link') or item.get('link')
+                    })
+            except Exception as e:
+                print(f"[DEBUG] Web search error: {e}")
+        return results
+
+    def clean_text(self, text):
+        import re
+        if not text:
+            return ""
+        text = re.sub(r'<[^>]+>', '', text)
+        text = re.sub(r'\s+', ' ', text)
+        return text.strip()
