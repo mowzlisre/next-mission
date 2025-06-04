@@ -9,6 +9,8 @@ import pdfplumber
 from PIL import Image
 import pytesseract
 import io
+from .models import User
+from .crypt import encrypt_with_fingerprint
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
@@ -88,31 +90,17 @@ class DocumentUploadView(views.APIView):
         except Exception as e:
             return Response({'error': f'Failed to load schema: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        # Define user model schema
-        user_schema = {
-            "email": "string",
-            "first_name": "string",
-            "last_name": "string",
-            "phone": "string or null",
-            "date_of_birth": "ISO date string or null",
-            "city": "string or null",
-            "state": "string or null",
-            "employment_status": "string (e.g., 'Employed', 'Unemployed', 'Retired')",
-            "interests": "string or comma-separated values"
-        }
-
         # Build LLM prompt
         prompt = (
             f"You are an expert in extracting structured data from U.S. military documents.\n"
             f"The user has uploaded a {document_type} file named '{file_name}'.\n"
-            f"Using the extracted text below, extract two data objects:\n\n"
-            f"1. `form_data`: Match the structure defined by this JSON schema:\n{json.dumps(form_schema, indent=2)}\n\n"
-            f"2. `user_data`: Match the structure defined by this JSON schema:\n{json.dumps(user_schema, indent=2)}\n\n"
+            f"Using the extracted text below,:\n\n"
+            f"`form_data`: Match the structure defined by this JSON schema:\n{json.dumps(form_schema, indent=2)}\n\n"
             f"Respond ONLY with a valid JSON object, wrapped between special tokens:\n"
             f"Start your output with `[[[JSON]]]` and end it with `[[[/JSON]]]`.\n"
             f"Do not include any explanations or text outside the tokens.\n"
             f"The expected structure is:\n"
-            f"[[[JSON]]]\n{{\n  \"form_data\": {{ ... }},\n  \"user_data\": {{ ... }}\n}}\n[[[/JSON]]]\n\n"
+            f"[[[JSON]]]\n{{\n  \"form_data\": {{ ... }}}}\n[[[/JSON]]]\n\n"
             f"----- BEGIN EXTRACTED TEXT -----\n{extracted_text[:10000]}\n----- END EXTRACTED TEXT -----"
         )
 
@@ -139,6 +127,7 @@ class DocumentUploadView(views.APIView):
             content = result["choices"][0]["message"]["content"]
             try:
                 extracted_data = json.loads(content)
+                extracted_data["fingerprint"] = User.objects.get(id=user_id).fingerprint
             except json.JSONDecodeError:
                 import re
                 match = re.search(r'\[\[\[JSON\]\]\](.*?)\[\[\[/JSON\]\]\]', content, re.DOTALL)
@@ -146,6 +135,8 @@ class DocumentUploadView(views.APIView):
                     raise ValueError("Special JSON markers not found in LLaMA response.")
 
                 extracted_data = json.loads(match.group(1).strip())
+                extracted_data["fingerprint"] = User.objects.get(id=user_id).fingerprint
+
 
         except Exception as e:
             return Response({'error': f'LLama extraction failed: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -171,10 +162,24 @@ class DocumentUploadView(views.APIView):
 
         # # Return combined data
         # form_data.pop('profile_summary', None)
-        print({
-            'user_data': extracted_data
-        })
+        return Response(extracted_data, status=status.HTTP_200_OK)
+
+
+class UpdateUserData(views.APIView):
+    def post(self, request, *args, **kwargs):
+        form_data = request.data.get("form_data")
+        fingerprint = request.data.get("fingerprint")
+
+        if form_data:
+            try:
+                encrypted_form_data = encrypt_with_fingerprint(form_data, fingerprint)
+
+                client = MongoClient(settings.MONGO_URI)()
+                db = client[settings.MONGO_DB_NAME]
+                db["user_data"].insert_one(encrypted_form_data)
+            except Exception as e:
+                return Response({"error": f"Failed to save form data: {str(e)}"}, status=500)
 
         return Response({
-            'user_data': extracted_data
-        }, status=status.HTTP_200_OK)
+            "message": "User data saved successfully.",
+        }, status=200)

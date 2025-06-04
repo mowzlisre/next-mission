@@ -12,10 +12,15 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'first_name', 'last_name', 'password', 'date_of_birth', 'city', 'state']
+        fields = ['id', 'email', 'first_name', 'last_name', 'password', 'date_of_birth', 'city', 'state']
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
+    
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep.pop('password', None)  # Remove password from the output explicitly (defensive)
+        return rep
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()

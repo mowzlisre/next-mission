@@ -254,3 +254,34 @@ Uploads a single military document (PDF or image), performs OCR if needed, and e
 - Text is passed to the LLM which returns structured JSON wrapped between `[[[JSON]]]` and `[[[/JSON]]]` markers.
 - The response includes only the structured `user_data` and `form_data` extracted from the document.
 ```
+
+## Endpoint
+`POST /api/update/user/data/`
+
+## Description
+This endpoint receives user form data along with a fingerprint, encrypts the data using the provided fingerprint, and stores the result in a MongoDB collection named `user_data`.
+
+---
+
+## Request
+
+### Headers
+- `Content-Type: application/json`
+
+### Body Parameters
+
+| Name         | Type   | Required | Description                             |
+|--------------|--------|----------|-----------------------------------------|
+| form_data    | object | Yes      | The form data object to be encrypted and stored. |
+| fingerprint  | string | Yes      | A unique string used to encrypt the form data. |
+
+#### Example
+```json
+{
+  "form_data": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "age": 30
+  },
+  "fingerprint": "unique-device-identifier"
+}
