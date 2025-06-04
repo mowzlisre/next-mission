@@ -183,7 +183,6 @@ class VeteranJobSearchView(APIView):
             mos['description'] = mos_info.get('description', '')
 
         # 2. Generate summary + keywords with LLaMA
-        print(profile)
         prompt = (
             "You are an expert at translating military experience to civilian terms. "
             "Given the following profile, summarize it for a civilian audience and generate a list of relevant skills/keywords for job search. "
@@ -323,7 +322,7 @@ class VeteranJobSearchView(APIView):
 
         client = MongoClient(settings.MONGO_URI)
         db = client[settings.MONGO_DB_NAME]
-        cache_db = db["cache_db"]
+        cache_db = db["cache_job_db"]
 
         for job in scored_jobs:
             job["scraped_at"] = datetime.utcnow().isoformat()
@@ -366,7 +365,7 @@ class FetchRelJobs(APIView):
             # Connect to MongoDB
             client = MongoClient(settings.MONGO_URI)
             db = client[settings.MONGO_DB_NAME]
-            cache_collection = db["cache_db"]
+            cache_collection = db["cache_job_db"]
 
             # Fetch jobs related to the user
             job_docs = list(cache_collection.find({"fingerprint": fingerprint}, {'_id': 0}))
@@ -385,12 +384,9 @@ class VeteranMentorSearchView(APIView):
             "Given a mentor or professional's plain text content, return a JSON object with the following normalized fields:\n\n"
             "- `name`: string\n"
             "- `title`: string (e.g., 'Senior Software Engineer', 'Career Coach')\n"
-            "- `company`: string (current or most recent)\n"
             "- `expertise`: array of up to 5 keywords/skills/areas of guidance\n"
-            "- `location`: string (city, state, or country)\n"
-            "- `contact_info`: string (email, LinkedIn, or other contact method)\n"
             "- `profile_url`: string (if available)\n"
-            "- `summary`: a short 2-3 line bio or description\n\n"
+            "- `summary`: a short 2-3 line bio written in **third person**, not in first person (avoid 'I', 'my', 'me').\n\n"
             "Return only the JSON object. If data is missing, set values to `null` or an empty list.\n\n"
             "Profile text:\n"
             f"{visible_text}"
@@ -418,10 +414,7 @@ class VeteranMentorSearchView(APIView):
             return {
                 "name": None,
                 "title": None,
-                "company": None,
                 "expertise": [],
-                "location": None,
-                "contact_info": None,
                 "profile_url": None,
                 "summary": None
             }
@@ -471,50 +464,185 @@ class VeteranMentorSearchView(APIView):
         serpapi_key = getattr(settings, 'SERPAPI_KEY', None)
         mentors = []
         if serpapi_key:
-            query = ' '.join(keywords[:3]) + ' mentor veteran' if keywords else 'veteran mentor'
+            query = ' '.join(keywords[:3]) + 'veteran' if keywords else 'veteran mentor'
             params = {
                 'engine': 'google',
-                'q': query + ' site:linkedin.com/in OR site:advisors.vetsintech.co',
+                'q': query + ' site:linkedin.com/in',
                 'api_key': serpapi_key,
-                'num': 10
+                'num': 20
             }
             try:
                 serp_resp = requests.get('https://serpapi.com/search', params=params, timeout=20)
                 serp_resp.raise_for_status()
                 serp_data = serp_resp.json()
-                mentor_results = [
-                    item for item in serp_data.get('organic_results', [])
-                    if any(domain in item.get('link', '') for domain in ['linkedin.com/in', 'advisors.vetsintech.co'])
-                ]
-                for item in mentor_results:
-                    url = item.get('link')
-                    if not url:
-                        continue
-                    try:
-                        html = requests.get(url, timeout=10).text
-                        if 'Cloudflare' in html:
-                            raise Exception("Blocked by bot protection")
-                        soup = BeautifulSoup(html, 'html.parser')
-                        visible_text = soup.get_text(separator='\n', strip=True)
-                        if len(visible_text) > 20000:
-                            visible_text = visible_text[:20000]
-                        structured = self.extract_structured_mentor_info(visible_text, keywords)
-                        # Validate: require at least name, title, and profile_url
-                        if structured.get("name") and structured.get("title") and url:
-                            mentors.append({
-                                "name": structured.get("name"),
-                                "title": structured.get("title"),
-                                "company": structured.get("company"),
-                                "expertise": structured.get("expertise", []),
-                                "location": structured.get("location"),
-                                "contact_info": structured.get("contact_info"),
-                                "profile_url": url,
-                                "summary": structured.get("summary"),
-                            })
-                        else:
-                            print(f"Mentor skipped due to missing fields: {url}")
-                    except Exception as e:
-                        print(f"Error crawling {url}: {e}")
+                for item in serp_data.get('organic_results', []):
+                    url = item.get("link")
+                    snippet = item.get("snippet", "")
+                    title = item.get("title", "")
+                    name, _, role = title.partition(" - ")
+
+                    mentors.append({
+                        "name": name.strip() if name else None,
+                        "title": role.strip() if role else None,
+                        "expertise": keywords[:5],
+                        "profile_url": url,
+                        "summary": snippet.strip() if snippet else None,
+                    })
             except Exception as e:
                 print(f"SerpAPI error: {e}")
-        return JsonResponse(mentors, safe=False)
+
+            from copy import deepcopy
+            response_mentors = deepcopy(mentors)
+
+            client = MongoClient(settings.MONGO_URI)
+            db = client[settings.MONGO_DB_NAME]
+            cache_db = db["cache_mentor_db"]
+
+            for job in mentors:
+                job["scraped_at"] = datetime.utcnow().isoformat()
+                job["fingerprint"] = user.fingerprint
+                if not cache_db.find_one({"url": job["profile_url"], "fingerprint": user.fingerprint}):
+                    cache_db.insert_one(job)
+        return JsonResponse(response_mentors, safe=False)
+
+class FetchRelMentors(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        fingerprint = getattr(user, 'fingerprint', None)
+
+        if not fingerprint:
+            return JsonResponse({'error': 'User fingerprint not found.'}, status=400)
+
+        try:
+            # Connect to MongoDB
+            client = MongoClient(settings.MONGO_URI)
+            db = client[settings.MONGO_DB_NAME]
+            cache_collection = db["cache_mentor_db"]
+
+            # Fetch jobs related to the user
+            job_docs = list(cache_collection.find({"fingerprint": fingerprint}, {'_id': 0}))
+
+            return JsonResponse(job_docs, safe=False, status=200)
+
+        except Exception as e:
+            return JsonResponse({'error': f'Failed to fetch jobs: {str(e)}'}, status=500)
+        
+class VeteranCommunitySearchView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def extract_structured_event_info(self, visible_text):
+        prompt = (
+            "You are a structured data extractor that parses plain text about community events and services for veterans. "
+            "Return a JSON object with these normalized fields:\n"
+            "- `name`: string (event/service name)\n"
+            "- `description`: 2-3 line summary\n"
+            "- `type`: one of ['Event', 'Support Service', 'benefit_program']\n"
+            "- `location`: string (city/state or Online) if available\n"
+            "- `date`: ISO format YYYY-MM-DD if available\n"
+            "- `time`: starting HH:MM am/pm if available. No need ending\n"
+            "- `contact`: string (email, phone) if available\n"
+            "- `audience`: string (e.g., 'All veterans', 'Female veterans', etc.)\n"
+            "- `tags`: array of up to 3 relevant keywords\n"
+            "Return only the JSON object.\n\n"
+            f"Content:\n{visible_text}"
+        )
+        llama_data = {
+            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant that extracts structured event data for veterans."},
+                {"role": "user", "content": prompt}
+            ]
+        }
+        try:
+            resp = requests.post(
+                settings.GROQ_API_URL,
+                json=llama_data,
+                headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"},
+                timeout=60
+            )
+            resp.raise_for_status()
+            output = resp.json()["choices"][0]["message"]["content"]
+            match = re.search(r'\{.*\}', output, re.DOTALL)
+            return json.loads(match.group(0)) if match else json.loads(output)
+        except Exception as e:
+            print(f"Failed to extract structured community info: {e}")
+            return {}
+
+    def post(self, request):
+        user = request.user
+
+        # Load user profile
+        client = MongoClient(settings.MONGO_URI)
+        db = client[settings.MONGO_DB_NAME]
+        user_collection = db["user_data"]
+        user_doc = user_collection.find_one({'fingerprint': user.fingerprint})
+        user_doc = decrypt_with_fingerprint(user_doc, user.fingerprint)
+        if not user_doc:
+            return JsonResponse({'error': 'User profile not found.'}, status=404)
+        profile = user_doc
+        del profile["_id"]
+
+        keywords = [mos.get('title', '') for mos in profile.get('mos_history', [])] or ["veteran"]
+
+        # Search via SerpAPI
+        serpapi_key = getattr(settings, 'SERPAPI_KEY', None)
+        results = []
+        if serpapi_key:
+            query = ' '.join(keywords[:3]) + ' veteran services events 2024'
+            params = {
+                'engine': 'google',
+                'q': query,
+                'api_key': serpapi_key,
+                'num': 15
+            }
+            try:
+                serp_resp = requests.get('https://serpapi.com/search', params=params, timeout=20)
+                serp_resp.raise_for_status()
+                serp_data = serp_resp.json()
+                for item in serp_data.get('organic_results', []):
+                    url = item.get("link")
+                    snippet = item.get("snippet", "")
+                    title = item.get("title", "")
+                    visible_text = f"Title: {title}\nSnippet: {snippet}\nURL: {url}"
+                    structured = self.extract_structured_event_info(visible_text)
+                    structured["link"] = url
+                    results.append(structured)
+            except Exception as e:
+                print(f"SerpAPI error: {e}")
+            from copy import deepcopy
+            response_results = deepcopy(results)
+            # Cache in DB
+            community_db = db["cache_community_db"]
+            for result in results:
+                result["fingerprint"] = user.fingerprint
+                result["scraped_at"] = datetime.utcnow().isoformat()
+                if not community_db.find_one({"link": result["link"], "fingerprint": user.fingerprint}):
+                    community_db.insert_one(result)
+
+        return JsonResponse(response_results, safe=False)
+
+class FetchRelEvents(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        fingerprint = getattr(user, 'fingerprint', None)
+
+        if not fingerprint:
+            return JsonResponse({'error': 'User fingerprint not found.'}, status=400)
+
+        try:
+            # Connect to MongoDB
+            client = MongoClient(settings.MONGO_URI)
+            db = client[settings.MONGO_DB_NAME]
+            cache_collection = db["cache_community_db"]
+
+            # Fetch jobs related to the user
+            job_docs = list(cache_collection.find({"fingerprint": fingerprint}, {'_id': 0}))
+
+            return JsonResponse(job_docs, safe=False, status=200)
+
+        except Exception as e:
+            return JsonResponse({'error': f'Failed to fetch jobs: {str(e)}'}, status=500)
