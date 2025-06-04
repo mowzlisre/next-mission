@@ -7,6 +7,7 @@ import requests
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from asgiref.sync import sync_to_async
+import httpx
 
 User = get_user_model()
 
@@ -52,9 +53,30 @@ class ChatConsumer(AsyncWebsocketConsumer):
         chat_history = await self.get_chat_history(self.fingerprint)
         profile_data = await self.get_user_profile(self.fingerprint)
 
-
         prompt = self.build_prompt(profile_data, chat_history, user_question)
-        reply = await self.ask_llama(prompt)
+        reply = await self.ask_llama_async(prompt)
+
+        # Tool-calling logic: If Llama requests a tool call, call MCP, then re-ask Llama with results
+        if isinstance(reply, str) and reply.strip().startswith("TOOL_CALL:"):
+            tool_query = reply.strip().split("TOOL_CALL:", 1)[1].strip()
+            # Call MCP endpoint
+            async with httpx.AsyncClient() as client:
+                try:
+                    mcp_resp = await client.post(
+                        f"http://localhost:8000/app/mcp/search/",  # Adjust if running on a different host/port
+                        json={"query": tool_query},
+                        timeout=30
+                    )
+                    mcp_resp.raise_for_status()
+                    mcp_results = mcp_resp.json().get('results', [])
+                except Exception as e:
+                    mcp_results = []
+            # Build a new prompt for Llama with the tool results
+            tool_prompt = self.build_prompt(
+                profile_data, chat_history, user_question,
+                knowledge_base=json.dumps(mcp_results, indent=2)
+            )
+            reply = await self.ask_llama_async(tool_prompt)
 
         # Store bot reply
         await db.chat_history.update_one(
@@ -88,9 +110,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
         prompt = (
             "You are a helpful assistant for U.S. military veterans. "
             "You have access to the user's profile (below) and the conversation history. "
-            "Use this information, and the knowledge base if provided, to answer the user's question. "
-            "If the question is about benefits, jobs, or transition, personalize the answer using the user's profile. "
-            "If you don't know, say so honestly.\n\n"
+            "If you need information not in the user's profile or chat history, you can use a web search tool. "
+            "If you use the tool, you will be provided with search results to help answer the user's question. "
+            "Always return your answer in the following JSON format, where 'message' is your reply (can be a paragraph, steps, or bullet points), and 'actions' is an array of interactive elements (links, phone numbers, comments):\n"
+            "[\n  {\n    'message': 'Your main reply to the user.',\n    'actions': [\n      { 'action': 'link', 'do': 'https://example.com', 'help_text': 'Description of the link' },\n      { 'action': 'phone', 'do': '+1-800-123-4567', 'help_text': 'Description of the phone number' },\n      { 'action': 'comment', 'do': 'Any extra comment or fact.', 'help_text': 'Description of the comment' }\n    ]\n  }\n]\n"
+            "If you need to use the tool, respond with: TOOL_CALL: <query>. Otherwise, answer directly.\n\n"
             f"User Profile (JSON):\n{json.dumps(user_profile, indent=2)}\n\n"
             f"Conversation History (most recent last):\n"
         )
@@ -118,3 +142,21 @@ class ChatConsumer(AsyncWebsocketConsumer):
             return result["choices"][0]["message"]["content"]
         except Exception as e:
             return f"[Error contacting Llama 4: {str(e)}]"
+
+    async def ask_llama_async(self, prompt):
+        headers = {'Authorization': f'Bearer {settings.GROQ_API_KEY}'}
+        data = {
+            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant for U.S. military veterans."},
+                {"role": "user", "content": prompt}
+            ]
+        }
+        async with httpx.AsyncClient() as client:
+            try:
+                response = await client.post(settings.GROQ_API_URL, json=data, timeout=60, headers=headers)
+                response.raise_for_status()
+                result = response.json()
+                return result["choices"][0]["message"]["content"]
+            except Exception as e:
+                return f"[Error contacting Llama 4: {str(e)}]"
