@@ -107,7 +107,7 @@ class BookmarkedChats(APIView):
         # Optional: remove ObjectId for JSON serialization
         for chat in chats:
             chat["_id"] = str(chat["_id"])
-            chat["message"] = decrypt_with_fingerprint({"message": chat["message"]}, fingerprint)["message"]
+            chat["message"] = decrypt_with_fingerprint({"message": chat["message"]}, user.fingerprint)["message"]
             del chat["fingerprint"]
         
         return JsonResponse(chats, safe=False)
