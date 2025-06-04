@@ -4,7 +4,6 @@ from . import api
 urlpatterns = [
     path("chat/", api.chatbot_view, name="chat-ui"),
     path("chats/all", api.FetchChats.as_view()),
-    path("mcp/search/", api.MCPInternetSearchView.as_view(), name="mcp-search"),
     path("jobs/search/", api.VeteranJobSearchView.as_view(), name="jobs-search"),
     path("chat/bookmark", api.BookmarkMessage.as_view()),
     path('chat/bookmark/all', api.BookmarkedChats.as_view())
