@@ -24,6 +24,7 @@ class LoginView(views.APIView):
         return Response({
             'refresh': str(refresh),
             'access': str(refresh.access_token),
+            'onboarded': user.onboarded
         })
 
 class LogoutView(views.APIView):
@@ -169,17 +170,21 @@ class UpdateUserData(views.APIView):
     def post(self, request, *args, **kwargs):
         form_data = request.data.get("form_data")
         fingerprint = request.data.get("fingerprint")
-
+        preferences = request.data.get("preferences")
+        user = User.objects.get(fingerprint=fingerprint)
+        user.onboarded = True
+        user.save()
         if form_data:
             try:
+                form_data["fingerprint"] = fingerprint
                 encrypted_form_data = encrypt_with_fingerprint(form_data, fingerprint)
-
-                client = MongoClient(settings.MONGO_URI)()
-                db = client[settings.MONGO_DB_NAME]
+                client = MongoClient(settings.MONGO_URI)
+                db = client['veteran_docs']
                 db["user_data"].insert_one(encrypted_form_data)
             except Exception as e:
                 return Response({"error": f"Failed to save form data: {str(e)}"}, status=500)
 
         return Response({
             "message": "User data saved successfully.",
+            "onboarded": True
         }, status=200)

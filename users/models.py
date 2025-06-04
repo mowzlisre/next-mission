@@ -35,7 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     state = models.CharField(max_length=100, blank=True)
     employment_status = models.CharField(max_length=20, choices=EMPLOYMENT_CHOICES, blank=True)
     interests = models.TextField(blank=True)
-
+    onboarded = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)

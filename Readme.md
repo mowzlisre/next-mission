@@ -256,7 +256,7 @@ Uploads a single military document (PDF or image), performs OCR if needed, and e
 ```
 
 ## Endpoint
-`POST /api/update/user/data/`
+`POST /api/auth/update/user/data/`
 
 ## Description
 This endpoint receives user form data along with a fingerprint, encrypts the data using the provided fingerprint, and stores the result in a MongoDB collection named `user_data`.
