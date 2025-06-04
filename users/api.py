@@ -178,8 +178,8 @@ class UpdateUserData(views.APIView):
         user.save()
         if form_data:
             try:
-                form_data["fingerprint"] = user.fingerprint
                 encrypted_form_data = encrypt_with_fingerprint(form_data, user.fingerprint)
+                encrypted_form_data["fingerprint"] = user.fingerprint
                 client = MongoClient(settings.MONGO_URI)
                 db = client['veteran_docs']
                 db["user_data"].insert_one(encrypted_form_data)

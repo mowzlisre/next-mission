@@ -20,8 +20,11 @@ def chatbot_view(request):
     return render(request, "app/chatbot.html", {"user_id": user_id})
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2e1e0fd28a95de081d06b15899ff7881b5581518
 class BookmarkMessage(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -105,7 +108,7 @@ class VeteranJobSearchView(APIView):
             "- `applicants`: integer (e.g., `18` from '18 applicants')\n"
             "- `salary`: normalized object like `{ \"from\": 85000, \"to\": 100000 }` in **USD per year**\n"
             "   - If only one value is mentioned, use it for both `from` and `to`\n"
-            "   - Accept ranges like '$80k–$100k', '$85,000/year', or 'up to $95,000'\n"
+            "   - Accept ranges like '$80k-$100k', '$85,000/year', or 'up to $95,000'\n"
             "- `employment_type`: string like 'Full-time', 'Part-time', etc.\n"
             "- `work_mode`: one of `Remote`, `Hybrid`, or `On-site`\n\n"
             "Return only the JSON object. If data is missing, set values to `null` or an empty list.\n\n"
@@ -139,29 +142,58 @@ class VeteranJobSearchView(APIView):
                 "description": None,
                 "job_tags": []
             }
-
+        
     def post(self, request):
         user = request.user
         # 1. Load dummy profile and MOS DB
-        base_dir = os.path.dirname(__file__)
-        with open(os.path.join(base_dir, 'utils/data/dummy.json'), 'r') as f:
-            profile = json.load(f)
-        with open(os.path.join(base_dir, 'utils/data/mos_database.json'), 'r') as f:
-            mos_db_list = json.load(f)
-        mos_db = {item['code']: item for item in mos_db_list}
+        client = MongoClient(settings.MONGO_URI)
+        db = client[settings.MONGO_DB_NAME]
+        user_collection = db["user_data"]
+        user_doc = user_collection.find_one({'fingerprint': user.fingerprint})
+        user_doc = decrypt_with_fingerprint(user_doc, user.fingerprint)
+        if not user_doc:
+            return JsonResponse({'error': 'User profile not found.'}, status=404)
+        profile = user_doc
+        del profile["_id"]
 
-        for mos in profile['form_data'].get('mos_history', []):
+        # Fetch MOS DB
+        mos_doc = db["mos_doc"]
+        mos_docs = mos_doc.find({})
+        mos_db_list = list(mos_docs)
+        if not mos_db_list:
+            # Load local JSON file and insert into MongoDB
+            base_dir = os.path.dirname(__file__)
+            json_path = os.path.join(base_dir, 'utils/data/mos_database.json')
+
+            try:
+                with open(json_path, 'r') as f:
+                    mos_data = json.load(f)
+                    if isinstance(mos_data, list):
+                        mos_doc.insert_many(mos_data)
+                        mos_db_list = mos_data  # use directly for downstream logic
+                    else:
+                        return JsonResponse({'error': 'Invalid format in mos_database.json'}, status=500)
+            except Exception as e:
+                return JsonResponse({'error': f'Failed to load mos_database.json: {str(e)}'}, status=500)
+
+        mos_db = {item['code']: item for item in mos_db_list}
+            
+        # Enrich MOS history
+        for mos in profile.get('mos_history', []):
             code = mos.get('code')
+            if not code:
+                continue
             mos_info = mos_db.get(code, {})
             mos['title'] = mos_info.get('title', mos.get('title'))
             mos['description'] = mos_info.get('description', '')
 
         # 2. Generate summary + keywords with LLaMA
+        print(profile)
         prompt = (
             "You are an expert at translating military experience to civilian terms. "
             "Given the following profile, summarize it for a civilian audience and generate a list of relevant skills/keywords for job search. "
             "Return a JSON object with 'summary' and 'keywords' (array of strings).\n"
-            f"Profile: {json.dumps(profile['form_data'], indent=2)}"
+            f"Profile: {json.dumps(profile, indent=2)}"
         )
         llama_data = {
             "model": "meta-llama/llama-4-scout-17b-16e-instruct",
@@ -182,7 +214,7 @@ class VeteranJobSearchView(APIView):
             summary_keywords = {"summary": "", "keywords": []}
 
         keywords = summary_keywords.get('keywords') or [
-            mos.get('title', '') for mos in profile['form_data'].get('mos_history', [])
+            mos.get('title', '') for mos in profile.get('mos_history', [])
         ]
 
         # 3. Search via SerpAPI (LinkedIn only)
@@ -263,7 +295,7 @@ class VeteranJobSearchView(APIView):
                 "- 80 and above → GOOD MATCH\n"
                 "- 50 to 79.9 → OK MATCH\n"
                 "- below 50 → LOW MATCH\n\n"
-                f"Profile:\n{json.dumps(profile['form_data'], indent=2)}\n\n"
+                f"Profile:\n{json.dumps(profile, indent=2)}\n\n"
                 f"Job:\n{json.dumps(job, indent=2)}"
             )
 
@@ -303,7 +335,6 @@ class VeteranJobSearchView(APIView):
             job["fingerprint"] = user.fingerprint
             if not cache_db.find_one({"url": job["url"], "fingerprint": user.fingerprint}):
                 cache_db.insert_one(job)
-
         return JsonResponse(response_jobs, safe=False)
 
     
@@ -326,15 +357,26 @@ class FetchChats(APIView):
         
         return JsonResponse(chats, safe=False)
 
-# Helper to extract location
-def extract_location(text):
-    if not text:
-        return None
-    # Look for city, state, or country patterns
-    match = re.search(r'([A-Za-z .,-]+, [A-Z]{2,}|[A-Za-z .,-]+, [A-Za-z .,-]+|United States|Remote)', text)
-    if match:
-        loc = match.group(1).strip()
-        # Ignore generic or overly long locations
-        if loc.lower() not in ['location or remote', 'exact location'] and len(loc) < 50:
-            return loc
-    return None
+class FetchRelJobs(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        fingerprint = getattr(user, 'fingerprint', None)
+
+        if not fingerprint:
+            return JsonResponse({'error': 'User fingerprint not found.'}, status=400)
+
+        try:
+            # Connect to MongoDB
+            client = MongoClient(settings.MONGO_URI)
+            db = client[settings.MONGO_DB_NAME]
+            cache_collection = db["cache_db"]
+
+            # Fetch jobs related to the user
+            job_docs = list(cache_collection.find({"fingerprint": fingerprint}, {'_id': 0}))
+
+            return JsonResponse(job_docs, safe=False, status=200)
+
+        except Exception as e:
+            return JsonResponse({'error': f'Failed to fetch jobs: {str(e)}'}, status=500)
