@@ -9,6 +9,11 @@ from datetime import datetime
 import os
 import json
 from rest_framework.permissions import IsAuthenticated
+import requests
+from urllib.parse import urlparse
+from bs4 import BeautifulSoup
+import time
+import re
 
 def chatbot_view(request):
     user_id = request.user.id if request.user.is_authenticated else "guest"
@@ -113,14 +118,15 @@ class BookmarkedChats(APIView):
         return JsonResponse(chats, safe=False)
 
 class VeteranJobSearchView(APIView):
-    async def post(self, request):
+    def post(self, request):
         # 1. Load dummy profile and MOS database
         dummy_path = os.path.join(os.path.dirname(__file__), 'utils', 'data', 'dummy.json')
         mos_db_path = os.path.join(os.path.dirname(__file__), 'utils', 'data', 'mos_database.json')
         with open(dummy_path, 'r') as f:
             profile = json.load(f)
         with open(mos_db_path, 'r') as f:
-            mos_db = json.load(f)
+            mos_db_list = json.load(f)
+        mos_db = {item['code']: item for item in mos_db_list}
 
         # 2. Enrich MOS codes with title/desc
         for mos in profile['form_data'].get('mos_history', []):
@@ -143,61 +149,132 @@ class VeteranJobSearchView(APIView):
                 {"role": "user", "content": llama_prompt}
             ]
         }
-        async with httpx.AsyncClient() as client:
-            try:
-                llama_resp = await client.post(settings.GROQ_API_URL, json=llama_data, headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"}, timeout=60)
-                llama_resp.raise_for_status()
-                llama_json = llama_resp.json()["choices"][0]["message"]["content"]
-                # Try to parse JSON from Llama output
-                try:
-                    import re
-                    match = re.search(r'\{.*\}', llama_json, re.DOTALL)
-                    if match:
-                        summary_keywords = json.loads(match.group(0))
-                    else:
-                        summary_keywords = json.loads(llama_json)
-                except Exception:
-                    summary_keywords = {"summary": "", "keywords": []}
-            except Exception as e:
-                return JsonResponse({"error": f"Llama failed: {str(e)}"}, status=500)
+        try:
+            llama_resp = requests.post(settings.GROQ_API_URL, json=llama_data, headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"}, timeout=60)
+            llama_resp.raise_for_status()
+            llama_json = llama_resp.json()["choices"][0]["message"]["content"]
+            # Try to parse JSON from Llama output
+            match = re.search(r'\{.*\}', llama_json, re.DOTALL)
+            if match:
+                summary_keywords = json.loads(match.group(0))
+            else:
+                summary_keywords = json.loads(llama_json)
+        except Exception:
+            summary_keywords = {"summary": "", "keywords": []}
 
         keywords = summary_keywords.get('keywords', [])
         if not keywords:
             keywords = [mos.get('title', '') for mos in profile['form_data'].get('mos_history', [])]
 
+        print("Keywords used:", keywords)
+
         # 4. Search jobs from SERPAPI (LinkedIn) and USAJOBS
         serpapi_key = getattr(settings, 'SERPAPI_KEY', None)
         usajobs_key = getattr(settings, 'USAJOBS_API_KEY', None)
         jobs = []
-        # SERPAPI LinkedIn
+        # SERPAPI Google Search for Jobs (now only LinkedIn)
         if serpapi_key:
+            # Use the first 3 keywords to build the query
+            query = ' '.join(keywords[:3]) if keywords else ''
             params = {
-                'q': ' '.join(keywords),
+                'engine': 'google',
+                'q': query + ' jobs site:linkedin.com',  # Restrict to LinkedIn
                 'api_key': serpapi_key,
-                'engine': 'linkedin_jobs',
-                'location': 'United States',
-                'date_posted': 'past_48_hours',
-                'num': 25
+                'num': 20
             }
             try:
-                serp_resp = await client.get('https://serpapi.com/search', params=params, timeout=20)
+                serp_resp = requests.get('https://serpapi.com/search', params=params, timeout=20)
                 serp_resp.raise_for_status()
                 serp_data = serp_resp.json()
-                for item in serp_data.get('jobs_results', [])[:25]:
+                print("SERPAPI response:", serp_data)
+                linkedin_jobs = [item for item in serp_data.get('organic_results', []) if item.get('link') and 'linkedin.com' in item.get('link')]
+                for item in linkedin_jobs[:10]:  # Only LinkedIn jobs, max 10
+                    url = item.get('link', None)
+                    domain = None
+                    company_name = None
+                    if url:
+                        parsed = urlparse(url)
+                        domain = parsed.netloc if parsed.netloc else None
+                    # Crawl the job page
+                    job_title = item.get('title', '')
+                    snippet = item.get('snippet', '')
+                    location = extract_location(job_title) or extract_location(snippet) or None
+                    description = None
+                    company_logo = None
+                    tags = set()
+                    try:
+                        if url:
+                            page = requests.get(url, timeout=10)
+                            # Detect anti-bot/Cloudflare protection
+                            if 'window._cf_chl_opt' in page.text or 'cf-browser-verification' in page.text or 'Cloudflare' in page.text:
+                                raise Exception('Blocked by anti-bot protection')
+                            soup = BeautifulSoup(page.content, 'html.parser')
+                            # Try to extract job title
+                            h1 = soup.find('h1')
+                            if h1 and len(h1.text) > 5:
+                                job_title = h1.text.strip()
+                            # Try to extract company name from meta or prominent HTML
+                            meta_company = soup.find('meta', {'property': 'og:site_name'})
+                            if meta_company and meta_company.get('content'):
+                                company_name = meta_company['content']
+                            else:
+                                # Try to find company name in a span/div with 'company' in class or id
+                                company_tag = soup.find(lambda tag: tag.name in ['span', 'div'] and tag.get('class') and any('company' in c for c in tag.get('class')))
+                                if company_tag and company_tag.text:
+                                    company_name = company_tag.text.strip()
+                            # Try to extract location again from HTML
+                            loc_tag = soup.find(string=lambda t: t and ('location' in t.lower() or 'Location' in t))
+                            if loc_tag:
+                                loc = extract_location(loc_tag)
+                                if loc:
+                                    location = loc
+                            # Try to extract description
+                            desc_tag = soup.find('meta', {'name': 'description'})
+                            if desc_tag and desc_tag.get('content'):
+                                description = desc_tag['content']
+                            else:
+                                # Fallback: use first large <p> or <div>
+                                p = soup.find('p')
+                                if p and len(p.text) > 30:
+                                    description = p.text.strip()
+                            # Try to extract logo
+                            logo_tag = soup.find('img', {'class': 'company-logo'})
+                            if logo_tag and logo_tag.get('src'):
+                                company_logo = logo_tag['src']
+                            # Extract tags/skills from description
+                            desc_text = (description or '') + ' ' + (snippet or '')
+                            for k in keywords:
+                                if k.lower() in desc_text.lower():
+                                    tags.add(k)
+                    except Exception as e:
+                        print(f"Error crawling {url}: {e}")
+                        # fallback to snippet as description, and do not use HTML fields
+                        description = snippet
+                        company_name = None
+                        company_logo = None
+                        tags = set([k for k in keywords if k.lower() in snippet.lower()])
+                    # Fallbacks
+                    if not company_name:
+                        company_name = domain
+                    # Fallback for description if too short or generic
+                    if not description or len(description) < 20:
+                        description = snippet
                     jobs.append({
-                        'company_logo': item.get('company_logo_url'),
-                        'company_name': item.get('company_name'),
-                        'job_title': item.get('title'),
-                        'location': item.get('location'),
-                        'job_tags': item.get('job_types', None),
-                        'posted_time': item.get('posted_at'),
-                        'applicants': item.get('applicants', None),
-                        'alumni': item.get('alumni', None),
-                        'url': item.get('job_url'),
-                        'description': item.get('description', None)
+                        'company_logo': company_logo,
+                        'company_name': company_name,
+                        'job_title': job_title if job_title else None,
+                        'location': location,
+                        'job_tags': list(tags),
+                        'posted_time': None,
+                        'applicants': None,
+                        'alumni': None,
+                        'url': url,
+                        'description': description if description else snippet
                     })
-            except Exception:
-                pass
+                    time.sleep(1)  # Be polite to job boards
+                print("LinkedIn jobs found:", len(jobs))
+            except Exception as e:
+                print("SERPAPI error:", e)
         # USAJOBS
         if usajobs_key:
             headers = {'Authorization-Key': usajobs_key, 'User-Agent': 'next-mission-app'}
@@ -208,9 +285,10 @@ class VeteranJobSearchView(APIView):
                 'DatePosted': 2  # last 48 hours
             }
             try:
-                usajobs_resp = await client.get('https://data.usajobs.gov/api/search', params=params, headers=headers, timeout=20)
+                usajobs_resp = requests.get('https://data.usajobs.gov/api/search', params=params, headers=headers, timeout=20)
                 usajobs_resp.raise_for_status()
                 usajobs_data = usajobs_resp.json()
+                print("USAJOBS response:", usajobs_data)
                 for item in usajobs_data.get('SearchResult', {}).get('SearchResultItems', [])[:25]:
                     pos = item.get('MatchedObjectDescriptor', {})
                     jobs.append({
@@ -225,8 +303,9 @@ class VeteranJobSearchView(APIView):
                         'url': pos.get('PositionURI'),
                         'description': pos.get('UserArea', {}).get('Details', {}).get('JobSummary', None)
                     })
-            except Exception:
-                pass
+                print("Jobs found so far:", len(jobs))
+            except Exception as e:
+                print("USAJOBS error:", e)
 
         # 5. Score and rank jobs with Llama
         scored_jobs = []
@@ -245,10 +324,9 @@ class VeteranJobSearchView(APIView):
                 ]
             }
             try:
-                job_resp = await client.post(settings.GROQ_API_URL, json=job_data, headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"}, timeout=30)
+                job_resp = requests.post(settings.GROQ_API_URL, json=job_data, headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"}, timeout=30)
                 job_resp.raise_for_status()
                 job_json = job_resp.json()["choices"][0]["message"]["content"]
-                import re
                 match = re.search(r'\{.*\}', job_json, re.DOTALL)
                 if match:
                     score_label = json.loads(match.group(0))
@@ -285,3 +363,16 @@ class FetchChats(APIView):
             del chat["_id"]
         
         return JsonResponse(chats, safe=False)
+
+# Helper to extract location
+def extract_location(text):
+    if not text:
+        return None
+    # Look for city, state, or country patterns
+    match = re.search(r'([A-Za-z .,-]+, [A-Z]{2,}|[A-Za-z .,-]+, [A-Za-z .,-]+|United States|Remote)', text)
+    if match:
+        loc = match.group(1).strip()
+        # Ignore generic or overly long locations
+        if loc.lower() not in ['location or remote', 'exact location'] and len(loc) < 50:
+            return loc
+    return None
