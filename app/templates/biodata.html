@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 1px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 16px;
+            font-weight: normal;
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+        .section {
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 8px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #aaa;
+            margin-bottom: 8px;
+        }
+        ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .experience-entry {
+            margin-bottom: 8px;
+        }
+        .experience-entry strong {
+            display: block;
+        }
+        .label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ full_name }}</h1>
+    <h2>{{ headline }}</h2>
+
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <hr>
+        <p>{{ summary }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Skills</div>
+        <hr>
+        <ul>{% for skill in skills %}<li>{{ skill }}</li>{% endfor %}</ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Education</div>
+        <hr>
+        <p>{{ education }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Experience</div>
+        <hr>
+        <p>{{ experience_summary }}</p>
+        {% for exp in experience_details %}
+            <div class="experience-entry">
+                <strong>{{ exp.role }} at {{ exp.organization }}</strong>
+                <em>{{ exp.duration }}</em>
+                <p>{{ exp.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <div class="section-title">Achievements</div>
+        <hr>
+        <ul>{% for item in achievements %}<li>{{ item }}</li>{% endfor %}</ul>
+    </div>
+
+    {% if certifications %}
+    <div class="section">
+        <div class="section-title">Certifications</div>
+        <hr>
+        <ul>{% for cert in certifications %}<li>{{ cert }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+
+    {% if volunteer_experience %}
+    <div class="section">
+        <div class="section-title">Volunteer Experience</div>
+        <hr>
+        <p>{{ volunteer_experience }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>

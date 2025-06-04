@@ -361,3 +361,114 @@ Returns a JSON array of job objects with the following sample fields:
 
 *** Use this to update the mongodb with new jobs ***
 *** Make sure to append the data from this to the jobs array in localstorage or call the FetchRelJobs API for updated list ***
+
+
+# Veteran BioData API
+
+This module provides two endpoints for generating and exporting enriched bio-data for U.S. military veterans.
+
+---
+
+## 🔹 Endpoint 1: Generate BioData (JSON)
+
+### `POST /api/v1/veteran/biodata/`
+
+Generates an enriched civilian-friendly bio using a large language model and stores the result in MongoDB.
+
+### 🔐 Authentication
+Requires a valid JWT token (`IsAuthenticated` permission class).
+
+### 🧾 Request Body
+None — uses the logged-in user's fingerprint to retrieve their profile from `user_data` MongoDB collection.
+
+### 🔍 Flow
+1. Fetches user document from `user_data` based on `fingerprint`.
+2. Sends the profile to LLaMA with a structured prompt to:
+   - Translate military experience into civilian terms
+   - Produce a complete resume-like JSON structure
+3. Saves the generated data into the `bio_data` collection with the user's fingerprint.
+4. Returns the enriched JSON.
+
+### ✅ JSON Output Structure
+```json
+{
+  "full_name": "John Doe",
+  "headline": "Operations Manager | Logistics & Strategy",
+  "summary": "John is a seasoned professional with over 10 years of experience...",
+  "skills": ["Logistics", "Leadership", "Strategic Planning", "Supply Chain"],
+  "education": "B.S. in Business Administration, University of Texas",
+  "experience_summary": "Over 10 years in operational and leadership roles...",
+  "experience_details": [
+    {
+      "role": "Logistics Coordinator",
+      "organization": "US Army",
+      "duration": "2015–2020",
+      "description": "Oversaw the movement of equipment and personnel across international bases..."
+    }
+  ],
+  "achievements": ["Army Achievement Medal", "Improved supply chain efficiency by 30%"],
+  "certifications": ["Project Management Professional (PMP)"],
+  "volunteer_experience": "Mentor at Veterans in Tech"
+}
+
+```
+
+# 📄 API: Download Veteran BioData as PDF
+
+This endpoint returns a professionally formatted PDF resume based on a veteran's enriched bio-data.
+
+---
+
+## 📥 Endpoint
+
+### `POST /api/v1/veteran/biodata/pdf/`
+
+---
+
+## 🔐 Authentication
+
+- Required: ✅ Yes (`IsAuthenticated`)
+- Type: Bearer Token / Session Auth
+
+---
+
+## 📨 Request
+
+- **Method**: `POST`
+- **Body**: None
+- **Headers**:
+  ```http
+  Authorization: Bearer <your_token_here>
+```
+
+To handle the download use similar to below
+
+```js
+downloadPDF() {
+  fetch("/api/v1/veteran/biodata/pdf/", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${this.authToken}` // Adjust with your actual token source
+    }
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Failed to download PDF");
+      }
+      return response.blob();
+    })
+    .then(blob => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = "veteran_biodata.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    })
+    .catch(error => {
+      console.error("Error downloading PDF:", error);
+    });
+}
+
+```

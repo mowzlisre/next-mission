@@ -646,3 +646,104 @@ class FetchRelEvents(APIView):
 
         except Exception as e:
             return JsonResponse({'error': f'Failed to fetch jobs: {str(e)}'}, status=500)
+        
+class VeteranBioDataView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+
+        # 1. Load user profile
+        client = MongoClient(settings.MONGO_URI)
+        db = client[settings.MONGO_DB_NAME]
+        user_collection = db["user_data"]
+        user_doc = user_collection.find_one({'fingerprint': user.fingerprint})
+        user_doc = decrypt_with_fingerprint(user_doc, user.fingerprint)
+        if not user_doc:
+            return JsonResponse({'error': 'User profile not found.'}, status=404)
+
+        profile = user_doc
+        del profile["_id"]
+
+        # 2. Construct prompt for LLaMA to generate enriched civilian bio-data
+        prompt = (
+            "You are an expert career assistant helping U.S. military veterans transition to civilian careers. "
+            "Given the military background and personal profile below, write a JSON resume summary. "
+            "Translate the experience into clear civilian terms and provide a well-structured biography.\n"
+            "Include these fields in the JSON response:\n"
+            "- `full_name`: string\n"
+            "- `headline`: string (short title or role summary)\n"
+            "- `summary`: string (3-5 line bio in third person)\n"
+            "- `skills`: array of key skills (4-5)\n"
+            "- `education`: string (school and degree if known)\n"
+            "- `experience_summary`: string (overview of work history)\n"
+            "- `experience_details`: array of experience objects with `role`, `organization`, `duration`, and `description`\n"
+            "- `achievements`: array of notable achievements or recognitions\n"
+            "- `certifications`: array of any known certifications (if mentioned)\n"
+            "- `volunteer_experience`: string (if relevant)\n"
+            "Return only the JSON object.\n\n"
+            f"Veteran Profile:\n{json.dumps(profile, indent=2)}"
+        )
+
+        llama_data = {
+            "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant that generates enriched bios for veterans."},
+                {"role": "user", "content": prompt}
+            ]
+        }
+
+        try:
+            resp = requests.post(settings.GROQ_API_URL,
+                                 json=llama_data,
+                                 headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"},
+                                 timeout=60)
+            resp.raise_for_status()
+            content = resp.json()["choices"][0]["message"]["content"]
+            match = re.search(r'\{.*\}', content, re.DOTALL)
+            biodata = json.loads(match.group(0)) if match else json.loads(content)
+        except Exception as e:
+            print(f"Bio generation failed: {e}")
+            return JsonResponse({'error': 'Failed to generate bio-data.'}, status=500)
+
+        # 3. Save to MongoDB collection bio_data
+        bio_collection = db["bio_data"]
+        biodata["fingerprint"] = user.fingerprint
+        biodata["created_at"] = datetime.utcnow().isoformat()
+        bio_collection.replace_one({"fingerprint": user.fingerprint}, biodata, upsert=True)
+
+        return JsonResponse(biodata, safe=False)
+
+
+from django.template.loader import render_to_string
+from weasyprint import HTML
+from django.http import HttpResponse
+
+class VeteranBioPDFView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+
+        # 1. Load bio-data from MongoDB using fingerprint
+        client = MongoClient(settings.MONGO_URI)
+        db = client[settings.MONGO_DB_NAME]
+        bio_collection = db["bio_data"]
+        biodata = bio_collection.find_one({"fingerprint": user.fingerprint})
+
+        if not biodata:
+            return JsonResponse({'error': 'Bio-data not found. Please generate it first.'}, status=404)
+
+        # Remove internal fields for rendering
+        biodata.pop("_id", None)
+        biodata.pop("fingerprint", None)
+        biodata.pop("created_at", None)
+
+        # 2. Render HTML and convert to PDF
+        html_string = render_to_string("biodata.html", biodata)
+        pdf_file = HTML(string=html_string).write_pdf()
+
+        # 3. Serve PDF response
+        response = HttpResponse(pdf_file, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="veteran_biodata.pdf"'
+        return response

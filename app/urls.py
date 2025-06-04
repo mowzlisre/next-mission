@@ -12,4 +12,6 @@ urlpatterns = [
     path("mentors/all", api.FetchRelMentors.as_view(), name="mentors-fetch"),
     path("events/search", api.VeteranCommunitySearchView.as_view(), name="events-search"),
     path("events/all", api.FetchRelEvents.as_view(), name="events-fetch"),
+    path("bio/generate", api.VeteranBioDataView.as_view(), name="bio-fetch"),
+    path("bio/download", api.VeteranBioPDFView.as_view(), name="bio-download"),
 ]
