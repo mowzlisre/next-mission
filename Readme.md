@@ -285,3 +285,79 @@ This endpoint receives user form data along with a fingerprint, encrypts the dat
   },
   "fingerprint": "unique-device-identifier"
 }
+```
+
+### FetchRelJobs API
+
+**Endpoint:** `/api/v1/jobs/all/`  
+**Method:** `GET`  
+**Authentication:** Required (Token or Session-based)  
+**Permissions:** `IsAuthenticated`
+
+---
+
+*** Use this to show all the current available jobs ***
+
+## 📄 Description
+
+Fetch all job postings that have been matched and cached for the currently authenticated user, based on their unique fingerprint.
+
+This endpoint queries the `cache_db` MongoDB collection and returns all job documents associated with the user's fingerprint.
+
+---
+
+## 🔐 Authentication
+
+This endpoint requires the user to be authenticated. The user's fingerprint must be stored in the user model as `user.fingerprint`.
+
+---
+
+## 📥 Request
+
+**GET** `/api/v1/jobs/fetch-related/`
+
+### Headers
+
+| Key            | Value                  |
+|----------------|------------------------|
+| Authorization  | `Bearer <access_token>` |
+
+---
+
+## ✅ Successful Response
+
+**Code:** `200 OK`  
+**Content:**  
+Returns a JSON array of job objects with the following sample fields:
+
+```json
+[
+  {
+    "company_name": "Acme Inc",
+    "job_title": "Operations Analyst",
+    "location": "Remote",
+    "job_tags": ["Veteran", "Operations", "Leadership"],
+    "posted_time": "2 days ago",
+    "applicants": 45,
+    "salary": "$85,000 - $95,000",
+    "employment_type": "Full-time",
+    "work_mode": "Remote",
+    "url": "https://linkedin.com/jobs/view/123456",
+    "description": "Responsible for...",
+    "matching_score": 87,
+    "matching_label": "GOOD MATCH",
+    "scraped_at": "2025-06-04T15:24:18.000Z",
+    "fingerprint": "user-abc-123"
+  }
+]
+```
+
+### FetchNew API
+
+**Endpoint:** `/api/v1/jobs/search/`  
+**Method:** `GET`  
+**Authentication:** Required (Token or Session-based)  
+**Permissions:** `IsAuthenticated`
+
+*** Use this to update the mongodb with new jobs ***
+*** Make sure to append the data from this to the jobs array in localstorage or call the FetchRelJobs API for updated list ***

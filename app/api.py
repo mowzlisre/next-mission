@@ -330,7 +330,6 @@ class VeteranJobSearchView(APIView):
             job["fingerprint"] = user.fingerprint
             if not cache_db.find_one({"url": job["url"], "fingerprint": user.fingerprint}):
                 cache_db.insert_one(job)
-        print(response_jobs)
         return JsonResponse(response_jobs, safe=False)
 
     
@@ -353,15 +352,26 @@ class FetchChats(APIView):
         
         return JsonResponse(chats, safe=False)
 
-# Helper to extract location
-def extract_location(text):
-    if not text:
-        return None
-    # Look for city, state, or country patterns
-    match = re.search(r'([A-Za-z .,-]+, [A-Z]{2,}|[A-Za-z .,-]+, [A-Za-z .,-]+|United States|Remote)', text)
-    if match:
-        loc = match.group(1).strip()
-        # Ignore generic or overly long locations
-        if loc.lower() not in ['location or remote', 'exact location'] and len(loc) < 50:
-            return loc
-    return None
+class FetchRelJobs(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        fingerprint = getattr(user, 'fingerprint', None)
+
+        if not fingerprint:
+            return JsonResponse({'error': 'User fingerprint not found.'}, status=400)
+
+        try:
+            # Connect to MongoDB
+            client = MongoClient(settings.MONGO_URI)
+            db = client[settings.MONGO_DB_NAME]
+            cache_collection = db["cache_db"]
+
+            # Fetch jobs related to the user
+            job_docs = list(cache_collection.find({"fingerprint": fingerprint}, {'_id': 0}))
+
+            return JsonResponse(job_docs, safe=False, status=200)
+
+        except Exception as e:
+            return JsonResponse({'error': f'Failed to fetch jobs: {str(e)}'}, status=500)
