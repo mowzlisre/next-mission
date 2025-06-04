@@ -19,10 +19,6 @@ User = get_user_model()
 mongo = AsyncIOMotorClient(settings.MONGO_URI)
 db = mongo.veteran_docs
 
-# WebSocket Consumer
-class ChatConsumer(AsyncWebsocketConsumer):
-    from asgiref.sync import sync_to_async
-
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         try:
@@ -174,17 +170,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
             "messages": [
                 {"role": "system", "content": "You are a helpful assistant for U.S. military veterans."},
                 {"role": "user", "content": prompt}
-            ],
-            "stream": True
+            ]
         }
         async with httpx.AsyncClient() as client:
             try:
-                async with client.stream("POST", settings.GROQ_API_URL, json=data, headers=headers, timeout=60) as response:
-                    response.raise_for_status()
-                    content = ""
-                    async for chunk in response.aiter_text():
-                        content += chunk
-                    return content
+                response = await client.post(settings.GROQ_API_URL, json=data, timeout=60, headers=headers)
+                response.raise_for_status()
+                result = response.json()
+                return result["choices"][0]["message"]["content"]
             except Exception as e:
                 return f"[Error contacting Llama 4: {str(e)}]"
 
